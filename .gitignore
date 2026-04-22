@@ -1,0 +1,45 @@
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+node_modules
+dist
+dist-ssr
+*.local
+
+# Secrets — Instagram Graph API credentials stay out of the repo.
+.env
+.env.*
+!.env.example
+
+# Generated at build time by fetch-instagram.mjs.
+public/instagram-posts.json
+
+# Temporary screenshots (local dev tool)
+temporary screenshots/
+
+# Local debug / screenshot scripts
+screenshot*.mjs
+audit*.mjs
+font-debug.mjs
+measure-logo.mjs
+footer-shot.mjs
+
+# Claude Code local settings (personal, not for repo)
+.claude/settings.local.json
+
+# Editor directories and files
+.vscode/*
+!.vscode/extensions.json
+.idea
+.DS_Store
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
