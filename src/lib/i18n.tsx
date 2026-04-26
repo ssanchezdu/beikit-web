@@ -20,6 +20,9 @@ const translations = {
       milkshakes:  { title: 'Milkshakes',  tagline: 'El batido que lo cambia todo.', description: 'Helado artesano, leche fría y mucho mimo en cada vaso. Espeso, intenso, americano de verdad.' },
       otros:       { title: 'Lattes',      tagline: 'El café como a ti te gusta.', description: 'Nuestra selección de cafés de especialidad, matcha y chai: recetas cremosas, aromáticas y hechas con mimo.' },
       pideYa: 'PIDE YA',
+      masPedido: 'Más pedido',
+      verTodos: (n: number) => `Ver los ${n} sabores`,
+      verMenos: 'Ver menos',
       items: {
         cookies: [
           { name: 'NY Classic', price: '5,00\u00A0€', desc: 'Un clásico que nunca falla, perfecto para los amantes de lo simple pero infalible. Con chips de chocolate con leche.' },
@@ -299,6 +302,9 @@ const translations = {
       milkshakes:  { title: 'Milkshakes',  tagline: 'El batut que ho canvia tot.', description: "Gelat artesà, llet freda i molt de mimo a cada got. Espès, intens, americà de debò." },
       otros:       { title: 'Lattes',      tagline: 'El cafè com a tu t\'agrada.', description: "La nostra selecció de cafès d'especialitat, matcha i chai: receptes cremoses, aromàtiques i fetes amb cura." },
       pideYa: 'DEMANA JA',
+      masPedido: 'Més demanat',
+      verTodos: (n: number) => `Veure els ${n} sabors`,
+      verMenos: 'Veure menys',
       items: {
         cookies: [
           { name: 'NY Classic', price: '5,00\u00A0€', desc: "Un clàssic que mai falla, perfecte per als amants del simple però infal·lible. Amb chips de xocolata amb llet." },
