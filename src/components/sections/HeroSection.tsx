@@ -156,11 +156,6 @@ export function HeroSection() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.65, ease: LINE_EASE }}
         >
-          {/* Sub-copy — centered, more legible */}
-          <p className="font-body text-[15px] md:text-[17px] text-[#320e10]/60 leading-relaxed text-center max-w-[480px]">
-            {h.sub}
-          </p>
-
           {/* CTAs — centered row */}
           <div className="flex gap-3">
             <a

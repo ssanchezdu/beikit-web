@@ -210,6 +210,13 @@ body {
     transform: translateY(-3px);
   }
 }
+
+/* Submit CTA — arrow slides on hover for affordance */
+@media (hover: hover) and (pointer: fine) {
+  .submit-cta:hover .submit-cta-arrow {
+    transform: translateX(4px);
+  }
+}
 /* ── Diagonal band ────────────────────────────────────────── */
 .diagonal-cut-bottom {
   clip-path: polygon(0 0, 100% 0, 100% 88%, 0 100%);

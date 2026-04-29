@@ -11,15 +11,13 @@ const WHATSAPP_HREF = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponen
 const FORMSPREE_ENDPOINT = 'https://formspree.io/f/[FORMSPREE_ID]'
 
 type FormData = {
-  tipoCliente: string
   nombre: string
   email: string
-  telefono: string
+  telefono?: string
   tipoEvento: string
   fecha: string
   personas: string
-  presupuesto?: string
-  productos: string
+  productos: string[]
   mensaje?: string
   privacidad: boolean
 }
@@ -618,7 +616,7 @@ function ProductosSection() {
 }
 
 // ---------------------------------------------------------------------------
-// Form section — ticker removed, header tightened. Form untouched.
+// Form section — redesigned: chip-based selectors, sectioned layout, reduced friction.
 // ---------------------------------------------------------------------------
 function FormSection() {
   const { t } = useLanguage()
@@ -672,6 +670,10 @@ function FormSection() {
   const inputError =
     'form-field w-full font-body text-[15px] text-[#f6eadf] bg-[#3b1315] border border-red-400 rounded-[14px] px-5 py-4 outline-none focus-visible:border-red-400 focus-visible:ring-2 focus-visible:ring-red-400/30 placeholder:text-[#f6eadf]/30'
 
+  // Reusable chip styles for radio/checkbox groups (peer pattern)
+  const chipBase =
+    'block text-center font-body text-[14px] py-3 px-4 rounded-full bg-[#3b1315] border border-[#f6eadf]/15 text-[#f6eadf]/75 peer-checked:border-[#e8511b] peer-checked:text-[#f6eadf] peer-checked:bg-[#e8511b]/15 peer-checked:font-bold peer-focus-visible:ring-2 peer-focus-visible:ring-[#e8511b]/30 hover:border-[#f6eadf]/30 cursor-pointer'
+
   return (
     <section id="catering-form" className="bg-[#320e10] relative overflow-hidden scroll-mt-[96px]">
 
@@ -682,11 +684,11 @@ function FormSection() {
         aria-hidden="true"
       />
 
-      <div className="relative z-10 max-w-2xl mx-auto px-6 md:px-12 py-24 md:py-28 flex flex-col gap-12">
+      <div className="relative z-10 max-w-2xl mx-auto px-6 md:px-12 py-24 md:py-32 flex flex-col gap-12 md:gap-14">
 
         {/* Header */}
         <motion.div
-          className="flex flex-col gap-4"
+          className="flex flex-col gap-5"
           initial={{ opacity: 0, y: 25 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -697,14 +699,14 @@ function FormSection() {
             <span className="font-body font-bold text-[11px] tracking-[0.28em] uppercase text-[#e8511b]">{f.tag}</span>
           </div>
           <h2 className="font-display text-[42px] md:text-[60px] leading-[1.02] text-[#f6eadf]">{f.title}</h2>
-          <p className="font-body text-[15px] text-[#f6eadf]/70 leading-relaxed max-w-lg">
+          <p className="font-body text-[15px] md:text-[16px] text-[#f6eadf]/70 leading-[1.65] max-w-lg">
             {f.intro}
           </p>
 
           {/* Reassurance bar */}
-          <ul className="flex flex-wrap items-center gap-x-4 gap-y-2 pt-2">
+          <ul className="flex flex-wrap items-center gap-x-5 gap-y-2.5 pt-2">
             {f.reassurance.map((r, i) => (
-              <li key={i} className="inline-flex items-center gap-1.5 font-body text-[12px] text-[#f6eadf]/75">
+              <li key={i} className="inline-flex items-center gap-2 font-body text-[12px] text-[#f6eadf]/75">
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#f8b114" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
                   <path d="M20 6L9 17l-5-5"/>
                 </svg>
@@ -718,40 +720,14 @@ function FormSection() {
         <motion.form
           onSubmit={handleSubmit(onSubmit, onInvalid)}
           noValidate
-          className="flex flex-col gap-6"
+          className="flex flex-col gap-7"
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5, delay: 0.1, ease: EASE }}
         >
-          {/* Tipo de cliente — segmented */}
-          <div className="flex flex-col gap-2">
-            <label className="font-body font-bold text-[13px] text-[#f6eadf]">{f.tipoCliente}</label>
-            <div className="grid grid-cols-2 gap-2">
-              {f.tipoClienteOptions.map((opt) => (
-                <label
-                  key={opt}
-                  className="relative cursor-pointer group"
-                >
-                  <input
-                    type="radio"
-                    value={opt}
-                    className="peer sr-only"
-                    {...register('tipoCliente', { required: f.required })}
-                  />
-                  <span className="block text-center font-body text-[14px] py-3.5 rounded-[14px] bg-[#3b1315] border border-[#f6eadf]/15 text-[#f6eadf]/75 peer-checked:border-[#e8511b] peer-checked:text-[#f6eadf] peer-checked:bg-[#e8511b]/15 peer-checked:font-bold peer-focus-visible:ring-2 peer-focus-visible:ring-[#e8511b]/30"
-                    style={{ transition: 'border-color 200ms var(--ease-out), background-color 200ms var(--ease-out), color 200ms var(--ease-out)' }}
-                  >
-                    {opt}
-                  </span>
-                </label>
-              ))}
-            </div>
-            {errors.tipoCliente && <span role="alert" aria-live="polite" className="font-body text-[12px] text-red-400">{errors.tipoCliente.message}</span>}
-          </div>
-
           {/* Nombre */}
-          <div className="flex flex-col gap-2">
+          <div className="flex flex-col gap-2.5">
             <label className="font-body font-bold text-[13px] text-[#f6eadf]">{f.nombre}</label>
             <input
               type="text"
@@ -762,9 +738,9 @@ function FormSection() {
             {errors.nombre && <span role="alert" aria-live="polite" className="font-body text-[12px] text-red-400">{errors.nombre.message}</span>}
           </div>
 
-          {/* Email + Teléfono */}
+          {/* Email + Teléfono (teléfono opcional) */}
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
-            <div className="flex flex-col gap-2">
+            <div className="flex flex-col gap-2.5">
               <label className="font-body font-bold text-[13px] text-[#f6eadf]">{f.email}</label>
               <input
                 type="email"
@@ -779,8 +755,10 @@ function FormSection() {
               />
               {errors.email && <span role="alert" aria-live="polite" className="font-body text-[12px] text-red-400">{errors.email.message}</span>}
             </div>
-            <div className="flex flex-col gap-2">
-              <label className="font-body font-bold text-[13px] text-[#f6eadf]">{f.telefono}</label>
+            <div className="flex flex-col gap-2.5">
+              <label className="font-body font-bold text-[13px] text-[#f6eadf]">
+                {f.telefono} <span className="font-normal text-[#f6eadf]/55">{f.telefonoOptional}</span>
+              </label>
               <input
                 type="tel"
                 autoComplete="tel"
@@ -788,7 +766,6 @@ function FormSection() {
                 placeholder={f.placeholderPhone}
                 className={errors.telefono ? inputError : inputBase}
                 {...register('telefono', {
-                  required: f.required,
                   pattern: { value: /^\+?[\d\s-]{9,}$/, message: f.phoneError },
                 })}
               />
@@ -796,24 +773,33 @@ function FormSection() {
             </div>
           </div>
 
-          {/* Tipo evento */}
-          <div className="flex flex-col gap-2">
+          {/* Tipo evento — chips */}
+          <div className="flex flex-col gap-2.5">
             <label className="font-body font-bold text-[13px] text-[#f6eadf]">{f.tipoEvento}</label>
-            <select
-              className={errors.tipoEvento ? inputError : inputBase}
-              {...register('tipoEvento', { required: f.required })}
-            >
-              <option value="">—</option>
+            <div className="flex flex-wrap gap-2">
               {f.eventTypes.map((type) => (
-                <option key={type} value={type}>{type}</option>
+                <label key={type} className="relative cursor-pointer">
+                  <input
+                    type="radio"
+                    value={type}
+                    className="peer sr-only"
+                    {...register('tipoEvento', { required: f.requiredSelect })}
+                  />
+                  <span
+                    className={chipBase}
+                    style={{ transition: 'border-color 200ms var(--ease-out), background-color 200ms var(--ease-out), color 200ms var(--ease-out)' }}
+                  >
+                    {type}
+                  </span>
+                </label>
               ))}
-            </select>
+            </div>
             {errors.tipoEvento && <span role="alert" aria-live="polite" className="font-body text-[12px] text-red-400">{errors.tipoEvento.message}</span>}
           </div>
 
           {/* Fecha + Personas */}
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
-            <div className="flex flex-col gap-2">
+            <div className="flex flex-col gap-2.5">
               <label className="font-body font-bold text-[13px] text-[#f6eadf]">{f.fecha}</label>
               <input
                 type="date"
@@ -826,51 +812,59 @@ function FormSection() {
               />
               {errors.fecha && <span role="alert" aria-live="polite" className="font-body text-[12px] text-red-400">{errors.fecha.message}</span>}
             </div>
-            <div className="flex flex-col gap-2">
+            <div className="flex flex-col gap-2.5">
               <label className="font-body font-bold text-[13px] text-[#f6eadf]">{f.personas}</label>
-              <input
-                type="number"
-                inputMode="numeric"
-                min="1"
-                placeholder={f.placeholderPersonas}
-                className={errors.personas ? inputError : inputBase}
-                {...register('personas', { required: f.required, min: { value: 1, message: f.required } })}
-              />
+              <div className="flex flex-wrap gap-2">
+                {f.personasOptions.map((opt) => (
+                  <label key={opt} className="relative cursor-pointer">
+                    <input
+                      type="radio"
+                      value={opt}
+                      className="peer sr-only"
+                      {...register('personas', { required: f.requiredSelect })}
+                    />
+                    <span
+                      className={chipBase}
+                      style={{ transition: 'border-color 200ms var(--ease-out), background-color 200ms var(--ease-out), color 200ms var(--ease-out)' }}
+                    >
+                      {opt}
+                    </span>
+                  </label>
+                ))}
+              </div>
               {errors.personas && <span role="alert" aria-live="polite" className="font-body text-[12px] text-red-400">{errors.personas.message}</span>}
             </div>
           </div>
 
-          {/* Presupuesto — opcional, cualifica el lead */}
-          <div className="flex flex-col gap-2">
-            <label className="font-body font-bold text-[13px] text-[#f6eadf]">
-              {f.presupuesto} <span className="font-normal text-[#f6eadf]/55">{f.presupuestoOptional}</span>
-            </label>
-            <select
-              className={inputBase}
-              defaultValue=""
-              {...register('presupuesto')}
-            >
-              <option value="">—</option>
-              {f.presupuestoOptions.map((opt) => (
-                <option key={opt} value={opt}>{opt}</option>
-              ))}
-            </select>
-          </div>
-
-          {/* Productos */}
-          <div className="flex flex-col gap-2">
+          {/* Productos — multi-select chips, required (con "No lo sé aún" como opt-out semántico) */}
+          <div className="flex flex-col gap-2.5">
             <label className="font-body font-bold text-[13px] text-[#f6eadf]">{f.productos}</label>
-            <textarea
-              rows={4}
-              placeholder={f.placeholderProductos}
-              className={`${errors.productos ? inputError : inputBase} resize-none`}
-              {...register('productos', { required: f.required })}
-            />
-            {errors.productos && <span role="alert" aria-live="polite" className="font-body text-[12px] text-red-400">{errors.productos.message}</span>}
+            <span className="font-body text-[12.5px] text-[#f6eadf]/55 -mt-1">{f.productosHelp}</span>
+            <div className="flex flex-wrap gap-2">
+              {f.productosOptions.map((opt) => (
+                <label key={opt} className="relative cursor-pointer">
+                  <input
+                    type="checkbox"
+                    value={opt}
+                    className="peer sr-only"
+                    {...register('productos', {
+                      validate: (v) => (Array.isArray(v) && v.length > 0) || f.requiredSelect,
+                    })}
+                  />
+                  <span
+                    className={chipBase}
+                    style={{ transition: 'border-color 200ms var(--ease-out), background-color 200ms var(--ease-out), color 200ms var(--ease-out)' }}
+                  >
+                    {opt}
+                  </span>
+                </label>
+              ))}
+            </div>
+            {errors.productos && <span role="alert" aria-live="polite" className="font-body text-[12px] text-red-400">{errors.productos.message as string}</span>}
           </div>
 
-          {/* Mensaje */}
-          <div className="flex flex-col gap-2">
+          {/* Mensaje — opcional */}
+          <div className="flex flex-col gap-2.5">
             <label className="font-body font-bold text-[13px] text-[#f6eadf]">
               {f.mensaje} <span className="font-normal text-[#f6eadf]/55">{f.mensajeOptional}</span>
             </label>
@@ -882,13 +876,8 @@ function FormSection() {
             />
           </div>
 
-          {/* RGPD */}
-          <p className="font-body text-[11px] text-[#f6eadf]/55 leading-relaxed border-l-[3px] border-[#e8511b]/40 pl-4 py-1">
-            {f.rgpd}
-          </p>
-
           {/* Privacidad checkbox */}
-          <div className="flex flex-col gap-2">
+          <div className="flex flex-col gap-2 pt-2">
             <label className="flex items-start gap-3 cursor-pointer group">
               <input
                 type="checkbox"
@@ -912,37 +901,50 @@ function FormSection() {
             </p>
           )}
 
-          {/* Submit + WhatsApp fallback */}
-          <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 mt-2">
+          {/* Submit */}
+          <div className="flex flex-col gap-5 mt-2">
             <button
               type="submit"
               disabled={isSubmitting}
-              className="press focus-ring font-body font-bold text-[13px] tracking-[0.12em] uppercase px-10 py-4.5 rounded-[14px] bg-[#e8511b] text-white hover:bg-[#d0481a] inline-flex items-center justify-center gap-2.5 disabled:opacity-60 disabled:cursor-not-allowed shadow-[0_8px_24px_-6px_rgba(232,81,27,0.35)]"
-              style={{ transition: 'transform 160ms var(--ease-out), background-color 200ms var(--ease-out), opacity 200ms var(--ease-out)' }}
+              className="submit-cta group press focus-ring font-body font-bold text-[13px] tracking-[0.14em] uppercase px-8 py-5 rounded-[16px] bg-[#e8511b] text-white hover:bg-[#d0481a] inline-flex items-center justify-center gap-3 w-full disabled:opacity-60 disabled:cursor-not-allowed shadow-[0_12px_32px_-8px_rgba(232,81,27,0.55),0_2px_6px_-1px_rgba(232,81,27,0.25)]"
+              style={{ transition: 'transform 160ms var(--ease-out), background-color 200ms var(--ease-out), opacity 200ms var(--ease-out), box-shadow 200ms var(--ease-out)' }}
             >
-              {isSubmitting ? f.sending : f.submit}
+              <span>{isSubmitting ? f.sending : f.submit}</span>
               {!isSubmitting && (
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                <svg
+                  width="16"
+                  height="16"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2.5"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  aria-hidden="true"
+                  className="submit-cta-arrow"
+                  style={{ transition: 'transform 220ms var(--ease-out)' }}
+                >
                   <path d="M5 12h14M12 5l7 7-7 7"/>
                 </svg>
               )}
             </button>
 
+            {/* WhatsApp fallback — secondary, low-emphasis */}
             <a
               href={WHATSAPP_HREF}
               target="_blank"
               rel="noopener noreferrer"
-              className="press focus-ring font-body text-[13px] text-[#f6eadf]/75 hover:text-[#25d366] inline-flex items-center gap-2"
+              className="press focus-ring font-body text-[13px] text-[#f6eadf]/70 hover:text-[#25d366] inline-flex items-center justify-center gap-2 self-center"
               style={{ transition: 'color 200ms var(--ease-out)' }}
             >
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="#25d366" aria-hidden="true">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
                 <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
               </svg>
               {f.whatsappFallback}
             </a>
           </div>
 
-          <p className="font-body text-[12px] text-[#f6eadf]/60 text-center">{f.note}</p>
+          <p className="font-body text-[12px] text-[#f6eadf]/55 text-center leading-relaxed">{f.note}</p>
         </motion.form>
       </div>
     </section>
@@ -1155,6 +1157,7 @@ function StickyCta() {
   const { t } = useLanguage()
   const s = t.catering.sticky
   const [show, setShow] = useState(false)
+  const [inFormSection, setInFormSection] = useState(false)
 
   useEffect(() => {
     let ticking = false
@@ -1171,15 +1174,40 @@ function StickyCta() {
     }
     update()
     window.addEventListener('scroll', onScroll, { passive: true })
-    return () => window.removeEventListener('scroll', onScroll)
+
+    // Hide sticky CTA when user reaches the form (avoid duplicate CTA).
+    // Retry until the form node mounts — StickyCta may mount before FormSection.
+    let observer: IntersectionObserver | null = null
+    let rafId = 0
+    const attach = () => {
+      const formEl = document.getElementById('catering-form')
+      if (!formEl) {
+        rafId = requestAnimationFrame(attach)
+        return
+      }
+      observer = new IntersectionObserver(
+        ([entry]) => setInFormSection(entry.isIntersecting),
+        { rootMargin: '0px 0px -20% 0px', threshold: 0 }
+      )
+      observer.observe(formEl)
+    }
+    attach()
+
+    return () => {
+      window.removeEventListener('scroll', onScroll)
+      cancelAnimationFrame(rafId)
+      observer?.disconnect()
+    }
   }, [])
+
+  const visible = show && !inFormSection
 
   return (
     <div
-      className={`md:hidden fixed left-3 right-3 bottom-3 z-40 flex gap-2 ${show ? 'translate-y-0 opacity-100' : 'translate-y-[140%] opacity-0 pointer-events-none'}`}
+      className={`md:hidden fixed left-3 right-3 bottom-3 z-40 flex gap-2 ${visible ? 'translate-y-0 opacity-100' : 'translate-y-[140%] opacity-0 pointer-events-none'}`}
       style={{ transition: 'transform 300ms var(--ease-out), opacity 300ms var(--ease-out)' }}
-      aria-hidden={!show}
-      {...(!show ? { inert: true } : {})}
+      aria-hidden={!visible}
+      {...(!visible ? { inert: true } : {})}
     >
       <a
         href="#catering-form"
