@@ -55,7 +55,7 @@ export function Header() {
         boxShadow: scrolled
           ? '0 4px 16px -4px rgba(50,14,16,0.04)'
           : 'none',
-        transition: 'transform 480ms cubic-bezier(0.23,1,0.32,1), box-shadow 360ms cubic-bezier(0.23,1,0.32,1)',
+        transition: 'transform 480ms var(--ease-out), box-shadow 360ms var(--ease-out)',
       }}
     >
       {/* h-[72px] = 9×8 | px-6 = 24px (3×8) | md:px-10 = 40px (5×8) */}
@@ -103,7 +103,7 @@ export function Header() {
                   ? 'text-[#320e10] bg-[#320e10]/[0.06]'
                   : 'text-[#320e10]/30 hover:text-[#320e10]/60 hover:bg-[#320e10]/[0.03]'
               }`}
-              style={{ transition: 'color 240ms cubic-bezier(0.23,1,0.32,1), background-color 240ms cubic-bezier(0.23,1,0.32,1)' }}
+              style={{ transition: 'color 240ms var(--ease-out), background-color 240ms var(--ease-out)' }}
             >
               ES
             </button>
@@ -117,7 +117,7 @@ export function Header() {
                   ? 'text-[#320e10] bg-[#320e10]/[0.06]'
                   : 'text-[#320e10]/30 hover:text-[#320e10]/60 hover:bg-[#320e10]/[0.03]'
               }`}
-              style={{ transition: 'color 240ms cubic-bezier(0.23,1,0.32,1), background-color 240ms cubic-bezier(0.23,1,0.32,1)' }}
+              style={{ transition: 'color 240ms var(--ease-out), background-color 240ms var(--ease-out)' }}
             >
               CA
             </button>

@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from 'framer-motion'
 import { useLanguage } from '../../lib/i18n'
 import { ProductCardCompact } from '../ui/ProductCardCompact'
 import { JellyWave } from '../ui/JellyWave'
+import { MicroCtaContent } from '../ui/MicroCtaContent'
 
 const UBER_EATS_URL = 'https://ubereats.com'
 const FEATURED_COUNT = 3
@@ -250,23 +251,28 @@ function CategoryBlock({ cat, verTodos, verMenos, masPedidoLabel, pideYaLabel, a
             type="button"
             onClick={() => setExpanded((v) => !v)}
             aria-expanded={expanded}
-            className="press focus-ring inline-flex items-center gap-2 font-body font-bold uppercase tracking-[0.16em] text-[11px] md:text-[12px] px-6 py-3 rounded-full border-2 border-[#f6eadf]/20 text-[#f6eadf] hover:border-[#e8511b] hover:text-[#e8511b]"
+            className="group/cta press focus-ring inline-flex items-center gap-2 font-body font-bold uppercase tracking-[0.16em] text-[11px] md:text-[12px] px-6 py-3 rounded-full border-2 border-[#f6eadf]/20 text-[#f6eadf] hover:border-[#e8511b] hover:text-[#e8511b]"
             style={{
               transition:
                 'border-color 240ms var(--ease-out), color 240ms var(--ease-out), transform 180ms var(--ease-out)',
             }}
           >
-            {expanded ? verMenos : verTodos(cat.items.length)}
-            <span
-              className="inline-block"
-              style={{
-                transform: expanded ? 'rotate(180deg)' : 'rotate(0deg)',
-                transition: 'transform 320ms var(--ease-out)',
-              }}
-              aria-hidden="true"
-            >
-              ↓
-            </span>
+            <MicroCtaContent
+              label={expanded ? verMenos : verTodos(cat.items.length)}
+              arrow={
+                <span
+                  className="inline-flex"
+                  style={{
+                    transform: expanded ? 'rotate(180deg)' : 'rotate(0deg)',
+                    transition: 'transform 320ms var(--ease-out)',
+                  }}
+                >
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                    <polyline points="6 9 12 15 18 9" />
+                  </svg>
+                </span>
+              }
+            />
           </button>
         </div>
       )}

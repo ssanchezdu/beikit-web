@@ -90,13 +90,13 @@ export function ClaimSection() {
             alt=""
             aria-hidden="true"
             className="absolute inset-0 w-full h-full brightness-0 invert opacity-30 group-hover:brightness-100 group-hover:invert-0 group-hover:opacity-100"
-            style={{ transition: 'filter 80ms cubic-bezier(0.23,1,0.32,1), opacity 80ms cubic-bezier(0.23,1,0.32,1)' }}
+            style={{ transition: 'filter 80ms var(--ease-out), opacity 80ms var(--ease-out)' }}
           />
           <img
             src="/assets/svg/Group.svg"
             alt="Beikit"
             className="absolute inset-0 w-[50%] h-[50%] m-auto object-contain brightness-0 invert opacity-60 group-hover:brightness-100 group-hover:invert-0 group-hover:opacity-100"
-            style={{ transition: 'filter 80ms cubic-bezier(0.23,1,0.32,1), opacity 80ms cubic-bezier(0.23,1,0.32,1)' }}
+            style={{ transition: 'filter 80ms var(--ease-out), opacity 80ms var(--ease-out)' }}
           />
         </motion.div>
       </div>

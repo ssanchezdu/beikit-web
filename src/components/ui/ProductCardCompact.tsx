@@ -1,5 +1,6 @@
-import { useState } from 'react'
 import { motion } from 'framer-motion'
+import { useCardHover } from '../../lib/useCardHover'
+import { MicroCtaContent } from './MicroCtaContent'
 
 interface ProductCardCompactProps {
   name: string
@@ -28,7 +29,7 @@ export function ProductCardCompact({
   bestsellerLabel = 'Más pedido',
   tallSticker = false,
 }: ProductCardCompactProps) {
-  const [hovered, setHovered] = useState(false)
+  const { hovered, reduceMotion, bind } = useCardHover()
 
   const bg = hovered ? accent : BASE_BG
   const fg = hovered ? INVERTED_TEXT : BASE_TEXT
@@ -36,17 +37,14 @@ export function ProductCardCompact({
 
   return (
     <article
-      onMouseEnter={() => setHovered(true)}
-      onMouseLeave={() => setHovered(false)}
-      onFocus={() => setHovered(true)}
-      onBlur={() => setHovered(false)}
+      {...bind}
       className="group relative rounded-[20px] sm:rounded-[24px] flex flex-col items-center text-center px-5 pt-7 pb-5 sm:pt-9 sm:pb-7 isolate h-full"
       style={{
         backgroundColor: bg,
         color: fg,
         transition:
-          'background-color 480ms var(--ease-out), color 480ms var(--ease-out), transform 480ms var(--ease-out)',
-        transform: hovered ? 'translateY(-4px)' : 'translateY(0)',
+          'background-color 220ms var(--ease-out), color 220ms var(--ease-out), transform 220ms var(--ease-out)',
+        transform: hovered && !reduceMotion ? 'translateY(-4px)' : 'translateY(0)',
       }}
     >
       {/* Bestseller ribbon */}
@@ -74,9 +72,12 @@ export function ProductCardCompact({
           filter: hovered
             ? 'drop-shadow(0 22px 32px rgba(0,0,0,0.50))'
             : 'drop-shadow(0 14px 22px rgba(0,0,0,0.38))',
-          transition: 'filter 480ms var(--ease-out)',
+          transition: 'filter 220ms var(--ease-out)',
         }}
-        animate={{ scale: hovered ? 1.06 : 1, rotate: hovered ? 4 : 0 }}
+        animate={{
+          scale: hovered && !reduceMotion ? 1.06 : 1,
+          rotate: hovered && !reduceMotion ? 4 : 0,
+        }}
         transition={{ type: 'spring', stiffness: 220, damping: 18, mass: 0.8 }}
       >
         <img
@@ -90,7 +91,7 @@ export function ProductCardCompact({
       {/* Name */}
       <h4
         className="font-display text-[22px] sm:text-[24px] md:text-[26px] leading-[1] tracking-[-0.01em] text-pretty mb-3 sm:mb-4"
-        style={{ color: fg, transition: 'color 480ms var(--ease-out)' }}
+        style={{ color: fg, transition: 'color 220ms var(--ease-out)' }}
       >
         {name}
       </h4>
@@ -98,7 +99,7 @@ export function ProductCardCompact({
       {/* Description */}
       <p
         className="font-body text-[13px] leading-[1.55] mb-5 max-w-[34ch]"
-        style={{ color: subtle, transition: 'color 480ms var(--ease-out)' }}
+        style={{ color: subtle, transition: 'color 220ms var(--ease-out)' }}
       >
         {description}
       </p>
@@ -108,26 +109,16 @@ export function ProductCardCompact({
         href={orderHref}
         target="_blank"
         rel="noreferrer"
-        className="press focus-ring mt-auto inline-flex items-center gap-2 font-body font-bold uppercase tracking-[0.14em] text-[11px] px-5 py-[10px] rounded-full"
+        className="group/cta press focus-ring mt-auto inline-flex items-center gap-2 font-body font-bold uppercase tracking-[0.14em] text-[11px] px-5 py-[10px] rounded-full"
         style={{
           backgroundColor: hovered ? '#320e10' : '#f8b114',
           color: hovered ? '#f6eadf' : '#320e10',
           transition:
-            'background-color 480ms var(--ease-out), color 480ms var(--ease-out), transform 180ms var(--ease-out)',
+            'background-color 220ms var(--ease-out), color 220ms var(--ease-out), transform 180ms var(--ease-out)',
         }}
         aria-label={`${pideYaLabel} — ${name}`}
       >
-        {pideYaLabel}
-        <span
-          className="inline-block"
-          style={{
-            transform: hovered ? 'translateX(4px)' : 'translateX(0)',
-            transition: 'transform 480ms var(--ease-out)',
-          }}
-          aria-hidden="true"
-        >
-          →
-        </span>
+        <MicroCtaContent label={pideYaLabel} />
       </a>
     </article>
   )

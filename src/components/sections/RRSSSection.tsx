@@ -52,31 +52,46 @@ function PostCard({ src, href, caption, rotate, iconSmall, iconHover, delay }: {
       rel="noreferrer"
       className="group focus-ring block relative"
       initial={{ opacity: 0, y: 40, rotate: rotate * 2 }}
-      whileInView={{ opacity: 1, y: 0, rotate }}
-      whileHover={{ rotate: 0, scale: 1.05, y: -8 }}
+      whileInView={{
+        opacity: 1,
+        y: 0,
+        rotate,
+        transition: { duration: 0.6, delay, ease: EASE },
+      }}
+      whileHover={{
+        y: -8,
+        scale: 1.05,
+        rotate: 0,
+        transition: { type: 'spring', duration: 0.45, bounce: 0.18 },
+      }}
+      whileFocus={{
+        y: -8,
+        scale: 1.05,
+        rotate: 0,
+        transition: { type: 'spring', duration: 0.45, bounce: 0.18 },
+      }}
       viewport={{ once: true, amount: 0.2 }}
-      transition={{ duration: 0.6, delay, ease: EASE }}
     >
       <div
-        className="bg-[#f6eadf] rounded-[20px] p-2.5 pb-3.5 shadow-[0_8px_32px_-6px_rgba(50,14,16,0.20),0_2px_8px_-2px_rgba(50,14,16,0.08)] group-hover:shadow-[0_16px_48px_-8px_rgba(50,14,16,0.28),0_4px_12px_-2px_rgba(50,14,16,0.10)]"
-        style={{ transition: 'box-shadow 400ms cubic-bezier(0.23,1,0.32,1)' }}
+        className="bg-[#f6eadf] rounded-[20px] p-2.5 pb-3.5 shadow-[0_8px_32px_-6px_rgba(50,14,16,0.20),0_2px_8px_-2px_rgba(50,14,16,0.08)] group-hover:shadow-[0_16px_48px_-8px_rgba(50,14,16,0.28),0_4px_12px_-2px_rgba(50,14,16,0.10)] group-focus-visible:shadow-[0_16px_48px_-8px_rgba(50,14,16,0.28),0_4px_12px_-2px_rgba(50,14,16,0.10)]"
+        style={{ transition: 'box-shadow 350ms var(--ease-out)' }}
       >
         <div className="relative overflow-hidden rounded-[14px] aspect-square">
           <img
             src={src}
             alt={caption}
             loading="lazy"
-            className="w-full h-full object-cover group-hover:scale-105"
-            style={{ transition: 'transform 500ms cubic-bezier(0.23,1,0.32,1)' }}
+            className="w-full h-full object-cover group-hover:scale-[1.06] group-focus-visible:scale-[1.06]"
+            style={{ transition: 'transform 350ms var(--ease-out)' }}
           />
           <div
-            className="absolute inset-0 bg-[#320e10]/0 group-hover:bg-[#320e10]/40 flex items-center justify-center rounded-[14px]"
-            style={{ transition: 'background-color 300ms cubic-bezier(0.23,1,0.32,1)' }}
+            className="absolute inset-0 bg-[#320e10]/0 group-hover:bg-[#320e10]/40 group-focus-visible:bg-[#320e10]/40 flex items-center justify-center rounded-[14px]"
+            style={{ transition: 'background-color 250ms var(--ease-out)' }}
             aria-hidden="true"
           >
             <div
-              className="w-12 h-12 rounded-full bg-[#f6eadf] flex items-center justify-center text-[#320e10] opacity-0 group-hover:opacity-100 scale-75 group-hover:scale-100"
-              style={{ transition: 'opacity 300ms cubic-bezier(0.23,1,0.32,1), transform 300ms cubic-bezier(0.34,1.56,0.64,1)' }}
+              className="w-12 h-12 rounded-full bg-[#f6eadf] flex items-center justify-center text-[#320e10] opacity-0 scale-90 group-hover:opacity-100 group-hover:scale-100 group-focus-visible:opacity-100 group-focus-visible:scale-100"
+              style={{ transition: 'opacity 220ms var(--ease-out), transform 280ms cubic-bezier(0.34,1.45,0.64,1)' }}
             >
               {iconHover}
             </div>

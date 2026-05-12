@@ -2,6 +2,7 @@ import { motion } from 'framer-motion'
 import { Link } from 'react-router-dom'
 import { useLanguage } from '../../lib/i18n'
 import { JellyWave } from '../ui/JellyWave'
+import { MicroCtaContent } from '../ui/MicroCtaContent'
 
 /*
   Donutland-inspired hero: MASSIVE centered headline with product stickers
@@ -162,13 +163,10 @@ export function HeroSection() {
               href="https://glovoapp.com"
               target="_blank"
               rel="noreferrer"
-              className="press focus-ring font-body font-bold text-[12px] md:text-[13px] tracking-[0.12em] uppercase px-5 md:px-8 py-3.5 md:py-4 rounded-[14px] bg-[#f8b114] text-[#320e10] hover:bg-[#e8a010] inline-flex items-center gap-2 shadow-[0_8px_30px_-4px_rgba(248,177,20,0.45)]"
+              className="group/cta press focus-ring font-body font-bold text-[12px] md:text-[13px] tracking-[0.12em] uppercase px-5 md:px-8 py-3.5 md:py-4 rounded-[14px] bg-[#f8b114] text-[#320e10] hover:bg-[#e8a010] inline-flex items-center gap-2 shadow-[0_8px_30px_-4px_rgba(248,177,20,0.45)]"
               style={{ transition: 'transform 160ms var(--ease-out), background-color 200ms var(--ease-out)' }}
             >
-              <span>{h.cta}</span>
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-                <path d="M5 12h14M12 5l7 7-7 7"/>
-              </svg>
+              <MicroCtaContent label={h.cta} arrowSize={14} />
             </a>
             <Link
               to="/catering"
