@@ -8,7 +8,7 @@ import { JellyWave } from '../components/ui/JellyWave'
 
 const WHATSAPP_NUMBER = '34938421122'
 const WHATSAPP_HREF = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent('Hola Beikit! Me gustaría información sobre catering para mi evento.')}`
-const FORMSPREE_ENDPOINT = 'https://formspree.io/f/[FORMSPREE_ID]'
+const FORMSPREE_ENDPOINT = import.meta.env.VITE_FORMSPREE_ENDPOINT ?? ''
 
 type FormData = {
   nombre: string
@@ -640,9 +640,9 @@ function FormSection() {
 
   const onSubmit = async (data: FormData) => {
     setServerError(false)
-    if (FORMSPREE_ENDPOINT.includes('[FORMSPREE_ID]')) {
+    if (!FORMSPREE_ENDPOINT) {
       if (import.meta.env.DEV) {
-        console.warn('[Catering] Formspree endpoint not configured; skipping network request.')
+        console.warn('[Catering] VITE_FORMSPREE_ENDPOINT no configurado; se omite la petición de red.')
         navigate('/gracias')
         return
       }
@@ -673,6 +673,14 @@ function FormSection() {
   // Reusable chip styles for radio/checkbox groups (peer pattern)
   const chipBase =
     'block text-center font-body text-[14px] py-3 px-4 rounded-full bg-[#3b1315] border border-[#f6eadf]/15 text-[#f6eadf]/75 peer-checked:border-[#e8511b] peer-checked:text-[#f6eadf] peer-checked:bg-[#e8511b]/15 peer-checked:font-bold peer-focus-visible:ring-2 peer-focus-visible:ring-[#e8511b]/30 hover:border-[#f6eadf]/30 cursor-pointer'
+
+  // Visual asterisk + screen-reader-only "(obligatorio)" for required fields.
+  const requiredMark = (
+    <>
+      <span aria-hidden="true" className="text-[#e8511b]"> *</span>
+      <span className="sr-only"> ({f.requiredField})</span>
+    </>
+  )
 
   return (
     <section id="catering-form" className="bg-[#320e10] relative overflow-hidden scroll-mt-[96px]">
@@ -728,10 +736,12 @@ function FormSection() {
         >
           {/* Nombre */}
           <div className="flex flex-col gap-2.5">
-            <label className="font-body font-bold text-[13px] text-[#f6eadf]">{f.nombre}</label>
+            <label htmlFor="cat-nombre" className="font-body font-bold text-[13px] text-[#f6eadf]">{f.nombre}{requiredMark}</label>
             <input
+              id="cat-nombre"
               type="text"
               autoComplete="name"
+              aria-invalid={errors.nombre ? 'true' : undefined}
               className={errors.nombre ? inputError : inputBase}
               {...register('nombre', { required: f.required })}
             />
@@ -741,12 +751,14 @@ function FormSection() {
           {/* Email + Teléfono (teléfono opcional) */}
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
             <div className="flex flex-col gap-2.5">
-              <label className="font-body font-bold text-[13px] text-[#f6eadf]">{f.email}</label>
+              <label htmlFor="cat-email" className="font-body font-bold text-[13px] text-[#f6eadf]">{f.email}{requiredMark}</label>
               <input
+                id="cat-email"
                 type="email"
                 autoComplete="email"
                 inputMode="email"
                 spellCheck={false}
+                aria-invalid={errors.email ? 'true' : undefined}
                 className={errors.email ? inputError : inputBase}
                 {...register('email', {
                   required: f.required,
@@ -756,14 +768,16 @@ function FormSection() {
               {errors.email && <span role="alert" aria-live="polite" className="font-body text-[12px] text-red-400">{errors.email.message}</span>}
             </div>
             <div className="flex flex-col gap-2.5">
-              <label className="font-body font-bold text-[13px] text-[#f6eadf]">
+              <label htmlFor="cat-telefono" className="font-body font-bold text-[13px] text-[#f6eadf]">
                 {f.telefono} <span className="font-normal text-[#f6eadf]/55">{f.telefonoOptional}</span>
               </label>
               <input
+                id="cat-telefono"
                 type="tel"
                 autoComplete="tel"
                 inputMode="tel"
                 placeholder={f.placeholderPhone}
+                aria-invalid={errors.telefono ? 'true' : undefined}
                 className={errors.telefono ? inputError : inputBase}
                 {...register('telefono', {
                   pattern: { value: /^\+?[\d\s-]{9,}$/, message: f.phoneError },
@@ -775,8 +789,8 @@ function FormSection() {
 
           {/* Tipo evento — chips */}
           <div className="flex flex-col gap-2.5">
-            <label className="font-body font-bold text-[13px] text-[#f6eadf]">{f.tipoEvento}</label>
-            <div className="flex flex-wrap gap-2">
+            <span id="cat-tipoEvento-label" className="font-body font-bold text-[13px] text-[#f6eadf]">{f.tipoEvento}{requiredMark}</span>
+            <div role="radiogroup" aria-labelledby="cat-tipoEvento-label" className="flex flex-wrap gap-2">
               {f.eventTypes.map((type) => (
                 <label key={type} className="relative cursor-pointer">
                   <input
@@ -800,10 +814,12 @@ function FormSection() {
           {/* Fecha + Personas */}
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
             <div className="flex flex-col gap-2.5">
-              <label className="font-body font-bold text-[13px] text-[#f6eadf]">{f.fecha}</label>
+              <label htmlFor="cat-fecha" className="font-body font-bold text-[13px] text-[#f6eadf]">{f.fecha}{requiredMark}</label>
               <input
+                id="cat-fecha"
                 type="date"
                 min={today}
+                aria-invalid={errors.fecha ? 'true' : undefined}
                 className={errors.fecha ? inputError : inputBase}
                 {...register('fecha', {
                   required: f.required,
@@ -813,8 +829,8 @@ function FormSection() {
               {errors.fecha && <span role="alert" aria-live="polite" className="font-body text-[12px] text-red-400">{errors.fecha.message}</span>}
             </div>
             <div className="flex flex-col gap-2.5">
-              <label className="font-body font-bold text-[13px] text-[#f6eadf]">{f.personas}</label>
-              <div className="flex flex-wrap gap-2">
+              <span id="cat-personas-label" className="font-body font-bold text-[13px] text-[#f6eadf]">{f.personas}{requiredMark}</span>
+              <div role="radiogroup" aria-labelledby="cat-personas-label" className="flex flex-wrap gap-2">
                 {f.personasOptions.map((opt) => (
                   <label key={opt} className="relative cursor-pointer">
                     <input
@@ -838,9 +854,9 @@ function FormSection() {
 
           {/* Productos — multi-select chips, required (con "No lo sé aún" como opt-out semántico) */}
           <div className="flex flex-col gap-2.5">
-            <label className="font-body font-bold text-[13px] text-[#f6eadf]">{f.productos}</label>
+            <span id="cat-productos-label" className="font-body font-bold text-[13px] text-[#f6eadf]">{f.productos}{requiredMark}</span>
             <span className="font-body text-[12.5px] text-[#f6eadf]/55 -mt-1">{f.productosHelp}</span>
-            <div className="flex flex-wrap gap-2">
+            <div role="group" aria-labelledby="cat-productos-label" className="flex flex-wrap gap-2">
               {f.productosOptions.map((opt) => (
                 <label key={opt} className="relative cursor-pointer">
                   <input
@@ -865,10 +881,11 @@ function FormSection() {
 
           {/* Mensaje — opcional */}
           <div className="flex flex-col gap-2.5">
-            <label className="font-body font-bold text-[13px] text-[#f6eadf]">
+            <label htmlFor="cat-mensaje" className="font-body font-bold text-[13px] text-[#f6eadf]">
               {f.mensaje} <span className="font-normal text-[#f6eadf]/55">{f.mensajeOptional}</span>
             </label>
             <textarea
+              id="cat-mensaje"
               rows={3}
               placeholder={f.placeholderMensaje}
               className={`${inputBase} resize-none`}
@@ -885,10 +902,10 @@ function FormSection() {
                 {...register('privacidad', { required: f.required })}
               />
               <span
-                className="font-body text-[13px] text-[#f6eadf]/60 group-hover:text-[#f6eadf]"
+                className="font-body text-[13px] text-[#f6eadf]/75 group-hover:text-[#f6eadf]"
                 style={{ transition: 'color 200ms var(--ease-out)' }}
               >
-                {f.privacidad}
+                {f.privacidad}{requiredMark}
               </span>
             </label>
             {errors.privacidad && <span role="alert" aria-live="polite" className="font-body text-[12px] text-red-400">{errors.privacidad.message}</span>}

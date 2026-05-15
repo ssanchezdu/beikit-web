@@ -1,7 +1,7 @@
 import type es from './i18n.es'
 
 const ca = {
-  nav: { pideYa: 'DEMANA JA', catering: 'CÀTERING', tagLeft: 'AMERICAN BAKERY', tagRight: 'HEARTMADE EVERYDAY' },
+  nav: { inicio: 'Inici', carta: 'Carta', pedir: 'Demanar', catering: 'Càtering', tagLeft: 'AMERICAN BAKERY', tagRight: 'HEARTMADE EVERYDAY' },
   hero: {
     headline: 'Fes-te un regal amb Beikit',
     headlineLines: { line1: 'Fes-te un', line2: 'regal', line3: 'amb' },
@@ -16,7 +16,7 @@ const ca = {
     cheesecakes: { title: 'Cheesecakes', tagline: 'Cremoses, irresistibles, nostres.', description: "Base cruixent, farcit setinat. Un tros i entens per què la recepta és el nostre secret millor guardat." },
     milkshakes:  { title: 'Milkshakes',  tagline: 'El batut que ho canvia tot.', description: "Gelat artesà, llet freda i molt de mimo a cada got. Espès, intens, americà de debò." },
     otros:       { title: 'Lattes',      tagline: 'El cafè com a tu t\'agrada.', description: "La nostra selecció de cafès d'especialitat, matcha i chai: receptes cremoses, aromàtiques i fetes amb cura." },
-    pideYa: 'DEMANA JA',
+    pideYa: 'DEMANA ARA',
     masPedido: 'Bestseller',
     verTodos: (n: number) => `Veure els ${n} sabors`,
     verMenos: 'Veure menys',
@@ -54,8 +54,8 @@ const ca = {
       ],
       milkshakes: [
         { name: 'Vainilla', price: '5,00 €', desc: "Vainilla bourbon i llet freda. El batut de tota la vida, però millorat." },
-        { name: 'Chocolate', price: '5,00 €', desc: "Cacau pur i salsa fudge. Dens, fosc, sense concessions." },
-        { name: 'Fresa', price: '5,00 €', desc: "Maduixes fresques batudes amb gelat i llet sencera. Sabor d'estiu tot l'any." },
+        { name: 'Xocolata', price: '5,00 €', desc: "Cacau pur i salsa fudge. Dens, fosc, sense concessions." },
+        { name: 'Maduixa', price: '5,00 €', desc: "Maduixes fresques batudes amb gelat i llet sencera. Sabor d'estiu tot l'any." },
         { name: 'Oreo', price: '5,00 €', desc: "Galetes Oreo triturades en un batut cremós. Cruixent a cada glop." },
         { name: 'Lotus', price: '5,00 €', desc: "Galetes Lotus caramel·litzades amb gelat de vainilla. Una bogeria cremosa." },
         { name: 'Dinosaurus', price: '5,00 €', desc: "La galeta de la infància batuda amb gelat. Nostàlgia en got alt." },
@@ -223,7 +223,7 @@ const ca = {
       cards: [
         { badge: 'Bestseller', title: 'Cheesecakes', desc: "Dues famílies: forn cremoses i mousse fredes. Format individual o per compartir, ideals per a qualsevol celebració.", pills: ['Clàssica', 'Oreo', 'Pistacchio', 'Lotus', 'Kinder', 'Maduixa'] },
         { badge: 'Més demanat', title: 'Cookies', desc: "Crumble cookies acabades de coure, amb l'exterior cruixent i l'interior tendre. Perfectes per a coffee breaks i esmorzars corporatius.", pills: ['NY Classic', 'Oreo', 'Lotus', 'Pistacchio', 'Kinder', 'Red Velvet', 'Dinosaurus', 'Triple Choc'] },
-        { title: 'Milkshakes', desc: "Batuts cremosos amb gelat artesà i llet freda. Perfectes per a actes a l'aire lliure i celebracions d'estiu.", pills: ['Vainilla', 'Chocolate', 'Fresa', 'Oreo', 'Lotus', 'Dinosaurus'] },
+        { title: 'Milkshakes', desc: "Batuts cremosos amb gelat artesà i llet freda. Perfectes per a actes a l'aire lliure i celebracions d'estiu.", pills: ['Vainilla', 'Xocolata', 'Maduixa', 'Oreo', 'Lotus', 'Dinosaurus'] },
         { title: 'Lattes', desc: "Servei de coffee shop per als teus actes. Cafès d'especialitat, matcha i chai, preparats al moment.", pills: ['Latte', 'French Vainilla', 'Oreo', 'Lotus', 'Mocha', 'Mocha White', 'Matcha', 'Chai'] },
       ],
     },
@@ -252,6 +252,7 @@ const ca = {
       errorMsg: "Hi ha hagut un problema en enviar. Torna-ho a intentar o escriu-nos a contacto@beikitbakery.com",
       required: 'Aquest camp és obligatori',
       requiredSelect: 'Tria una opció',
+      requiredField: 'obligatori',
       emailError: 'Introdueix un email vàlid',
       phoneError: 'Mínim 9 dígits',
       dateError: 'La data ha de ser futura',

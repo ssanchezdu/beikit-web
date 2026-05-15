@@ -31,7 +31,7 @@ export function Footer() {
                 loading="lazy"
                 alt="Beikit Bakery"
               />
-              <p className="font-body text-[12px] text-[#f6eadf]/40 tracking-[0.1em] uppercase leading-relaxed">
+              <p className="font-body text-[12px] text-[#f6eadf]/55 tracking-[0.1em] uppercase leading-relaxed">
                 American Bakery · Granollers, Spain
               </p>
 
@@ -72,13 +72,13 @@ export function Footer() {
                 {f.title}
               </h3>
               <div className="flex flex-col gap-1.5">
-                <span className="font-body text-[11px] text-[#f6eadf]/25 uppercase tracking-[0.1em]">{f.phonelabel}</span>
+                <span className="font-body text-[11px] text-[#f6eadf]/60 uppercase tracking-[0.1em]">{f.phonelabel}</span>
                 <a href={`tel:${f.phone}`} className="focus-ring-dark font-body text-[15px] text-[#f6eadf]/70 hover:text-[#e8511b]" style={colorTransition}>
                   {f.phone}
                 </a>
               </div>
               <div className="flex flex-col gap-1.5">
-                <span className="font-body text-[11px] text-[#f6eadf]/25 uppercase tracking-[0.1em]">{f.addrlabel}</span>
+                <span className="font-body text-[11px] text-[#f6eadf]/60 uppercase tracking-[0.1em]">{f.addrlabel}</span>
                 <address className="not-italic font-body text-[15px] text-[#f6eadf]/70 leading-snug whitespace-pre-line">
                   {f.address}
                 </address>
@@ -95,10 +95,10 @@ export function Footer() {
                   const closed = d.slots.length === 0
                   return (
                     <div key={d.day} className="contents">
-                      <dt className={`font-bold tracking-[0.14em] uppercase text-[11px] pt-[2px] ${closed ? 'text-[#f6eadf]/25' : 'text-[#f6eadf]/50'}`}>
+                      <dt className={`font-bold tracking-[0.14em] uppercase text-[11px] pt-[2px] ${closed ? 'text-[#f6eadf]/60' : 'text-[#f6eadf]/70'}`}>
                         {d.day}
                       </dt>
-                      <dd className={`tabular-nums ${closed ? 'text-[#f6eadf]/25 italic' : 'text-[#f6eadf]/75'}`}>
+                      <dd className={`tabular-nums ${closed ? 'text-[#f6eadf]/60 italic' : 'text-[#f6eadf]/75'}`}>
                         {closed ? f.hoursClosed : d.slots.join(' · ')}
                       </dd>
                     </div>
@@ -147,17 +147,17 @@ export function Footer() {
 
           {/* Bottom bar */}
           <div className="pt-8 flex flex-col md:flex-row items-center justify-between gap-4">
-            <p className="font-body text-[12px] text-[#f6eadf]/20">{l.copyright}</p>
+            <p className="font-body text-[12px] text-[#f6eadf]/60">{l.copyright}</p>
             <div className="flex items-center gap-4 flex-wrap justify-center">
-              <Link to="/aviso-legal" className="focus-ring-dark rounded-sm font-body text-[11px] text-[#f6eadf]/25 hover:text-[#f6eadf]/50" style={colorTransition}>
+              <Link to="/aviso-legal" className="focus-ring-dark rounded-sm font-body text-[11px] text-[#f6eadf]/60 hover:text-[#f6eadf]/90" style={colorTransition}>
                 {l.avisoLegal}
               </Link>
               <span className="text-[#f6eadf]/10">·</span>
-              <Link to="/privacidad" className="focus-ring-dark rounded-sm font-body text-[11px] text-[#f6eadf]/25 hover:text-[#f6eadf]/50" style={colorTransition}>
+              <Link to="/privacidad" className="focus-ring-dark rounded-sm font-body text-[11px] text-[#f6eadf]/60 hover:text-[#f6eadf]/90" style={colorTransition}>
                 {l.privacidad}
               </Link>
               <span className="text-[#f6eadf]/10">·</span>
-              <Link to="/cookies" className="focus-ring-dark rounded-sm font-body text-[11px] text-[#f6eadf]/25 hover:text-[#f6eadf]/50" style={colorTransition}>
+              <Link to="/cookies" className="focus-ring-dark rounded-sm font-body text-[11px] text-[#f6eadf]/60 hover:text-[#f6eadf]/90" style={colorTransition}>
                 {l.cookies}
               </Link>
             </div>

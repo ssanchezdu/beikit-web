@@ -180,7 +180,7 @@ function CategoryBlock({ cat, verTodos, verMenos, masPedidoLabel, pideYaLabel, a
           const accent = accents[i % accents.length]
           return (
             <motion.div
-              key={item.name}
+              key={`${cat.key}-featured-${i}`}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.15 }}
@@ -222,7 +222,7 @@ function CategoryBlock({ cat, verTodos, verMenos, masPedidoLabel, pideYaLabel, a
                 const accent = accents[(FEATURED_COUNT + i) % accents.length]
                 return (
                   <motion.div
-                    key={item.name}
+                    key={`${cat.key}-rest-${i}`}
                     initial={{ opacity: 0, y: 12 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.35, delay: i * 0.05 }}

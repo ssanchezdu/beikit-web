@@ -1,5 +1,5 @@
 const es = {
-  nav: { pideYa: 'PIDE YA', catering: 'CATERING', tagLeft: 'AMERICAN BAKERY', tagRight: 'HEARTMADE EVERYDAY' },
+  nav: { inicio: 'Inicio', carta: 'Carta', pedir: 'Pedir', catering: 'Catering', tagLeft: 'AMERICAN BAKERY', tagRight: 'HEARTMADE EVERYDAY' },
   hero: {
     headline: 'Date un capricho con Beikit',
     headlineLines: { line1: 'Date un', line2: 'capricho', line3: 'con' },
@@ -14,7 +14,7 @@ const es = {
     cheesecakes: { title: 'Cheesecakes', tagline: 'Cremosas, irresistibles, nuestras.', description: 'Base crujiente, relleno aterciopelado. Un trozo y entiendes por qué la receta es nuestro secreto mejor guardado.' },
     milkshakes:  { title: 'Milkshakes',  tagline: 'El batido que lo cambia todo.', description: 'Helado artesano, leche fría y mucho mimo en cada vaso. Espeso, intenso, americano de verdad.' },
     otros:       { title: 'Lattes',      tagline: 'El café como a ti te gusta.', description: 'Nuestra selección de cafés de especialidad, matcha y chai: recetas cremosas, aromáticas y hechas con mimo.' },
-    pideYa: 'PIDE YA',
+    pideYa: 'PIDE AHORA',
     masPedido: 'Bestseller',
     verTodos: (n: number) => `Ver los ${n} sabores`,
     verMenos: 'Ver menos',
@@ -250,6 +250,7 @@ const es = {
       errorMsg: 'Ha habido un problema al enviar. Inténtalo de nuevo o escríbenos a contacto@beikitbakery.com',
       required: 'Este campo es obligatorio',
       requiredSelect: 'Selecciona una opción',
+      requiredField: 'obligatorio',
       emailError: 'Introduce un email válido',
       phoneError: 'Mínimo 9 dígitos',
       dateError: 'La fecha debe ser futura',

@@ -79,7 +79,7 @@ function PostCard({ src, href, caption, rotate, iconSmall, iconHover, delay }: {
         <div className="relative overflow-hidden rounded-[14px] aspect-square">
           <img
             src={src}
-            alt={caption}
+            alt=""
             loading="lazy"
             className="w-full h-full object-cover group-hover:scale-[1.06] group-focus-visible:scale-[1.06]"
             style={{ transition: 'transform 350ms var(--ease-out)' }}

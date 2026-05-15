@@ -101,7 +101,7 @@ export function Header() {
               className={`focus-ring font-body font-bold text-[13px] min-w-[44px] min-h-[44px] inline-flex items-center justify-center rounded-lg leading-none ${
                 lang === 'es'
                   ? 'text-[#320e10] bg-[#320e10]/[0.06]'
-                  : 'text-[#320e10]/30 hover:text-[#320e10]/60 hover:bg-[#320e10]/[0.03]'
+                  : 'text-[#320e10]/55 hover:text-[#320e10]/80 hover:bg-[#320e10]/[0.03]'
               }`}
               style={{ transition: 'color 240ms var(--ease-out), background-color 240ms var(--ease-out)' }}
             >
@@ -115,7 +115,7 @@ export function Header() {
               className={`focus-ring font-body font-bold text-[13px] min-w-[44px] min-h-[44px] inline-flex items-center justify-center rounded-lg leading-none ${
                 lang === 'ca'
                   ? 'text-[#320e10] bg-[#320e10]/[0.06]'
-                  : 'text-[#320e10]/30 hover:text-[#320e10]/60 hover:bg-[#320e10]/[0.03]'
+                  : 'text-[#320e10]/55 hover:text-[#320e10]/80 hover:bg-[#320e10]/[0.03]'
               }`}
               style={{ transition: 'color 240ms var(--ease-out), background-color 240ms var(--ease-out)' }}
             >

@@ -49,7 +49,7 @@ export function DeliverySection() {
   const d = t.delivery
 
   return (
-    <section className="relative bg-[#f6eadf] overflow-hidden">
+    <section id="delivery" className="relative bg-[#f6eadf] overflow-hidden">
 
       {/* Warm ambient glow — top center */}
       <div
