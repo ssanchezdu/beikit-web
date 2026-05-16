@@ -219,8 +219,8 @@ const es = {
       tag: 'Qué ofrecemos',
       title: 'Productos disponibles',
       cards: [
-        { badge: 'Bestseller', title: 'Cheesecakes', desc: 'Dos familias: horneadas cremosas y mousse frías. Formato individual o para compartir, ideales para cualquier celebración.', pills: ['Clásica', 'Oreo', 'Pistacchio', 'Lotus', 'Kinder', 'Fresa'] },
-        { badge: 'Más pedido', title: 'Cookies', desc: 'Crumble cookies recién horneadas, con el exterior crujiente y el interior tierno. Perfectas para coffee breaks y desayunos corporativos.', pills: ['NY Classic', 'Oreo', 'Lotus', 'Pistacchio', 'Kinder', 'Red Velvet', 'Dinosaurus', 'Triple Choc'] },
+        { badge: 'Bestseller', title: 'Cookies', desc: 'Crumble cookies recién horneadas, con el exterior crujiente y el interior tierno. Perfectas para coffee breaks y desayunos corporativos.', pills: ['NY Classic', 'Oreo', 'Lotus', 'Pistacchio', 'Kinder', 'Red Velvet', 'Dinosaurus', 'Triple Choc'] },
+        { title: 'Cheesecakes', desc: 'Dos familias: horneadas cremosas y mousse frías. Formato individual o para compartir, ideales para cualquier celebración.', pills: ['Clásica', 'Oreo', 'Pistacchio', 'Lotus', 'Kinder', 'Fresa'] },
         { title: 'Milkshakes', desc: 'Batidos cremosos con helado artesano y leche fría. Perfectos para eventos al aire libre y celebraciones de verano.', pills: ['Vainilla', 'Chocolate', 'Fresa', 'Oreo', 'Lotus', 'Dinosaurus'] },
         { title: 'Lattes', desc: 'Servicio de coffee shop para tus eventos. Cafés de especialidad, matcha y chai, preparados al momento.', pills: ['Latte', 'French Vainilla', 'Oreo', 'Lotus', 'Mocha', 'Mocha White', 'Matcha', 'Chai'] },
       ],
@@ -276,6 +276,13 @@ const es = {
     cookies: 'Política de Cookies',
     gestionarCookies: 'Gestionar cookies',
     copyright: '© 2026 Beikit Bakery',
+  },
+  cookieBanner: {
+    ariaLabel: 'Aviso de cookies',
+    text: 'Utilizamos cookies para ofrecerte la mejor experiencia en nuestra web. Puedes aprender más sobre qué cookies utilizamos o desactivarlas en los',
+    settings: 'ajustes',
+    accept: 'Aceptar',
+    reject: 'Rechazar',
   },
 }
 

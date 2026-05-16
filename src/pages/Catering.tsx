@@ -467,25 +467,30 @@ type ProductCard = {
   pills: readonly string[]
 }
 
-const PRODUCT_IMAGES: Record<string, string> = {
-  Cheesecakes: 'https://placehold.co/720x720/3b1315/3b1315/png',
-  Cookies: 'https://placehold.co/720x720/4a1a1c/4a1a1c/png',
-  Milkshakes: 'https://placehold.co/720x720/5c2d2e/5c2d2e/png',
-  Lattes: 'https://placehold.co/720x720/2a0c0e/2a0c0e/png',
+// Definitive product photos — one representative per family (keyed by title,
+// identical in ES and CA).
+const PRODUCT_PHOTOS: Record<string, string> = {
+  Cheesecakes: '/assets/images/clasicaporcion.webp',
+  Cookies: '/assets/images/nyclassic.webp',
+  Milkshakes: '/assets/images/milkshake.webp',
+  Lattes: '/assets/images/cafelatte.webp',
 }
 
-const PRODUCT_STICKERS: Record<string, string> = {
-  Cheesecakes: '/assets/svg/sticker_cheesecake.svg',
-  Cookies: '/assets/svg/sticker_cookies.svg',
-  Milkshakes: '/assets/svg/sticker_milkshake.svg',
-  Lattes: '/assets/svg/sticker_icedcoffee.svg',
+function photoFor(title: string) {
+  return PRODUCT_PHOTOS[title] || PRODUCT_PHOTOS.Cookies
 }
 
-function imgFor(title: string) {
-  return PRODUCT_IMAGES[title] || 'https://placehold.co/720x720/3b1315/3b1315/png'
+// Per-family image footprint inside the 4:3 media zone. The wide cheesecake
+// slice fills the zone easily so it needs a smaller cap; the tall milkshake and
+// latte glasses need a larger cap to read big.
+const PRODUCT_IMAGE_SIZE: Record<string, string> = {
+  Cheesecakes: 'max-w-[72%] max-h-[76%]',
+  Cookies:     'max-w-[88%] max-h-[90%]',
+  Milkshakes:  'max-w-[96%] max-h-full',
+  Lattes:      'max-w-[96%] max-h-full',
 }
-function stickerFor(title: string) {
-  return PRODUCT_STICKERS[title] || '/assets/svg/sticker_cookies.svg'
+function imageSizeFor(title: string) {
+  return PRODUCT_IMAGE_SIZE[title] || 'max-w-[88%] max-h-[90%]'
 }
 
 function ProductoCardBlock({ card, i }: { card: ProductCard; i: number }) {
@@ -498,36 +503,24 @@ function ProductoCardBlock({ card, i }: { card: ProductCard; i: number }) {
       viewport={{ once: true, amount: 0.15 }}
       transition={{ duration: 0.55, delay: i * 0.06, ease: EASE }}
     >
-      {/* Media — placeholder color block with Beikit sticker mark (swap to real photos later) */}
+      {/* Media — definitive product photo on the warm card surface */}
       <div className="relative overflow-hidden aspect-[4/3]">
-        <img
-          src={imgFor(card.title)}
-          alt=""
-          aria-hidden="true"
-          loading="lazy"
-          className="w-full h-full object-cover"
-        />
-        {/* Warm radial light */}
+        {/* Warm radial light behind the product */}
         <div
           className="absolute inset-0 pointer-events-none"
-          style={{ background: 'radial-gradient(ellipse at 30% 30%, rgba(248,177,20,0.14) 0%, rgba(232,81,27,0.06) 40%, transparent 70%)' }}
+          style={{ background: 'radial-gradient(ellipse at 50% 44%, rgba(248,177,20,0.16) 0%, rgba(232,81,27,0.07) 42%, transparent 72%)' }}
           aria-hidden="true"
         />
-        {/* Sticker — normalized optical size across categories (contain + capped height) */}
+        {/* Product photo — large and dominant, for appetite appeal */}
         <div className="absolute inset-0 flex items-center justify-center">
           <img
-            src={stickerFor(card.title)}
-            alt={card.title}
-            className="w-auto h-[68%] max-h-[150px] max-w-[62%] object-contain opacity-[0.9] drop-shadow-[0_16px_36px_rgba(0,0,0,0.40)] group-hover:scale-[1.06] select-none pointer-events-none"
+            src={photoFor(card.title)}
+            alt=""
+            loading="lazy"
+            className={`w-auto h-auto ${imageSizeFor(card.title)} object-contain drop-shadow-[0_18px_40px_rgba(0,0,0,0.45)] group-hover:scale-[1.06] select-none pointer-events-none`}
             style={{ transition: 'transform 600ms var(--ease-out)' }}
           />
         </div>
-        {/* Warm bottom gradient */}
-        <div
-          className="absolute inset-0 pointer-events-none"
-          style={{ background: 'linear-gradient(to top, rgba(50,14,16,0.45) 0%, rgba(50,14,16,0.08) 45%, transparent 75%)' }}
-          aria-hidden="true"
-        />
         {/* Hairline separator at bottom of media */}
         <div className="absolute left-0 right-0 bottom-0 h-px bg-[#f6eadf]/10" aria-hidden="true" />
 

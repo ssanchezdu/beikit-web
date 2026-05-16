@@ -1,10 +1,12 @@
 import { Link } from 'react-router-dom'
 import { useLanguage } from '../../lib/i18n'
+import { useCookieConsent } from '../../lib/cookieConsent'
 
 export function Footer() {
   const { t } = useLanguage()
   const f = t.footer
   const l = t.legal
+  const { reopen } = useCookieConsent()
 
   const colorTransition = { transition: 'color 200ms var(--ease-out)' } as React.CSSProperties
   const socialTransition = {
@@ -160,6 +162,15 @@ export function Footer() {
               <Link to="/cookies" className="focus-ring-dark rounded-sm font-body text-[11px] text-[#f6eadf]/60 hover:text-[#f6eadf]/90" style={colorTransition}>
                 {l.cookies}
               </Link>
+              <span className="text-[#f6eadf]/10">·</span>
+              <button
+                type="button"
+                onClick={reopen}
+                className="focus-ring-dark rounded-sm font-body text-[11px] text-[#f6eadf]/60 hover:text-[#f6eadf]/90"
+                style={colorTransition}
+              >
+                {l.gestionarCookies}
+              </button>
             </div>
           </div>
         </div>

@@ -221,8 +221,8 @@ const ca = {
       tag: 'Què oferim',
       title: 'Productes disponibles',
       cards: [
-        { badge: 'Bestseller', title: 'Cheesecakes', desc: "Dues famílies: forn cremoses i mousse fredes. Format individual o per compartir, ideals per a qualsevol celebració.", pills: ['Clàssica', 'Oreo', 'Pistacchio', 'Lotus', 'Kinder', 'Maduixa'] },
-        { badge: 'Més demanat', title: 'Cookies', desc: "Crumble cookies acabades de coure, amb l'exterior cruixent i l'interior tendre. Perfectes per a coffee breaks i esmorzars corporatius.", pills: ['NY Classic', 'Oreo', 'Lotus', 'Pistacchio', 'Kinder', 'Red Velvet', 'Dinosaurus', 'Triple Choc'] },
+        { badge: 'Bestseller', title: 'Cookies', desc: "Crumble cookies acabades de coure, amb l'exterior cruixent i l'interior tendre. Perfectes per a coffee breaks i esmorzars corporatius.", pills: ['NY Classic', 'Oreo', 'Lotus', 'Pistacchio', 'Kinder', 'Red Velvet', 'Dinosaurus', 'Triple Choc'] },
+        { title: 'Cheesecakes', desc: "Dues famílies: forn cremoses i mousse fredes. Format individual o per compartir, ideals per a qualsevol celebració.", pills: ['Clàssica', 'Oreo', 'Pistacchio', 'Lotus', 'Kinder', 'Maduixa'] },
         { title: 'Milkshakes', desc: "Batuts cremosos amb gelat artesà i llet freda. Perfectes per a actes a l'aire lliure i celebracions d'estiu.", pills: ['Vainilla', 'Xocolata', 'Maduixa', 'Oreo', 'Lotus', 'Dinosaurus'] },
         { title: 'Lattes', desc: "Servei de coffee shop per als teus actes. Cafès d'especialitat, matcha i chai, preparats al moment.", pills: ['Latte', 'French Vainilla', 'Oreo', 'Lotus', 'Mocha', 'Mocha White', 'Matcha', 'Chai'] },
       ],
@@ -278,6 +278,13 @@ const ca = {
     cookies: 'Política de Cookies',
     gestionarCookies: 'Gestionar cookies',
     copyright: '© 2026 Beikit Bakery',
+  },
+  cookieBanner: {
+    ariaLabel: 'Avís de cookies',
+    text: "Utilitzem cookies per oferir-te la millor experiència a la nostra web. Pots aprendre més sobre quines cookies utilitzem o desactivar-les als",
+    settings: 'ajustos',
+    accept: 'Acceptar',
+    reject: 'Rebutjar',
   },
 } satisfies typeof es
 

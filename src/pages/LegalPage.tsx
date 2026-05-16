@@ -232,22 +232,23 @@ const CONTENT: Record<LegalDocKey, Record<Lang, Doc>> = {
           ],
         },
         {
-          heading: 'Cookies que utiliza este sitio',
+          heading: 'Cookies y almacenamiento que utiliza este sitio',
           body: [
-            'Este sitio web no utiliza cookies de analítica, publicidad ni seguimiento, y no elabora perfiles de los usuarios. La preferencia de idioma se gestiona en memoria durante la visita y no requiere cookies persistentes.',
-            '[Si en el futuro se añaden herramientas de analítica o medición, actualiza esta política e implementa un banner de consentimiento previo.]',
+            'Almacenamiento técnico (necesario): guardamos tu decisión sobre cookies en el almacenamiento local de tu navegador para recordarla en visitas posteriores. Es estrictamente necesario para el funcionamiento del aviso de cookies y no requiere consentimiento.',
+            'Cookies de analítica (opcionales): si las aceptas, se cargan cookies de Google Analytics (por ejemplo «_ga» y «_ga_*») que nos permiten medir de forma agregada y anónima cómo se usa la web para mejorarla. No se cargan ni se ejecuta ningún script de analítica hasta que las aceptas expresamente.',
           ],
         },
         {
           heading: 'Cookies de terceros',
           body: [
-            'Al enviar el formulario de catering, el proveedor Formspree puede instalar cookies propias en su dominio para el correcto procesamiento del envío. Estas cookies se rigen por la política de privacidad del propio proveedor.',
+            'Si aceptas las cookies de analítica, Google LLC actúa como proveedor del servicio de medición. Asimismo, al enviar el formulario de catering, el proveedor Formspree puede instalar cookies propias en su dominio para el correcto procesamiento del envío. Estas cookies se rigen por la política de privacidad de cada proveedor.',
           ],
         },
         {
-          heading: 'Gestión de cookies',
+          heading: 'Gestión y revocación del consentimiento',
           body: [
-            'Puedes permitir, bloquear o eliminar las cookies instaladas en tu dispositivo configurando las opciones de tu navegador. Consulta la sección de ayuda de tu navegador para obtener instrucciones detalladas.',
+            'Puedes aceptar o rechazar las cookies de analítica desde el aviso que aparece en tu primera visita, y cambiar tu decisión en cualquier momento mediante el enlace «Gestionar cookies» del pie de página. Tu decisión se recuerda durante 24 meses, transcurridos los cuales se te volverá a preguntar.',
+            'Además, puedes permitir, bloquear o eliminar las cookies instaladas en tu dispositivo configurando las opciones de tu navegador.',
           ],
         },
       ],
@@ -262,22 +263,23 @@ const CONTENT: Record<LegalDocKey, Record<Lang, Doc>> = {
           ],
         },
         {
-          heading: 'Cookies que utilitza aquest lloc',
+          heading: 'Cookies i emmagatzematge que utilitza aquest lloc',
           body: [
-            "Aquest lloc web no utilitza cookies d'analítica, publicitat ni seguiment, i no elabora perfils dels usuaris. La preferència d'idioma es gestiona en memòria durant la visita i no requereix cookies persistents.",
-            "[Si en el futur s'afegeixen eines d'analítica o mesurament, actualitza aquesta política i implementa un bàner de consentiment previ.]",
+            "Emmagatzematge tècnic (necessari): desem la teva decisió sobre cookies a l'emmagatzematge local del teu navegador per recordar-la en visites posteriors. És estrictament necessari per al funcionament de l'avís de cookies i no requereix consentiment.",
+            "Cookies d'analítica (opcionals): si les acceptes, es carreguen cookies de Google Analytics (per exemple «_ga» i «_ga_*») que ens permeten mesurar de manera agregada i anònima com s'utilitza la web per millorar-la. No es carreguen ni s'executa cap script d'analítica fins que les acceptes expressament.",
           ],
         },
         {
           heading: 'Cookies de tercers',
           body: [
-            "En enviar el formulari de càtering, el proveïdor Formspree pot instal·lar cookies pròpies al seu domini per al processament correcte de l'enviament. Aquestes cookies es regeixen per la política de privacitat del mateix proveïdor.",
+            "Si acceptes les cookies d'analítica, Google LLC actua com a proveïdor del servei de mesurament. Així mateix, en enviar el formulari de càtering, el proveïdor Formspree pot instal·lar cookies pròpies al seu domini per al processament correcte de l'enviament. Aquestes cookies es regeixen per la política de privacitat de cada proveïdor.",
           ],
         },
         {
-          heading: 'Gestió de cookies',
+          heading: 'Gestió i revocació del consentiment',
           body: [
-            "Pots permetre, bloquejar o eliminar les cookies instal·lades al teu dispositiu configurant les opcions del teu navegador. Consulta la secció d'ajuda del teu navegador per obtenir instruccions detallades.",
+            "Pots acceptar o rebutjar les cookies d'analítica des de l'avís que apareix a la teva primera visita, i canviar la teva decisió en qualsevol moment mitjançant l'enllaç «Gestionar cookies» del peu de pàgina. La teva decisió es recorda durant 24 mesos, transcorreguts els quals se't tornarà a preguntar.",
+            "A més, pots permetre, bloquejar o eliminar les cookies instal·lades al teu dispositiu configurant les opcions del teu navegador.",
           ],
         },
       ],

@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { useLanguage } from '../../lib/i18n'
-import { ProductCardCompact } from '../ui/ProductCardCompact'
+import { ProductCardCompact, type ImageShape } from '../ui/ProductCardCompact'
 import { JellyWave } from '../ui/JellyWave'
 import { MicroCtaContent } from '../ui/MicroCtaContent'
 
@@ -27,6 +27,43 @@ function flattenCheesecakes(groups: { title: string; items: Item[] }[]): Item[] 
   return groups.flatMap((g) => g.items)
 }
 
+/* Definitive cookie photos, keyed by carta name (identical in ES and CA). */
+const COOKIE_IMAGES: Record<string, string> = {
+  'NY Classic': '/assets/images/nyclassic.webp',
+  Oreo: '/assets/images/oreo.webp',
+  Lotus: '/assets/images/lotus.webp',
+  Pistacchio: '/assets/images/pistacchio.webp',
+  Kinder: '/assets/images/kinder.webp',
+  'Red Velvet': '/assets/images/redvelvet.webp',
+  Dinosaurus: '/assets/images/dinosaurus.webp',
+  'Triple Choc': '/assets/images/triplechoc.webp',
+}
+
+/* Latte photos — Café Latte (bestseller), Matcha and Chai each have their own
+   image; the remaining coffees fall back to the default café latte photo.
+   Café Latte is keyed in both languages (ES "Café", CA "Cafè"). */
+const LATTE_IMAGES: Record<string, string> = {
+  'Café Latte': '/assets/images/cafelattereg.webp',
+  'Cafè Latte': '/assets/images/cafelattereg.webp',
+  'Matcha Latte': '/assets/images/matcha.webp',
+  'Chai Latte': '/assets/images/chailatte.webp',
+}
+
+/* Cheesecake photos — keyed by position in the flattened list (names repeat
+   across the two groups, so a name key can't distinguish them).
+   Indices 0-4 = "Horno cremosa" group · 5-8 = "Mousse fría" group. */
+const CHEESECAKE_IMAGES: Record<number, string> = {
+  0: '/assets/images/clasicaporcion.webp',
+  1: '/assets/images/oreoporcion.webp',
+  2: '/assets/images/pistachoporcion.webp',
+  3: '/assets/images/lotusporcion.webp',
+  4: '/assets/images/kinderporcion.webp',
+  5: '/assets/images/fresa1.webp',
+  6: '/assets/images/oreo1.webp',
+  7: '/assets/images/pistacho1.webp',
+  8: '/assets/images/lotus1.webp',
+}
+
 export function MenuSection() {
   const { t } = useLanguage()
   const m = t.menu
@@ -42,7 +79,8 @@ export function MenuSection() {
       description: m.cookies.description,
       items: m.items.cookies,
       photo: '/assets/svg/sticker_cookies.svg',
-      tallSticker: false,
+      itemImages: COOKIE_IMAGES,
+      imageShape: 'square' as const,
     },
     {
       key: 'cheesecakes' as const,
@@ -52,7 +90,8 @@ export function MenuSection() {
       description: m.cheesecakes.description,
       items: cheesecakeItems,
       photo: '/assets/svg/sticker_cheesecake.svg',
-      tallSticker: false,
+      itemImagesByIndex: CHEESECAKE_IMAGES,
+      imageShape: 'landscape' as const,
     },
     {
       key: 'milkshakes' as const,
@@ -61,8 +100,8 @@ export function MenuSection() {
       title: m.milkshakes.title,
       description: m.milkshakes.description,
       items: m.items.milkshakes,
-      photo: '/assets/svg/sticker_milkshake.svg',
-      tallSticker: true,
+      photo: '/assets/images/milkshake.webp',
+      imageShape: 'tall' as const,
     },
     {
       key: 'otros' as const,
@@ -71,8 +110,9 @@ export function MenuSection() {
       title: m.otros.title,
       description: m.otros.description,
       items: m.items.otros,
-      photo: '/assets/svg/sticker_icedcoffee.svg',
-      tallSticker: true,
+      photo: '/assets/images/cafelatte.webp',
+      itemImages: LATTE_IMAGES,
+      imageShape: 'tall' as const,
     },
   ]
 
@@ -127,7 +167,9 @@ interface CategoryBlockProps {
     description: string
     items: Item[]
     photo: string
-    tallSticker: boolean
+    itemImages?: Record<string, string>
+    itemImagesByIndex?: Record<number, string>
+    imageShape: ImageShape
   }
   verTodos: (n: number) => string
   verMenos: string
@@ -142,6 +184,17 @@ function CategoryBlock({ cat, verTodos, verMenos, masPedidoLabel, pideYaLabel, a
   const featured = cat.items.slice(0, FEATURED_COUNT)
   const rest = cat.items.slice(FEATURED_COUNT)
   const hasRest = rest.length > 0
+
+  // Milkshake cards let the glass tower above the card edge — the grid needs
+  // extra row gap + top padding so the overflow clears its neighbours.
+  const overflowCat = cat.key === 'milkshakes'
+  const gridCols = 'grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-4 sm:gap-x-5 md:gap-x-6'
+  const featuredGrid = overflowCat
+    ? `${gridCols} gap-y-14 sm:gap-y-16 md:gap-y-16 pt-7 md:pt-9`
+    : `${gridCols} gap-y-4 sm:gap-y-5 md:gap-y-6`
+  const expandedGrid = overflowCat
+    ? `${gridCols} gap-y-14 sm:gap-y-16 md:gap-y-16 pt-14 md:pt-16`
+    : `${gridCols} gap-y-4 sm:gap-y-5 md:gap-y-6 pt-1`
 
   return (
     <div className="flex flex-col gap-7 sm:gap-9 md:gap-12">
@@ -175,7 +228,7 @@ function CategoryBlock({ cat, verTodos, verMenos, masPedidoLabel, pideYaLabel, a
       </motion.header>
 
       {/* Featured grid — 3 cards */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5 md:gap-6">
+      <div className={featuredGrid}>
         {featured.map((item, i) => {
           const accent = accents[i % accents.length]
           return (
@@ -193,13 +246,15 @@ function CategoryBlock({ cat, verTodos, verMenos, masPedidoLabel, pideYaLabel, a
               <ProductCardCompact
                 name={item.name}
                 description={item.desc}
-                photo={cat.photo}
+                photo={cat.itemImagesByIndex?.[i] ?? cat.itemImages?.[item.name] ?? cat.photo}
                 accent={accent}
                 pideYaLabel={pideYaLabel}
                 orderHref={UBER_EATS_URL}
                 bestseller={i === 0}
                 bestsellerLabel={masPedidoLabel}
-                tallSticker={cat.tallSticker}
+                imageShape={cat.imageShape}
+                overflow={cat.key === 'milkshakes'}
+                noImageShadowOnHover={cat.key !== 'cheesecakes'}
               />
             </motion.div>
           )
@@ -217,7 +272,7 @@ function CategoryBlock({ cat, verTodos, verMenos, masPedidoLabel, pideYaLabel, a
             transition={{ duration: 0.45, ease: [0.25, 0.46, 0.45, 0.94] }}
             className="overflow-hidden"
           >
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5 md:gap-6 pt-1">
+            <div className={expandedGrid}>
               {rest.map((item, i) => {
                 const accent = accents[(FEATURED_COUNT + i) % accents.length]
                 return (
@@ -230,11 +285,13 @@ function CategoryBlock({ cat, verTodos, verMenos, masPedidoLabel, pideYaLabel, a
                     <ProductCardCompact
                       name={item.name}
                       description={item.desc}
-                      photo={cat.photo}
+                      photo={cat.itemImagesByIndex?.[FEATURED_COUNT + i] ?? cat.itemImages?.[item.name] ?? cat.photo}
                       accent={accent}
                       pideYaLabel={pideYaLabel}
                       orderHref={UBER_EATS_URL}
-                      tallSticker={cat.tallSticker}
+                      imageShape={cat.imageShape}
+                      overflow={cat.key === 'milkshakes'}
+                      noImageShadowOnHover={cat.key !== 'cheesecakes'}
                     />
                   </motion.div>
                 )

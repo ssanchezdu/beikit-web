@@ -2,6 +2,8 @@ import { motion } from 'framer-motion'
 import { useCardHover } from '../../lib/useCardHover'
 import { MicroCtaContent } from './MicroCtaContent'
 
+export type ImageShape = 'square' | 'landscape' | 'tall'
+
 interface ProductCardCompactProps {
   name: string
   description: string
@@ -11,12 +13,28 @@ interface ProductCardCompactProps {
   orderHref: string
   bestseller?: boolean
   bestsellerLabel?: string
-  tallSticker?: boolean
+  imageShape: ImageShape
+  overflow?: boolean
+  noImageShadowOnHover?: boolean
 }
 
 const BASE_BG = '#3b1518'
 const BASE_TEXT = '#f6eadf'
 const INVERTED_TEXT = '#320e10'
+
+/*
+  Unified image-box system. Every box carries roughly the same visual mass; its
+  aspect ratio matches the product photo so the image fills the box edge to edge
+  — square cookies, landscape cheesecake slices, tall milkshake/latte glasses.
+*/
+const IMAGE_BOX: Record<ImageShape, string> = {
+  // square is sized larger than equal-area would suggest: a round cookie only
+  // fills ~78% of its bounding box, so it needs a bigger box to match the
+  // perceived mass of a slice that fills its rectangle. All values ×8.
+  square:    'w-[224px] h-[224px] sm:w-[256px] sm:h-[256px] md:w-[288px] md:h-[288px]',
+  landscape: 'w-[232px] h-[168px] sm:w-[264px] sm:h-[192px] md:w-[288px] md:h-[208px]',
+  tall:      'w-[176px] h-[264px] sm:w-[208px] sm:h-[312px] md:w-[224px] md:h-[336px]',
+}
 
 export function ProductCardCompact({
   name,
@@ -27,9 +45,20 @@ export function ProductCardCompact({
   orderHref,
   bestseller = false,
   bestsellerLabel = 'Más pedido',
-  tallSticker = false,
+  imageShape,
+  overflow = false,
+  noImageShadowOnHover = false,
 }: ProductCardCompactProps) {
   const { hovered, reduceMotion, bind } = useCardHover()
+
+  const imageSize = IMAGE_BOX[imageShape]
+
+  // Towering treatment (milkshakes): pull the image up so it breaks the frame,
+  // sitting lower than before, with a minimal gap to the title.
+  // pointer-events-none keeps the overflowing part from intercepting clicks.
+  const imageWrap = overflow
+    ? `-mt-[32px] sm:-mt-[40px] md:-mt-[48px] mb-1 pointer-events-none ${imageSize}`
+    : `mb-5 sm:mb-6 ${imageSize}`
 
   const bg = hovered ? accent : BASE_BG
   const fg = hovered ? INVERTED_TEXT : BASE_TEXT
@@ -63,14 +92,12 @@ export function ProductCardCompact({
 
       {/* Sticker — sized responsively for visual impact (visceral level) */}
       <motion.div
-        className={`flex items-center justify-center mb-5 sm:mb-6 ${
-          tallSticker
-            ? 'w-[150px] h-[200px] sm:w-[170px] sm:h-[228px] md:w-[180px] md:h-[244px]'
-            : 'w-[170px] h-[170px] sm:w-[190px] sm:h-[190px] md:w-[210px] md:h-[210px]'
-        }`}
+        className={`flex items-center justify-center ${imageWrap}`}
         style={{
           filter: hovered
-            ? 'drop-shadow(0 22px 32px rgba(0,0,0,0.50))'
+            ? noImageShadowOnHover
+              ? 'none'
+              : 'drop-shadow(0 22px 32px rgba(0,0,0,0.50))'
             : 'drop-shadow(0 14px 22px rgba(0,0,0,0.38))',
           transition: 'filter 220ms var(--ease-out)',
         }}
@@ -82,7 +109,7 @@ export function ProductCardCompact({
       >
         <img
           src={photo}
-          alt={name}
+          alt=""
           loading="lazy"
           className="w-full h-full object-contain select-none"
         />

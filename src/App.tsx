@@ -2,9 +2,11 @@ import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom'
 import { lazy, Suspense, useEffect } from 'react'
 import { MotionConfig } from 'framer-motion'
 import { LanguageProvider } from './lib/i18n'
+import { CookieConsentProvider } from './lib/cookieConsent'
 import { Header } from './components/layout/Header'
 import { Footer } from './components/layout/Footer'
 import { BottomNav } from './components/layout/BottomNav'
+import { CookieBanner } from './components/CookieBanner'
 import { Home } from './pages/Home'
 
 const Catering = lazy(() => import('./pages/Catering').then((m) => ({ default: m.Catering })))
@@ -68,6 +70,7 @@ function Shell() {
         <Footer />
       </div>
       {showBottomNav && <BottomNav />}
+      <CookieBanner />
     </>
   )
 }
@@ -76,10 +79,12 @@ export default function App() {
   return (
     <BrowserRouter>
       <LanguageProvider>
-        {/* Honor user's reduced-motion preference across all Framer Motion */}
-        <MotionConfig reducedMotion="user">
-          <Shell />
-        </MotionConfig>
+        <CookieConsentProvider>
+          {/* Honor user's reduced-motion preference across all Framer Motion */}
+          <MotionConfig reducedMotion="user">
+            <Shell />
+          </MotionConfig>
+        </CookieConsentProvider>
       </LanguageProvider>
     </BrowserRouter>
   )
