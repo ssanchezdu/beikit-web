@@ -153,7 +153,7 @@ export function MenuSection() {
         ))}
       </div>
 
-      <JellyWave fill="#e8511b" height={140} />
+      <JellyWave fill="#f6eadf" height={140} />
     </section>
   )
 }

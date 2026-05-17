@@ -184,8 +184,8 @@ export function DeliverySection() {
         </div>
       </div>
 
-      {/* JellyWave → dark Footer */}
-      <JellyWave fill="#320e10" height={140} />
+      {/* JellyWave → orange ClaimSection */}
+      <JellyWave fill="#e8511b" height={140} />
     </section>
   )
 }

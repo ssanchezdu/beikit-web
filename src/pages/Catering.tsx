@@ -5,6 +5,7 @@ import { useNavigate } from 'react-router-dom'
 import { motion } from 'framer-motion'
 import { useLanguage } from '../lib/i18n'
 import { JellyWave } from '../components/ui/JellyWave'
+import { MicroCtaContent } from '../components/ui/MicroCtaContent'
 
 const WHATSAPP_NUMBER = '34938421122'
 const WHATSAPP_HREF = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent('Hola Beikit! Me gustaría información sobre catering para mi evento.')}`
@@ -134,13 +135,17 @@ function CateringHero() {
           <div className="flex flex-wrap justify-center gap-3">
             <a
               href="#catering-form"
-              className="press focus-ring-dark font-body font-bold text-[12px] md:text-[13px] tracking-[0.12em] uppercase px-6 md:px-8 py-3.5 md:py-4 rounded-[14px] bg-[#f8b114] text-[#320e10] hover:bg-[#e8a010] inline-flex items-center gap-2 shadow-[0_10px_32px_-6px_rgba(248,177,20,0.50)]"
+              className="group/cta press focus-ring-dark font-body font-bold text-[12px] md:text-[13px] tracking-[0.12em] uppercase px-6 md:px-8 py-3.5 md:py-4 rounded-[14px] bg-[#f8b114] text-[#320e10] hover:bg-[#e8a010] inline-flex items-center gap-2 shadow-[0_10px_32px_-6px_rgba(248,177,20,0.50)]"
               style={{ transition: 'transform 160ms var(--ease-out), background-color 200ms var(--ease-out)' }}
             >
-              {h.cta}
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-                <path d="M12 5v14M5 12l7 7 7-7"/>
-              </svg>
+              <MicroCtaContent
+                label={h.cta}
+                arrow={
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M12 5v14M5 12l7 7 7-7"/>
+                  </svg>
+                }
+              />
             </a>
             <a
               href={WHATSAPP_HREF}
@@ -156,7 +161,7 @@ function CateringHero() {
             </a>
           </div>
 
-          <p className="font-body text-[11.5px] md:text-[12px] text-[#f6eadf]/55 tracking-[0.06em]">
+          <p className="font-body text-[11.5px] md:text-[12px] text-[#f6eadf]/75 tracking-[0.06em]">
             {h.reassurance}
           </p>
         </motion.div>
@@ -591,7 +596,7 @@ function ProductosSection() {
           </div>
           <h2 className="font-display text-[42px] md:text-[60px] lg:text-[70px] leading-[1.02] text-[#f6eadf]">{p.title}</h2>
           <p className="font-body text-[15px] md:text-[16px] text-[#f6eadf]/75 leading-relaxed max-w-xl">
-            Nuestra carta completa adaptada para eventos. Elige lo que imaginas o cuéntanoslo — lo resolvemos juntos.
+            {p.intro}
           </p>
         </motion.div>
 
@@ -659,9 +664,9 @@ function FormSection() {
   }
 
   const inputBase =
-    'form-field w-full font-body text-[15px] text-[#f6eadf] bg-[#3b1315] border border-[#f6eadf]/15 rounded-[14px] px-5 py-4 outline-none focus-visible:border-[#e8511b] focus-visible:ring-2 focus-visible:ring-[#e8511b]/30 placeholder:text-[#f6eadf]/30'
+    'form-field w-full font-body text-[15px] text-[#f6eadf] bg-[#3b1315] border border-[#f6eadf]/15 rounded-[14px] px-5 py-4 outline-none focus-visible:border-[#e8511b] focus-visible:ring-2 focus-visible:ring-[#e8511b]/30 placeholder:text-[#f6eadf]/55'
   const inputError =
-    'form-field w-full font-body text-[15px] text-[#f6eadf] bg-[#3b1315] border border-red-400 rounded-[14px] px-5 py-4 outline-none focus-visible:border-red-400 focus-visible:ring-2 focus-visible:ring-red-400/30 placeholder:text-[#f6eadf]/30'
+    'form-field w-full font-body text-[15px] text-[#f6eadf] bg-[#3b1315] border border-red-400 rounded-[14px] px-5 py-4 outline-none focus-visible:border-red-400 focus-visible:ring-2 focus-visible:ring-red-400/30 placeholder:text-[#f6eadf]/55'
 
   // Reusable chip styles for radio/checkbox groups (peer pattern)
   const chipBase =
@@ -848,7 +853,7 @@ function FormSection() {
           {/* Productos — multi-select chips, required (con "No lo sé aún" como opt-out semántico) */}
           <div className="flex flex-col gap-2.5">
             <span id="cat-productos-label" className="font-body font-bold text-[13px] text-[#f6eadf]">{f.productos}{requiredMark}</span>
-            <span className="font-body text-[12.5px] text-[#f6eadf]/55 -mt-1">{f.productosHelp}</span>
+            <span className="font-body text-[12.5px] text-[#f6eadf]/70 -mt-1">{f.productosHelp}</span>
             <div role="group" aria-labelledby="cat-productos-label" className="flex flex-wrap gap-2">
               {f.productosOptions.map((opt) => (
                 <label key={opt} className="relative cursor-pointer">
@@ -898,7 +903,18 @@ function FormSection() {
                 className="font-body text-[13px] text-[#f6eadf]/75 group-hover:text-[#f6eadf]"
                 style={{ transition: 'color 200ms var(--ease-out)' }}
               >
-                {f.privacidad}{requiredMark}
+                {f.privacidadPre}
+                <a
+                  href="/privacidad"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  onClick={(e) => e.stopPropagation()}
+                  className="focus-ring rounded-sm font-bold underline underline-offset-2 decoration-[#e8511b]/60 text-[#f6eadf] hover:decoration-[#e8511b]"
+                  style={{ transition: 'text-decoration-color 200ms var(--ease-out)' }}
+                >
+                  {f.privacidadLink}
+                </a>
+                {requiredMark}
               </span>
             </label>
             {errors.privacidad && <span role="alert" aria-live="polite" className="font-body text-[12px] text-red-400">{errors.privacidad.message}</span>}
@@ -954,7 +970,7 @@ function FormSection() {
             </a>
           </div>
 
-          <p className="font-body text-[12px] text-[#f6eadf]/55 text-center leading-relaxed">{f.note}</p>
+          <p className="font-body text-[12px] text-[#f6eadf]/70 text-center leading-relaxed">{f.note}</p>
         </motion.form>
       </div>
     </section>
@@ -1051,13 +1067,10 @@ function MidCtaSection() {
         <div className="flex flex-wrap items-center justify-center gap-3">
           <a
             href="#catering-form"
-            className="press focus-ring font-body font-bold text-[12px] md:text-[13px] tracking-[0.12em] uppercase px-7 md:px-8 py-3.5 md:py-4 rounded-[14px] bg-[#e8511b] text-white hover:bg-[#d0481a] inline-flex items-center gap-2 shadow-[0_10px_28px_-8px_rgba(232,81,27,0.45)]"
+            className="group/cta press focus-ring font-body font-bold text-[12px] md:text-[13px] tracking-[0.12em] uppercase px-7 md:px-8 py-3.5 md:py-4 rounded-[14px] bg-[#e8511b] text-white hover:bg-[#d0481a] inline-flex items-center gap-2 shadow-[0_10px_28px_-8px_rgba(232,81,27,0.45)]"
             style={{ transition: 'transform 160ms var(--ease-out), background-color 200ms var(--ease-out)' }}
           >
-            {m.primary}
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-              <path d="M5 12h14M12 5l7 7-7 7"/>
-            </svg>
+            <MicroCtaContent label={m.primary} arrowSize={14} />
           </a>
           <a
             href={WHATSAPP_HREF}
@@ -1298,9 +1311,9 @@ export function Catering() {
 
       <CateringHero />
       <ValoresSection />
-      <InfoSection />
-      <PasosSection />
       <ProductosSection />
+      <PasosSection />
+      <InfoSection />
       <MidCtaSection />
       <FaqSection />
       <FormSection />

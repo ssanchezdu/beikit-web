@@ -238,8 +238,8 @@ export function RRSSSection() {
         </div>
       </div>
 
-      {/* Jelly wave → dark DeliverySection */}
-      <JellyWave fill="#f6eadf" height={140} />
+      {/* Jelly wave → dark Footer */}
+      <JellyWave fill="#320e10" height={140} />
     </section>
   )
 }

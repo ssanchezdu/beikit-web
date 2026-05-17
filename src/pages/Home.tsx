@@ -25,10 +25,10 @@ export function Home() {
 
       <HeroSection />
       <MenuSection />
+      <DeliverySection />
       <ClaimSection />
       <NosotrosSection />
       <RRSSSection />
-      <DeliverySection />
     </>
   )
 }
