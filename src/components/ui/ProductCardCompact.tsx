@@ -18,7 +18,7 @@ interface ProductCardCompactProps {
   noImageShadowOnHover?: boolean
 }
 
-const BASE_BG = '#3b1518'
+const BASE_BG = '#3b1315'
 const BASE_TEXT = '#f6eadf'
 const INVERTED_TEXT = '#320e10'
 
@@ -67,7 +67,7 @@ export function ProductCardCompact({
   return (
     <article
       {...bind}
-      className="group relative rounded-[20px] sm:rounded-[24px] flex flex-col items-center text-center px-5 pt-7 pb-5 sm:pt-9 sm:pb-7 isolate h-full"
+      className="group relative rounded-lg sm:rounded-xl flex flex-col items-center text-center px-5 pt-7 pb-5 sm:pt-9 sm:pb-7 isolate h-full"
       style={{
         backgroundColor: bg,
         color: fg,

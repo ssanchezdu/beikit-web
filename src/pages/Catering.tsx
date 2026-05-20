@@ -6,8 +6,10 @@ import { motion } from 'framer-motion'
 import { useLanguage } from '../lib/i18n'
 import { JellyWave } from '../components/ui/JellyWave'
 import { MicroCtaContent } from '../components/ui/MicroCtaContent'
+import { Button } from '../components/ui/Button'
+import { EASE_ENTRANCE } from '../lib/motion'
 
-const WHATSAPP_NUMBER = '34938421122'
+const WHATSAPP_NUMBER = '34603919473'
 const WHATSAPP_HREF = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent('Hola Beikit! Me gustaría información sobre catering para mi evento.')}`
 const FORMSPREE_ENDPOINT = import.meta.env.VITE_FORMSPREE_ENDPOINT ?? ''
 
@@ -23,7 +25,7 @@ type FormData = {
   privacidad: boolean
 }
 
-const EASE = [0.25, 0.46, 0.45, 0.94] as const
+const EASE = EASE_ENTRANCE
 
 // ---------------------------------------------------------------------------
 // Catering Hero — centered power composition with framing stickers (Home line)
@@ -41,7 +43,7 @@ function CateringHero() {
     : 'clamp(2.6rem, 8vw, 7.4rem)'
 
   return (
-    <section className="relative bg-[#320e10] overflow-hidden flex flex-col min-h-[92vh] md:min-h-[88vh]">
+    <section className="relative bg-dark overflow-hidden flex flex-col min-h-[92vh] md:min-h-[88vh]">
 
       {/* Warm ambient glow — behind headline */}
       <div
@@ -61,10 +63,10 @@ function CateringHero() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.05, ease: EASE }}
           >
-            <span className="font-display text-[22px] md:text-[26px] text-[#f8b114] leading-none -rotate-3 translate-y-[1px]">
+            <span className="font-display text-[22px] md:text-[26px] text-yellow leading-none -rotate-3 translate-y-[1px]">
               Heartmade
             </span>
-            <span className="font-body font-bold text-[11px] md:text-[12px] tracking-[0.28em] uppercase text-[#f6eadf] leading-none">
+            <span className="font-body font-bold text-[11px] md:text-[12px] tracking-[0.28em] uppercase text-cream leading-none">
               Catering
             </span>
           </motion.span>
@@ -72,7 +74,7 @@ function CateringHero() {
           {/* Headline — centered 3-line with star word */}
           <h1 className="relative z-10 text-center" aria-label={h.title}>
             <motion.span
-              className="block font-body font-bold uppercase text-[#f6eadf] leading-[0.88] tracking-[-0.03em]"
+              className="block font-body font-bold uppercase text-cream leading-[0.88] tracking-[-0.03em]"
               style={{ fontSize: sideSize }}
               initial={{ opacity: 0, y: 50 }}
               animate={{ opacity: 1, y: 0 }}
@@ -82,7 +84,7 @@ function CateringHero() {
             </motion.span>
 
             <motion.span
-              className="block font-body font-bold uppercase text-[#f6eadf] leading-[0.88] tracking-[-0.04em]"
+              className="block font-body font-bold uppercase text-cream leading-[0.88] tracking-[-0.04em]"
               style={{ fontSize: starSize }}
               initial={{ opacity: 0, y: 60 }}
               animate={{ opacity: 1, y: 0 }}
@@ -92,7 +94,7 @@ function CateringHero() {
             </motion.span>
 
             <motion.span
-              className="flex items-baseline justify-center gap-[0.22em] font-body font-bold uppercase text-[#f6eadf] leading-[0.88] tracking-[-0.03em]"
+              className="flex items-baseline justify-center gap-[0.22em] font-body font-bold uppercase text-cream leading-[0.88] tracking-[-0.03em]"
               style={{ fontSize: sideSize }}
               initial={{ opacity: 0, y: 50 }}
               animate={{ opacity: 1, y: 0 }}
@@ -128,15 +130,16 @@ function CateringHero() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.7, ease: EASE }}
         >
-          <p className="font-body text-[15px] md:text-[17px] text-[#f6eadf]/80 leading-relaxed text-center max-w-[480px]">
+          <p className="font-body text-[15px] md:text-[17px] text-cream/80 leading-relaxed text-center max-w-[480px]">
             {h.subtitle}
           </p>
 
           <div className="flex flex-wrap justify-center gap-3">
-            <a
+            <Button
+              variant="yellow"
+              focusOnDark
               href="#catering-form"
-              className="group/cta press focus-ring-dark font-body font-bold text-[12px] md:text-[13px] tracking-[0.12em] uppercase px-6 md:px-8 py-3.5 md:py-4 rounded-[14px] bg-[#f8b114] text-[#320e10] hover:bg-[#e8a010] inline-flex items-center gap-2 shadow-[0_10px_32px_-6px_rgba(248,177,20,0.50)]"
-              style={{ transition: 'transform 160ms var(--ease-out), background-color 200ms var(--ease-out)' }}
+              className="group/cta text-[12px] md:text-[13px] tracking-[0.12em] px-6 md:px-8 py-3.5 md:py-4 gap-2 shadow-[0_10px_32px_-6px_rgba(248,177,20,0.50)]"
             >
               <MicroCtaContent
                 label={h.cta}
@@ -146,22 +149,22 @@ function CateringHero() {
                   </svg>
                 }
               />
-            </a>
-            <a
+            </Button>
+            <Button
+              variant="outline-cream"
+              focusOnDark
               href={WHATSAPP_HREF}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="press focus-ring-dark font-body font-bold text-[12px] md:text-[13px] tracking-[0.12em] uppercase px-6 md:px-8 py-3.5 md:py-4 rounded-[14px] border-2 border-[#f6eadf]/30 text-[#f6eadf] hover:bg-[#25d366] hover:text-white hover:border-[#25d366] inline-flex items-center gap-2"
-              style={{ transition: 'transform 160ms var(--ease-out), background-color 200ms var(--ease-out), color 200ms var(--ease-out), border-color 200ms var(--ease-out)' }}
+              external
+              className="border-cream/30 hover:bg-whatsapp hover:text-white hover:border-whatsapp text-[12px] md:text-[13px] tracking-[0.12em] px-6 md:px-8 py-3.5 md:py-4 gap-2"
             >
               <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
                 <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
               </svg>
               {h.ctaSecondary}
-            </a>
+            </Button>
           </div>
 
-          <p className="font-body text-[11.5px] md:text-[12px] text-[#f6eadf]/75 tracking-[0.06em]">
+          <p className="font-body text-[12px] md:text-[12px] text-cream/75 tracking-[0.06em]">
             {h.reassurance}
           </p>
         </motion.div>
@@ -181,7 +184,7 @@ function ValoresSection() {
   const v = t.catering.valores
 
   return (
-    <section className="relative bg-[#f6eadf] overflow-hidden">
+    <section className="relative bg-cream overflow-hidden">
 
       {/* Warm glows */}
       <div
@@ -214,7 +217,7 @@ function ValoresSection() {
               aria-hidden="true"
             />
 
-            <div className="relative rounded-[24px] md:rounded-[32px] overflow-hidden shadow-[0_24px_64px_-14px_rgba(50,14,16,0.24),0_10px_28px_-10px_rgba(50,14,16,0.12)] lg:h-full">
+            <div className="relative rounded-xl md:rounded-2xl overflow-hidden shadow-[0_24px_64px_-14px_rgba(50,14,16,0.24),0_10px_28px_-10px_rgba(50,14,16,0.12)] lg:h-full">
               <div
                 className="aspect-[5/4] lg:aspect-auto lg:h-full relative"
                 style={{ background: 'radial-gradient(ellipse at 30% 30%, #5c2d2e 0%, #3b1315 45%, #2a0c0e 100%)' }}
@@ -254,26 +257,26 @@ function ValoresSection() {
 
               {/* Floating chip — top left */}
               <motion.div
-                className="absolute top-4 left-4 md:top-6 md:left-6 bg-[#320e10]/85 backdrop-blur-sm rounded-full px-4 py-2 shadow-[0_8px_24px_-6px_rgba(0,0,0,0.30)]"
+                className="absolute top-4 left-4 md:top-6 md:left-6 bg-dark/85 backdrop-blur-sm rounded-full px-4 py-2 shadow-[0_8px_24px_-6px_rgba(0,0,0,0.30)]"
                 initial={{ opacity: 0, y: -10 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.4, delay: 0.35, ease: EASE }}
               >
-                <span className="font-body font-bold text-[10px] tracking-[0.22em] uppercase text-[#f8b114]">
+                <span className="font-body font-bold text-[10px] tracking-[0.22em] uppercase text-yellow">
                   · Eventos & Corporativo
                 </span>
               </motion.div>
 
               {/* Floating chip — bottom right */}
               <motion.div
-                className="absolute bottom-4 right-4 md:bottom-6 md:right-6 bg-[#f6eadf]/92 backdrop-blur-sm rounded-[14px] px-4 py-2.5 shadow-[0_4px_16px_-4px_rgba(50,14,16,0.15)]"
+                className="absolute bottom-4 right-4 md:bottom-6 md:right-6 bg-cream/92 backdrop-blur-sm rounded-md px-4 py-2.5 shadow-[0_4px_16px_-4px_rgba(50,14,16,0.15)]"
                 initial={{ opacity: 0, y: 12 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.4, delay: 0.45, ease: EASE }}
               >
-                <span className="font-body font-bold text-[11px] tracking-[0.18em] uppercase text-[#e8511b]">
+                <span className="font-body font-bold text-[11px] tracking-[0.18em] uppercase text-orange">
                   Heartmade Everyday
                 </span>
               </motion.div>
@@ -291,15 +294,15 @@ function ValoresSection() {
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: 0.08, ease: EASE }}
             >
-              <span className="block w-10 h-[3px] bg-[#e8511b] rounded-full" />
-              <span className="font-body font-bold text-[11px] tracking-[0.28em] uppercase text-[#e8511b]">
+              <span className="block w-10 h-[3px] bg-orange rounded-full" />
+              <span className="font-body font-bold text-[11px] tracking-[0.28em] uppercase text-orange">
                 {v.tag}
               </span>
             </motion.div>
 
             {/* Headline */}
             <motion.h2
-              className="font-display text-[34px] md:text-[44px] lg:text-[54px] leading-[1.08] text-[#320e10] mb-7 text-balance"
+              className="font-display text-[34px] md:text-[44px] lg:text-[54px] leading-[1.08] text-dark mb-7 text-balance"
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.2 }}
@@ -309,7 +312,7 @@ function ValoresSection() {
             </motion.h2>
 
             <motion.div
-              className="w-14 h-[3px] bg-[#e8511b] rounded-full mb-7"
+              className="w-14 h-[3px] bg-orange rounded-full mb-7"
               initial={{ opacity: 0, scaleX: 0 }}
               whileInView={{ opacity: 1, scaleX: 1 }}
               viewport={{ once: true }}
@@ -324,13 +327,13 @@ function ValoresSection() {
               viewport={{ once: true, amount: 0.2 }}
               transition={{ duration: 0.6, delay: 0.32, ease: EASE }}
             >
-              <p className="font-body text-[15px] md:text-[16px] leading-[1.8] text-[#320e10]/75">{v.body1}</p>
-              <p className="font-body text-[15px] md:text-[16px] leading-[1.8] text-[#320e10]/75">{v.body2}</p>
+              <p className="font-body text-[15px] md:text-[16px] leading-[1.8] text-dark/75">{v.body1}</p>
+              <p className="font-body text-[15px] md:text-[16px] leading-[1.8] text-dark/75">{v.body2}</p>
             </motion.div>
 
             {/* Signature */}
             <motion.div
-              className="pt-7 border-t border-[#320e10]/10"
+              className="pt-7 border-t border-dark/10"
               initial={{ opacity: 0, y: 16 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
@@ -348,10 +351,10 @@ function ValoresSection() {
                 </div>
 
                 <div className="flex flex-col">
-                  <span className="font-display text-[26px] md:text-[30px] leading-none text-[#320e10] -rotate-[1.5deg]">
+                  <span className="font-display text-[26px] md:text-[30px] leading-none text-dark -rotate-[1.5deg]">
                     Juan &amp; Anna
                   </span>
-                  <span className="font-body text-[12px] text-[#320e10]/50 tracking-[0.06em] mt-1.5 italic">
+                  <span className="font-body text-[12px] text-dark/50 tracking-[0.06em] mt-1.5 italic">
                     Fundadores, Beikit Bakery
                   </span>
                 </div>
@@ -375,7 +378,7 @@ function PasosSection() {
   const p = t.catering.pasos
 
   return (
-    <section className="relative bg-[#f6eadf] overflow-hidden">
+    <section className="relative bg-cream overflow-hidden">
 
       <div
         className="absolute top-0 left-1/2 -translate-x-1/2 w-[700px] h-[380px] pointer-events-none"
@@ -394,12 +397,12 @@ function PasosSection() {
           transition={{ duration: 0.6, ease: EASE }}
         >
           <div className="flex items-center gap-3">
-            <span className="block w-8 h-[3px] bg-[#e8511b] rounded-full" />
-            <span className="font-body font-bold text-[11px] tracking-[0.28em] uppercase text-[#e8511b]">{p.tag}</span>
-            <span className="block w-8 h-[3px] bg-[#e8511b] rounded-full" />
+            <span className="block w-8 h-[3px] bg-orange rounded-full" />
+            <span className="font-body font-bold text-[11px] tracking-[0.28em] uppercase text-orange">{p.tag}</span>
+            <span className="block w-8 h-[3px] bg-orange rounded-full" />
           </div>
-          <h2 className="font-display text-[42px] md:text-[60px] lg:text-[72px] leading-[1.02] text-[#320e10]">{p.title}</h2>
-          <p className="font-body text-[15px] md:text-[16px] text-[#320e10]/72 leading-relaxed max-w-xl">
+          <h2 className="font-display text-[42px] md:text-[60px] lg:text-[72px] leading-[1.02] text-dark">{p.title}</h2>
+          <p className="font-body text-[15px] md:text-[16px] text-dark/72 leading-relaxed max-w-xl">
             {p.subtitle}
           </p>
         </motion.div>
@@ -437,19 +440,19 @@ function PasosSection() {
                     style={{ background: 'radial-gradient(circle, rgba(232,81,27,0.18) 0%, transparent 68%)' }}
                     aria-hidden="true"
                   />
-                  <div className="relative w-14 h-14 rounded-full border-2 border-[#e8511b] flex items-center justify-center bg-[#f6eadf] shadow-[0_6px_18px_-4px_rgba(232,81,27,0.30)]">
-                    <span className="font-display text-[22px] leading-none text-[#e8511b] translate-y-[1px]">
+                  <div className="relative w-14 h-14 rounded-full border-2 border-orange flex items-center justify-center bg-cream shadow-[0_6px_18px_-4px_rgba(232,81,27,0.30)]">
+                    <span className="font-display text-[22px] leading-none text-orange translate-y-[1px]">
                       {String(i + 1).padStart(2, '0')}
                     </span>
                   </div>
                 </div>
 
                 <div className="flex flex-col gap-2.5">
-                  <span className="font-body font-bold text-[10.5px] tracking-[0.22em] uppercase text-[#e8511b] leading-none">
+                  <span className="font-body font-bold text-[11px] tracking-[0.22em] uppercase text-orange leading-none">
                     {step.time}
                   </span>
-                  <h3 className="font-body font-bold text-[16px] md:text-[17px] text-[#320e10] leading-snug">{step.title}</h3>
-                  <p className="font-body text-[13.5px] text-[#320e10]/72 leading-[1.7]">{step.desc}</p>
+                  <h3 className="font-body font-bold text-[16px] md:text-[17px] text-dark leading-snug">{step.title}</h3>
+                  <p className="font-body text-[14px] text-dark/72 leading-[1.7]">{step.desc}</p>
                 </div>
               </motion.div>
             ))}
@@ -501,7 +504,7 @@ function imageSizeFor(title: string) {
 function ProductoCardBlock({ card, i }: { card: ProductCard; i: number }) {
   return (
     <motion.article
-      className="group relative overflow-hidden rounded-[24px] flex flex-col h-full bg-[#3b1315] border border-[#f6eadf]/10 hover:border-[#e8511b]/40 hover:shadow-[0_20px_48px_-14px_rgba(232,81,27,0.22)]"
+      className="group relative overflow-hidden rounded-xl flex flex-col h-full bg-surface-dark border border-cream/10 hover:border-orange/40 hover:shadow-[0_20px_48px_-14px_rgba(232,81,27,0.22)]"
       style={{ transition: 'border-color 240ms var(--ease-out), box-shadow 240ms var(--ease-out)' }}
       initial={{ opacity: 0, y: 24 }}
       whileInView={{ opacity: 1, y: 0 }}
@@ -527,10 +530,10 @@ function ProductoCardBlock({ card, i }: { card: ProductCard; i: number }) {
           />
         </div>
         {/* Hairline separator at bottom of media */}
-        <div className="absolute left-0 right-0 bottom-0 h-px bg-[#f6eadf]/10" aria-hidden="true" />
+        <div className="absolute left-0 right-0 bottom-0 h-px bg-cream/10" aria-hidden="true" />
 
         {card.badge && (
-          <span className="absolute top-4 left-4 font-body font-bold text-[10px] tracking-[0.14em] uppercase px-3 py-1.5 rounded-full shadow-[0_6px_16px_-4px_rgba(0,0,0,0.35)] bg-[#f8b114] text-[#320e10]">
+          <span className="absolute top-4 left-4 font-body font-bold text-[10px] tracking-[0.14em] uppercase px-3 py-1.5 rounded-full shadow-[0_6px_16px_-4px_rgba(0,0,0,0.35)] bg-yellow text-dark">
             {card.badge}
           </span>
         )}
@@ -538,11 +541,11 @@ function ProductoCardBlock({ card, i }: { card: ProductCard; i: number }) {
 
       {/* Body */}
       <div className="flex flex-col gap-4 p-6 md:p-8 flex-1">
-        <h3 className="font-body font-bold uppercase tracking-[-0.01em] leading-[1.05] text-[20px] md:text-[22px] text-[#f6eadf]">
+        <h3 className="font-body font-bold uppercase tracking-[-0.01em] leading-[1.05] text-[20px] md:text-[22px] text-cream">
           {card.title}
         </h3>
         <p
-          className="font-body text-[13.5px] leading-[1.65] text-[#f6eadf]/80 line-clamp-3"
+          className="font-body text-[14px] leading-[1.65] text-cream/80 line-clamp-3"
           style={{ minHeight: 'calc(1.65em * 3)' }}
         >
           {card.desc}
@@ -552,7 +555,7 @@ function ProductoCardBlock({ card, i }: { card: ProductCard; i: number }) {
           {card.pills.map((pill, j) => (
             <span
               key={j}
-              className="font-body text-[11px] px-3 py-1.5 rounded-full border border-[#f6eadf]/20 text-[#f6eadf]/80"
+              className="font-body text-[11px] px-3 py-1.5 rounded-full border border-cream/20 text-cream/80"
             >
               {pill}
             </span>
@@ -568,7 +571,7 @@ function ProductosSection() {
   const p = t.catering.productos
 
   return (
-    <section id="catering-productos" className="relative bg-[#320e10] overflow-hidden scroll-mt-[96px]">
+    <section id="catering-productos" className="relative bg-dark overflow-hidden scroll-mt-[96px]">
 
       <div
         className="absolute bottom-0 left-0 w-[520px] h-[420px] pointer-events-none"
@@ -591,11 +594,11 @@ function ProductosSection() {
           transition={{ duration: 0.6, ease: EASE }}
         >
           <div className="flex items-center gap-4">
-            <span className="block w-8 h-[3px] bg-[#e8511b] rounded-full" />
-            <span className="font-body font-bold text-[11px] tracking-[0.28em] uppercase text-[#e8511b]">{p.tag}</span>
+            <span className="block w-8 h-[3px] bg-orange rounded-full" />
+            <span className="font-body font-bold text-[11px] tracking-[0.28em] uppercase text-orange">{p.tag}</span>
           </div>
-          <h2 className="font-display text-[42px] md:text-[60px] lg:text-[70px] leading-[1.02] text-[#f6eadf]">{p.title}</h2>
-          <p className="font-body text-[15px] md:text-[16px] text-[#f6eadf]/75 leading-relaxed max-w-xl">
+          <h2 className="font-display text-[42px] md:text-[60px] lg:text-[70px] leading-[1.02] text-cream">{p.title}</h2>
+          <p className="font-body text-[15px] md:text-[16px] text-cream/75 leading-relaxed max-w-xl">
             {p.intro}
           </p>
         </motion.div>
@@ -664,24 +667,24 @@ function FormSection() {
   }
 
   const inputBase =
-    'form-field w-full font-body text-[15px] text-[#f6eadf] bg-[#3b1315] border border-[#f6eadf]/15 rounded-[14px] px-5 py-4 outline-none focus-visible:border-[#e8511b] focus-visible:ring-2 focus-visible:ring-[#e8511b]/30 placeholder:text-[#f6eadf]/55'
+    'form-field w-full font-body text-[15px] text-cream bg-surface-dark border border-cream/15 rounded-md px-5 py-4 outline-none focus-visible:border-orange focus-visible:ring-2 focus-visible:ring-orange/30 placeholder:text-cream/55'
   const inputError =
-    'form-field w-full font-body text-[15px] text-[#f6eadf] bg-[#3b1315] border border-red-400 rounded-[14px] px-5 py-4 outline-none focus-visible:border-red-400 focus-visible:ring-2 focus-visible:ring-red-400/30 placeholder:text-[#f6eadf]/55'
+    'form-field w-full font-body text-[15px] text-cream bg-surface-dark border border-error rounded-md px-5 py-4 outline-none focus-visible:border-error focus-visible:ring-2 focus-visible:ring-error/30 placeholder:text-cream/55'
 
   // Reusable chip styles for radio/checkbox groups (peer pattern)
   const chipBase =
-    'block text-center font-body text-[14px] py-3 px-4 rounded-full bg-[#3b1315] border border-[#f6eadf]/15 text-[#f6eadf]/75 peer-checked:border-[#e8511b] peer-checked:text-[#f6eadf] peer-checked:bg-[#e8511b]/15 peer-checked:font-bold peer-focus-visible:ring-2 peer-focus-visible:ring-[#e8511b]/30 hover:border-[#f6eadf]/30 cursor-pointer'
+    'block text-center font-body text-[14px] py-3 px-4 rounded-full bg-surface-dark border border-cream/15 text-cream/75 peer-checked:border-orange peer-checked:text-cream peer-checked:bg-orange/15 peer-checked:font-bold peer-focus-visible:ring-2 peer-focus-visible:ring-orange/30 hover:border-cream/30 cursor-pointer'
 
   // Visual asterisk + screen-reader-only "(obligatorio)" for required fields.
   const requiredMark = (
     <>
-      <span aria-hidden="true" className="text-[#e8511b]"> *</span>
+      <span aria-hidden="true" className="text-orange"> *</span>
       <span className="sr-only"> ({f.requiredField})</span>
     </>
   )
 
   return (
-    <section id="catering-form" className="bg-[#320e10] relative overflow-hidden scroll-mt-[96px]">
+    <section id="catering-form" className="bg-dark relative overflow-hidden scroll-mt-[96px]">
 
       {/* Warm glow behind form */}
       <div
@@ -701,18 +704,18 @@ function FormSection() {
           transition={{ duration: 0.55, ease: EASE }}
         >
           <div className="flex items-center gap-3">
-            <span className="block w-8 h-[3px] bg-[#e8511b] rounded-full" />
-            <span className="font-body font-bold text-[11px] tracking-[0.28em] uppercase text-[#e8511b]">{f.tag}</span>
+            <span className="block w-8 h-[3px] bg-orange rounded-full" />
+            <span className="font-body font-bold text-[11px] tracking-[0.28em] uppercase text-orange">{f.tag}</span>
           </div>
-          <h2 className="font-display text-[42px] md:text-[60px] leading-[1.02] text-[#f6eadf]">{f.title}</h2>
-          <p className="font-body text-[15px] md:text-[16px] text-[#f6eadf]/70 leading-[1.65] max-w-lg">
+          <h2 className="font-display text-[42px] md:text-[60px] leading-[1.02] text-cream">{f.title}</h2>
+          <p className="font-body text-[15px] md:text-[16px] text-cream/70 leading-[1.65] max-w-lg">
             {f.intro}
           </p>
 
           {/* Reassurance bar */}
           <ul className="flex flex-wrap items-center gap-x-5 gap-y-2.5 pt-2">
             {f.reassurance.map((r, i) => (
-              <li key={i} className="inline-flex items-center gap-2 font-body text-[12px] text-[#f6eadf]/75">
+              <li key={i} className="inline-flex items-center gap-2 font-body text-[12px] text-cream/75">
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#f8b114" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
                   <path d="M20 6L9 17l-5-5"/>
                 </svg>
@@ -734,7 +737,7 @@ function FormSection() {
         >
           {/* Nombre */}
           <div className="flex flex-col gap-2.5">
-            <label htmlFor="cat-nombre" className="font-body font-bold text-[13px] text-[#f6eadf]">{f.nombre}{requiredMark}</label>
+            <label htmlFor="cat-nombre" className="font-body font-bold text-[13px] text-cream">{f.nombre}{requiredMark}</label>
             <input
               id="cat-nombre"
               type="text"
@@ -743,13 +746,13 @@ function FormSection() {
               className={errors.nombre ? inputError : inputBase}
               {...register('nombre', { required: f.required })}
             />
-            {errors.nombre && <span role="alert" aria-live="polite" className="font-body text-[12px] text-red-400">{errors.nombre.message}</span>}
+            {errors.nombre && <span role="alert" aria-live="polite" className="font-body text-[12px] text-error">{errors.nombre.message}</span>}
           </div>
 
           {/* Email + Teléfono (teléfono opcional) */}
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
             <div className="flex flex-col gap-2.5">
-              <label htmlFor="cat-email" className="font-body font-bold text-[13px] text-[#f6eadf]">{f.email}{requiredMark}</label>
+              <label htmlFor="cat-email" className="font-body font-bold text-[13px] text-cream">{f.email}{requiredMark}</label>
               <input
                 id="cat-email"
                 type="email"
@@ -763,11 +766,11 @@ function FormSection() {
                   pattern: { value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/, message: f.emailError },
                 })}
               />
-              {errors.email && <span role="alert" aria-live="polite" className="font-body text-[12px] text-red-400">{errors.email.message}</span>}
+              {errors.email && <span role="alert" aria-live="polite" className="font-body text-[12px] text-error">{errors.email.message}</span>}
             </div>
             <div className="flex flex-col gap-2.5">
-              <label htmlFor="cat-telefono" className="font-body font-bold text-[13px] text-[#f6eadf]">
-                {f.telefono} <span className="font-normal text-[#f6eadf]/55">{f.telefonoOptional}</span>
+              <label htmlFor="cat-telefono" className="font-body font-bold text-[13px] text-cream">
+                {f.telefono} <span className="font-normal text-cream/55">{f.telefonoOptional}</span>
               </label>
               <input
                 id="cat-telefono"
@@ -781,13 +784,13 @@ function FormSection() {
                   pattern: { value: /^\+?[\d\s-]{9,}$/, message: f.phoneError },
                 })}
               />
-              {errors.telefono && <span role="alert" aria-live="polite" className="font-body text-[12px] text-red-400">{errors.telefono.message}</span>}
+              {errors.telefono && <span role="alert" aria-live="polite" className="font-body text-[12px] text-error">{errors.telefono.message}</span>}
             </div>
           </div>
 
           {/* Tipo evento — chips */}
           <div className="flex flex-col gap-2.5">
-            <span id="cat-tipoEvento-label" className="font-body font-bold text-[13px] text-[#f6eadf]">{f.tipoEvento}{requiredMark}</span>
+            <span id="cat-tipoEvento-label" className="font-body font-bold text-[13px] text-cream">{f.tipoEvento}{requiredMark}</span>
             <div role="radiogroup" aria-labelledby="cat-tipoEvento-label" className="flex flex-wrap gap-2">
               {f.eventTypes.map((type) => (
                 <label key={type} className="relative cursor-pointer">
@@ -806,13 +809,13 @@ function FormSection() {
                 </label>
               ))}
             </div>
-            {errors.tipoEvento && <span role="alert" aria-live="polite" className="font-body text-[12px] text-red-400">{errors.tipoEvento.message}</span>}
+            {errors.tipoEvento && <span role="alert" aria-live="polite" className="font-body text-[12px] text-error">{errors.tipoEvento.message}</span>}
           </div>
 
           {/* Fecha + Personas */}
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
             <div className="flex flex-col gap-2.5">
-              <label htmlFor="cat-fecha" className="font-body font-bold text-[13px] text-[#f6eadf]">{f.fecha}{requiredMark}</label>
+              <label htmlFor="cat-fecha" className="font-body font-bold text-[13px] text-cream">{f.fecha}{requiredMark}</label>
               <input
                 id="cat-fecha"
                 type="date"
@@ -824,10 +827,10 @@ function FormSection() {
                   validate: (v) => v >= today || f.dateError,
                 })}
               />
-              {errors.fecha && <span role="alert" aria-live="polite" className="font-body text-[12px] text-red-400">{errors.fecha.message}</span>}
+              {errors.fecha && <span role="alert" aria-live="polite" className="font-body text-[12px] text-error">{errors.fecha.message}</span>}
             </div>
             <div className="flex flex-col gap-2.5">
-              <span id="cat-personas-label" className="font-body font-bold text-[13px] text-[#f6eadf]">{f.personas}{requiredMark}</span>
+              <span id="cat-personas-label" className="font-body font-bold text-[13px] text-cream">{f.personas}{requiredMark}</span>
               <div role="radiogroup" aria-labelledby="cat-personas-label" className="flex flex-wrap gap-2">
                 {f.personasOptions.map((opt) => (
                   <label key={opt} className="relative cursor-pointer">
@@ -846,14 +849,14 @@ function FormSection() {
                   </label>
                 ))}
               </div>
-              {errors.personas && <span role="alert" aria-live="polite" className="font-body text-[12px] text-red-400">{errors.personas.message}</span>}
+              {errors.personas && <span role="alert" aria-live="polite" className="font-body text-[12px] text-error">{errors.personas.message}</span>}
             </div>
           </div>
 
           {/* Productos — multi-select chips, required (con "No lo sé aún" como opt-out semántico) */}
           <div className="flex flex-col gap-2.5">
-            <span id="cat-productos-label" className="font-body font-bold text-[13px] text-[#f6eadf]">{f.productos}{requiredMark}</span>
-            <span className="font-body text-[12.5px] text-[#f6eadf]/70 -mt-1">{f.productosHelp}</span>
+            <span id="cat-productos-label" className="font-body font-bold text-[13px] text-cream">{f.productos}{requiredMark}</span>
+            <span className="font-body text-[13px] text-cream/70 -mt-1">{f.productosHelp}</span>
             <div role="group" aria-labelledby="cat-productos-label" className="flex flex-wrap gap-2">
               {f.productosOptions.map((opt) => (
                 <label key={opt} className="relative cursor-pointer">
@@ -874,13 +877,13 @@ function FormSection() {
                 </label>
               ))}
             </div>
-            {errors.productos && <span role="alert" aria-live="polite" className="font-body text-[12px] text-red-400">{errors.productos.message as string}</span>}
+            {errors.productos && <span role="alert" aria-live="polite" className="font-body text-[12px] text-error">{errors.productos.message as string}</span>}
           </div>
 
           {/* Mensaje — opcional */}
           <div className="flex flex-col gap-2.5">
-            <label htmlFor="cat-mensaje" className="font-body font-bold text-[13px] text-[#f6eadf]">
-              {f.mensaje} <span className="font-normal text-[#f6eadf]/55">{f.mensajeOptional}</span>
+            <label htmlFor="cat-mensaje" className="font-body font-bold text-[13px] text-cream">
+              {f.mensaje} <span className="font-normal text-cream/55">{f.mensajeOptional}</span>
             </label>
             <textarea
               id="cat-mensaje"
@@ -896,11 +899,11 @@ function FormSection() {
             <label className="flex items-start gap-3 cursor-pointer group">
               <input
                 type="checkbox"
-                className="mt-0.5 w-4 h-4 accent-[#e8511b] flex-shrink-0 rounded"
+                className="mt-0.5 w-4 h-4 accent-orange flex-shrink-0 rounded"
                 {...register('privacidad', { required: f.required })}
               />
               <span
-                className="font-body text-[13px] text-[#f6eadf]/75 group-hover:text-[#f6eadf]"
+                className="font-body text-[13px] text-cream/75 group-hover:text-cream"
                 style={{ transition: 'color 200ms var(--ease-out)' }}
               >
                 {f.privacidadPre}
@@ -909,7 +912,7 @@ function FormSection() {
                   target="_blank"
                   rel="noopener noreferrer"
                   onClick={(e) => e.stopPropagation()}
-                  className="focus-ring rounded-sm font-bold underline underline-offset-2 decoration-[#e8511b]/60 text-[#f6eadf] hover:decoration-[#e8511b]"
+                  className="focus-ring rounded-[2px] font-bold underline underline-offset-2 decoration-orange/60 text-cream hover:decoration-orange"
                   style={{ transition: 'text-decoration-color 200ms var(--ease-out)' }}
                 >
                   {f.privacidadLink}
@@ -917,23 +920,23 @@ function FormSection() {
                 {requiredMark}
               </span>
             </label>
-            {errors.privacidad && <span role="alert" aria-live="polite" className="font-body text-[12px] text-red-400">{errors.privacidad.message}</span>}
+            {errors.privacidad && <span role="alert" aria-live="polite" className="font-body text-[12px] text-error">{errors.privacidad.message}</span>}
           </div>
 
           {/* Server error */}
           {serverError && (
-            <p role="alert" aria-live="polite" className="font-body text-[13px] text-red-300 bg-red-500/10 rounded-[14px] px-6 py-4 border border-red-500/30">
+            <p role="alert" aria-live="polite" className="font-body text-[13px] text-error bg-error/10 rounded-md px-6 py-4 border border-error/30">
               {f.errorMsg}
             </p>
           )}
 
           {/* Submit */}
           <div className="flex flex-col gap-5 mt-2">
-            <button
+            <Button
+              variant="orange"
               type="submit"
               disabled={isSubmitting}
-              className="submit-cta group press focus-ring font-body font-bold text-[13px] tracking-[0.14em] uppercase px-8 py-5 rounded-[16px] bg-[#e8511b] text-white hover:bg-[#d0481a] inline-flex items-center justify-center gap-3 w-full disabled:opacity-60 disabled:cursor-not-allowed shadow-[0_12px_32px_-8px_rgba(232,81,27,0.55),0_2px_6px_-1px_rgba(232,81,27,0.25)]"
-              style={{ transition: 'transform 160ms var(--ease-out), background-color 200ms var(--ease-out), opacity 200ms var(--ease-out), box-shadow 200ms var(--ease-out)' }}
+              className="submit-cta group text-[13px] tracking-[0.14em] px-8 py-5 gap-3 w-full disabled:opacity-60 disabled:cursor-not-allowed shadow-[0_12px_32px_-8px_rgba(232,81,27,0.55),0_2px_6px_-1px_rgba(232,81,27,0.25)]"
             >
               <span>{isSubmitting ? f.sending : f.submit}</span>
               {!isSubmitting && (
@@ -953,14 +956,14 @@ function FormSection() {
                   <path d="M5 12h14M12 5l7 7-7 7"/>
                 </svg>
               )}
-            </button>
+            </Button>
 
             {/* WhatsApp fallback — secondary, low-emphasis */}
             <a
               href={WHATSAPP_HREF}
               target="_blank"
               rel="noopener noreferrer"
-              className="press focus-ring font-body text-[13px] text-[#f6eadf]/70 hover:text-[#25d366] inline-flex items-center justify-center gap-2 self-center"
+              className="press focus-ring font-body text-[13px] text-cream/70 hover:text-whatsapp inline-flex items-center justify-center gap-2 self-center"
               style={{ transition: 'color 200ms var(--ease-out)' }}
             >
               <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
@@ -970,7 +973,7 @@ function FormSection() {
             </a>
           </div>
 
-          <p className="font-body text-[12px] text-[#f6eadf]/70 text-center leading-relaxed">{f.note}</p>
+          <p className="font-body text-[12px] text-cream/70 text-center leading-relaxed">{f.note}</p>
         </motion.form>
       </div>
     </section>
@@ -985,7 +988,7 @@ function InfoSection() {
   const info = t.catering.info
 
   return (
-    <section className="relative bg-[#320e10] overflow-hidden">
+    <section className="relative bg-dark overflow-hidden">
       <div
         className="absolute top-[10%] right-[6%] w-[420px] h-[420px] pointer-events-none"
         style={{ background: 'radial-gradient(ellipse at center, rgba(248,177,20,0.10) 0%, rgba(232,81,27,0.04) 45%, transparent 72%)' }}
@@ -1001,18 +1004,18 @@ function InfoSection() {
           transition={{ duration: 0.55, ease: EASE }}
         >
           <div className="flex items-center gap-3">
-            <span className="block w-8 h-[3px] bg-[#e8511b] rounded-full" />
-            <span className="font-body font-bold text-[11px] tracking-[0.28em] uppercase text-[#e8511b]">{info.tag}</span>
-            <span className="block w-8 h-[3px] bg-[#e8511b] rounded-full" />
+            <span className="block w-8 h-[3px] bg-orange rounded-full" />
+            <span className="font-body font-bold text-[11px] tracking-[0.28em] uppercase text-orange">{info.tag}</span>
+            <span className="block w-8 h-[3px] bg-orange rounded-full" />
           </div>
-          <h2 className="font-display text-[34px] md:text-[46px] lg:text-[54px] leading-[1.05] text-[#f6eadf]">{info.title}</h2>
+          <h2 className="font-display text-[34px] md:text-[46px] lg:text-[54px] leading-[1.05] text-cream">{info.title}</h2>
         </motion.div>
 
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-5">
           {info.cards.map((card, i) => (
             <motion.div
               key={i}
-              className="relative bg-[#3b1315] rounded-[22px] p-6 md:p-7 border border-[#f6eadf]/10 hover:border-[#e8511b]/40 hover:shadow-[0_16px_40px_-12px_rgba(232,81,27,0.25)] flex flex-col gap-2.5"
+              className="relative bg-surface-dark rounded-lg p-6 md:p-7 border border-cream/10 hover:border-orange/40 hover:shadow-[0_16px_40px_-12px_rgba(232,81,27,0.25)] flex flex-col gap-2.5"
               style={{ transition: 'border-color 240ms var(--ease-out), box-shadow 240ms var(--ease-out), transform 240ms var(--ease-out)' }}
               initial={{ opacity: 0, y: 24 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -1020,11 +1023,11 @@ function InfoSection() {
               transition={{ duration: 0.5, delay: i * 0.08, ease: EASE }}
             >
               <div className="flex items-baseline gap-1.5">
-                <span className="font-display text-[44px] md:text-[54px] leading-none text-[#f8b114]">{card.kpi}</span>
-                <span className="font-body font-bold text-[12px] tracking-[0.12em] uppercase text-[#f6eadf]/55">{card.unit}</span>
+                <span className="font-display text-[44px] md:text-[54px] leading-none text-yellow">{card.kpi}</span>
+                <span className="font-body font-bold text-[12px] tracking-[0.12em] uppercase text-cream/55">{card.unit}</span>
               </div>
-              <span className="font-body font-bold text-[14px] md:text-[15px] text-[#f6eadf] leading-snug">{card.label}</span>
-              <span className="font-body text-[12.5px] md:text-[13px] text-[#f6eadf]/70 leading-[1.55]">{card.desc}</span>
+              <span className="font-body font-bold text-[14px] md:text-[15px] text-cream leading-snug">{card.label}</span>
+              <span className="font-body text-[13px] md:text-[13px] text-cream/70 leading-[1.55]">{card.desc}</span>
             </motion.div>
           ))}
         </div>
@@ -1043,7 +1046,7 @@ function MidCtaSection() {
   const m = t.catering.midcta
 
   return (
-    <section className="relative bg-[#f6eadf] py-20 md:py-24 px-6 md:px-12 overflow-hidden">
+    <section className="relative bg-cream py-20 md:py-24 px-6 md:px-12 overflow-hidden">
       <div
         className="absolute inset-0 pointer-events-none"
         style={{ background: 'radial-gradient(ellipse at 50% 50%, rgba(248,177,20,0.10) 0%, rgba(232,81,27,0.04) 45%, transparent 72%)' }}
@@ -1051,39 +1054,38 @@ function MidCtaSection() {
       />
 
       <motion.div
-        className="relative z-10 max-w-4xl mx-auto flex flex-col items-center gap-7 text-center bg-white/60 backdrop-blur-sm rounded-[28px] p-10 md:p-14 border border-[#320e10]/8 shadow-[0_20px_48px_-18px_rgba(50,14,16,0.18)]"
+        className="relative z-10 max-w-4xl mx-auto flex flex-col items-center gap-7 text-center bg-white/60 backdrop-blur-sm rounded-xl p-10 md:p-14 border border-dark/8 shadow-[0_20px_48px_-18px_rgba(50,14,16,0.18)]"
         initial={{ opacity: 0, y: 24 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, amount: 0.25 }}
         transition={{ duration: 0.6, ease: EASE }}
       >
-        <h2 className="font-display text-[32px] md:text-[46px] lg:text-[54px] leading-[1.04] text-[#320e10]">
+        <h2 className="font-display text-[32px] md:text-[46px] lg:text-[54px] leading-[1.04] text-dark">
           {m.title}
         </h2>
-        <p className="font-body text-[15px] md:text-[16px] text-[#320e10]/70 leading-relaxed max-w-xl">
+        <p className="font-body text-[15px] md:text-[16px] text-dark/70 leading-relaxed max-w-xl">
           {m.sub}
         </p>
 
         <div className="flex flex-wrap items-center justify-center gap-3">
-          <a
+          <Button
+            variant="orange"
             href="#catering-form"
-            className="group/cta press focus-ring font-body font-bold text-[12px] md:text-[13px] tracking-[0.12em] uppercase px-7 md:px-8 py-3.5 md:py-4 rounded-[14px] bg-[#e8511b] text-white hover:bg-[#d0481a] inline-flex items-center gap-2 shadow-[0_10px_28px_-8px_rgba(232,81,27,0.45)]"
-            style={{ transition: 'transform 160ms var(--ease-out), background-color 200ms var(--ease-out)' }}
+            className="group/cta text-[12px] md:text-[13px] tracking-[0.12em] px-7 md:px-8 py-3.5 md:py-4 gap-2 shadow-[0_10px_28px_-8px_rgba(232,81,27,0.45)]"
           >
             <MicroCtaContent label={m.primary} arrowSize={14} />
-          </a>
-          <a
+          </Button>
+          <Button
+            variant="outline-dark"
             href={WHATSAPP_HREF}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="press focus-ring font-body font-bold text-[12px] md:text-[13px] tracking-[0.12em] uppercase px-7 md:px-8 py-3.5 md:py-4 rounded-[14px] border-2 border-[#320e10]/15 text-[#320e10] hover:border-[#25d366] hover:text-[#128c7e] hover:bg-[#25d366]/5 inline-flex items-center gap-2"
-            style={{ transition: 'transform 160ms var(--ease-out), border-color 200ms var(--ease-out), color 200ms var(--ease-out), background-color 200ms var(--ease-out)' }}
+            external
+            className="border-dark/15 hover:border-whatsapp hover:text-whatsapp-ink hover:bg-whatsapp/5 text-[12px] md:text-[13px] tracking-[0.12em] px-7 md:px-8 py-3.5 md:py-4 gap-2"
           >
             <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
               <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
             </svg>
             {m.whatsapp}
-          </a>
+          </Button>
         </div>
       </motion.div>
     </section>
@@ -1099,7 +1101,7 @@ function FaqSection() {
   const [open, setOpen] = useState<number | null>(0)
 
   return (
-    <section id="catering-faq" className="relative bg-[#f6eadf] overflow-hidden scroll-mt-[96px]">
+    <section id="catering-faq" className="relative bg-cream overflow-hidden scroll-mt-[96px]">
       <div
         className="absolute top-[12%] left-[6%] w-[420px] h-[420px] pointer-events-none"
         style={{ background: 'radial-gradient(ellipse at center, rgba(232,81,27,0.05) 0%, transparent 70%)' }}
@@ -1115,10 +1117,10 @@ function FaqSection() {
           transition={{ duration: 0.55, ease: EASE }}
         >
           <div className="flex items-center gap-3">
-            <span className="block w-8 h-[3px] bg-[#e8511b] rounded-full" />
-            <span className="font-body font-bold text-[11px] tracking-[0.28em] uppercase text-[#e8511b]">{f.tag}</span>
+            <span className="block w-8 h-[3px] bg-orange rounded-full" />
+            <span className="font-body font-bold text-[11px] tracking-[0.28em] uppercase text-orange">{f.tag}</span>
           </div>
-          <h2 className="font-display text-[38px] md:text-[54px] lg:text-[62px] leading-[1.04] text-[#320e10]">{f.title}</h2>
+          <h2 className="font-display text-[38px] md:text-[54px] lg:text-[62px] leading-[1.04] text-dark">{f.title}</h2>
         </motion.div>
 
         <ul className="flex flex-col gap-3">
@@ -1127,7 +1129,7 @@ function FaqSection() {
             return (
               <motion.li
                 key={i}
-                className="bg-white rounded-[18px] border border-[#320e10]/8 overflow-hidden"
+                className="bg-white rounded-md border border-dark/8 overflow-hidden"
                 initial={{ opacity: 0, y: 16 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, amount: 0.15 }}
@@ -1139,11 +1141,11 @@ function FaqSection() {
                   aria-expanded={isOpen}
                   className="w-full flex items-center justify-between gap-4 px-6 py-5 text-left focus-ring"
                 >
-                  <span className="font-body font-bold text-[15px] md:text-[16px] text-[#320e10] leading-snug">
+                  <span className="font-body font-bold text-[15px] md:text-[16px] text-dark leading-snug">
                     {item.q}
                   </span>
                   <span
-                    className={`flex-shrink-0 w-8 h-8 rounded-full border-2 border-[#e8511b]/40 flex items-center justify-center text-[#e8511b] ${isOpen ? 'rotate-45 bg-[#e8511b] text-white' : ''}`}
+                    className={`flex-shrink-0 w-8 h-8 rounded-full border-2 border-orange/40 flex items-center justify-center text-orange ${isOpen ? 'rotate-45 bg-orange text-white' : ''}`}
                     style={{ transition: 'transform 220ms var(--ease-out), background-color 220ms var(--ease-out), color 220ms var(--ease-out)' }}
                     aria-hidden="true"
                   >
@@ -1157,7 +1159,7 @@ function FaqSection() {
                   style={{ gridTemplateRows: isOpen ? '1fr' : '0fr', transition: 'grid-template-rows 280ms var(--ease-out)' }}
                 >
                   <div className="overflow-hidden">
-                    <p className="font-body text-[14px] md:text-[15px] text-[#320e10]/72 leading-[1.75] px-6 pb-6">
+                    <p className="font-body text-[14px] md:text-[15px] text-dark/72 leading-[1.75] px-6 pb-6">
                       {item.a}
                     </p>
                   </div>
@@ -1232,26 +1234,27 @@ function StickyCta() {
       aria-hidden={!visible}
       {...(!visible ? { inert: true } : {})}
     >
-      <a
+      <Button
+        variant="orange"
         href="#catering-form"
-        className="press flex-1 font-body font-bold text-[12px] tracking-[0.12em] uppercase px-4 py-3.5 rounded-[14px] bg-[#e8511b] text-white inline-flex items-center justify-center gap-2 shadow-[0_10px_30px_-6px_rgba(232,81,27,0.55)]"
+        className="flex-1 text-[12px] tracking-[0.12em] px-4 py-3.5 gap-2 shadow-[0_10px_30px_-6px_rgba(232,81,27,0.55)]"
       >
         {s.label}
         <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
           <path d="M5 12h14M12 5l7 7-7 7"/>
         </svg>
-      </a>
-      <a
+      </Button>
+      <Button
+        variant="whatsapp"
         href={WHATSAPP_HREF}
-        target="_blank"
-        rel="noopener noreferrer"
+        external
         aria-label="WhatsApp"
-        className="press w-14 flex items-center justify-center rounded-[14px] bg-[#25d366] text-white shadow-[0_10px_30px_-6px_rgba(37,211,102,0.55)]"
+        className="w-14 shadow-[0_10px_30px_-6px_rgba(37,211,102,0.55)]"
       >
         <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
           <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
         </svg>
-      </a>
+      </Button>
     </div>
   )
 }
@@ -1287,7 +1290,7 @@ export function Catering() {
         postalCode: '08401',
         addressCountry: 'ES',
       },
-      telephone: '+34938421122',
+      telephone: '+34603919473',
       url: 'https://beikitbakery.com',
     },
     areaServed: { '@type': 'Place', name: 'Granollers y 30 km' },
@@ -1298,6 +1301,8 @@ export function Catering() {
     <>
       <Helmet>
         <html lang={lang} />
+        {/* Not yet launched — reachable by direct URL but kept out of search engines */}
+        <meta name="robots" content="noindex" />
         <title>Catering para empresas y eventos en Granollers — Beikit Bakery</title>
         <meta name="description" content="Catering dulce artesano en Granollers y 30 km. Cookies, cheesecakes y coffee breaks para empresas, bodas y celebraciones desde 20 personas. Presupuesto gratis en 48h." />
         <meta property="og:title" content="Catering Beikit — Coffee breaks, bodas y eventos corporativos" />

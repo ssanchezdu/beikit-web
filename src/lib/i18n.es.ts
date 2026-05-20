@@ -19,14 +19,14 @@ const es = {
     verMenos: 'Ver menos',
     items: {
       cookies: [
+        { name: 'Kinder', price: '5,00 €', desc: 'Rellena de crema de Kinder con chips de chocolate con leche y coronada con un mini Kinder Bueno.' },
+        { name: 'Dinosaurus', price: '5,00 €', desc: 'Rellena de crema de la famosa galleta, chips de choco blanco y un toque de sal. ¡Tus bocados serán más grandes que los de un T-Rex!' },
         { name: 'NY Classic', price: '5,00 €', desc: 'Un clásico que nunca falla, perfecto para los amantes de lo simple pero infalible. Con chips de chocolate con leche.' },
         { name: 'Oreo', price: '5,00 €', desc: 'Rellena con una espectacular crema de Cookies & Cream, chips de choco blanco y trocitos de Oreo. ¡Nuestra favorita!' },
-        { name: 'Lotus', price: '5,00 €', desc: 'Rellena con la famosa crema de speculoos y chips de chocolate con leche. Dulce, intensa y absolutamente irresistible.' },
-        { name: 'Pistacchio', price: '5,00 €', desc: 'Rellena de adictiva crema de pistacho, un toque salado, pistachos y chips de chocolate blanco. Poco más que añadir…' },
-        { name: 'Kinder', price: '5,00 €', desc: 'Rellena de crema de Kinder con chips de chocolate con leche y coronada con un mini Kinder Bueno.' },
         { name: 'Red Velvet', price: '5,00 €', desc: 'Elaborada con cacao, un toque rojo avainillado, rellena de frosting de queso crema y chips choco dúo.' },
-        { name: 'Dinosaurus', price: '5,00 €', desc: 'Rellena de crema de la famosa galleta, chips de choco blanco y un toque de sal. ¡Tus bocados serán más grandes que los de un T-Rex!' },
+        { name: 'Pistacchio', price: '5,00 €', desc: 'Rellena de adictiva crema de pistacho, un toque salado, pistachos y chips de chocolate blanco. Poco más que añadir…' },
         { name: 'Triple Choc', price: '5,00 €', desc: 'Para los amantes del chocolate. Masa elaborada con cacao puro y chips de choco dúo. Un bocado placentero…' },
+        { name: 'Lotus', price: '5,00 €', desc: 'Rellena con la famosa crema de speculoos y chips de chocolate con leche. Dulce, intensa y absolutamente irresistible.' },
       ],
       cheesecakes: [
         {
@@ -50,22 +50,22 @@ const es = {
         },
       ],
       milkshakes: [
-        { name: 'Vainilla', price: '5,00 €', desc: 'Vainilla bourbon y leche fría. El batido de toda la vida, pero mejorado.' },
-        { name: 'Chocolate', price: '5,00 €', desc: 'Cacao puro y salsa fudge. Denso, oscuro, sin concesiones.' },
-        { name: 'Fresa', price: '5,00 €', desc: 'Fresas frescas batidas con helado y leche entera. Sabor de verano todo el año.' },
-        { name: 'Oreo', price: '5,00 €', desc: 'Galletas Oreo trituradas en un batido cremoso. Crujiente en cada sorbo.' },
-        { name: 'Lotus', price: '5,00 €', desc: 'Galletas Lotus caramelizadas con helado de vainilla. Una locura cremosa.' },
-        { name: 'Dinosaurus', price: '5,00 €', desc: 'La galleta de la infancia batida con helado. Nostalgia en vaso alto.' },
+        { name: 'Vainilla', price: '5,00 €', desc: 'Helado artesano de vainilla bourbon batido con leche fría. El batido de toda la vida, espeso y cremoso de verdad.' },
+        { name: 'Chocolate', price: '5,00 €', desc: 'Cacao puro y helado artesano con un hilo de salsa fudge. Denso, oscuro, sin concesiones.' },
+        { name: 'Fresa', price: '5,00 €', desc: 'Fresa natural batida con helado artesano y leche fría. Fresca, dulce, verano en cada sorbo.' },
+        { name: 'Oreo', price: '5,00 €', desc: 'Galleta Oreo triturada dentro de un batido denso y cremoso. Crujiente en cada sorbo, golosa hasta el fondo.' },
+        { name: 'Lotus', price: '5,00 €', desc: 'Helado de vainilla batido con galleta Lotus caramelizada. El caramelo speculoos, ahora para sorber.' },
+        { name: 'Dinosaurus', price: '5,00 €', desc: 'La galleta de la infancia batida con helado artesano. Espeso, cremoso, nostálgico hasta el último sorbo.' },
       ],
       otros: [
-        { name: 'Café Latte', price: '3,00 €', desc: 'Espresso doble y leche vaporizada. Equilibrio perfecto entre fuerza y suavidad.' },
-        { name: 'Café French Vainilla', price: '3,20 €', desc: 'Espresso con crema de vainilla francesa. Dulce, aromático y elegante.' },
-        { name: 'Café Oreo', price: '3,50 €', desc: 'Espresso, galleta Oreo triturada y leche vaporizada. Tu latte con un crujido adictivo.' },
+        { name: 'Café Latte', price: '3,00 €', desc: 'Espresso doble y leche vaporizada, nada más. El equilibrio perfecto entre fuerza y suavidad.' },
+        { name: 'Café French Vainilla', price: '3,20 €', desc: 'Espresso con crema de vainilla francesa y leche vaporizada. Dulce, aromático, elegante.' },
+        { name: 'Café Oreo', price: '3,50 €', desc: 'Espresso, galleta Oreo triturada y leche vaporizada. Tu latte de siempre, con un crujido adictivo.' },
         { name: 'Café Lotus', price: '3,50 €', desc: 'Espresso con caramelo speculoos y leche vaporizada. Tostado, acaramelado, irresistible.' },
         { name: 'Café Mocha', price: '3,50 €', desc: 'Espresso, chocolate negro y leche vaporizada. Para los que nunca eligen entre café y chocolate.' },
-        { name: 'Café Mocha White', price: '3,50 €', desc: 'Espresso, chocolate blanco y leche vaporizada. Dulce, cremoso y adictivo.' },
-        { name: 'Matcha Latte', price: '3,80 €', desc: 'Matcha ceremonial batido con leche vaporizada. Energía verde, sin espresso.' },
-        { name: 'Chai Latte', price: '3,80 €', desc: 'Mezcla de especias infusionada con leche vaporizada. Cálido, picante y reconfortante.' },
+        { name: 'Café Mocha White', price: '3,50 €', desc: 'Espresso, chocolate blanco y leche vaporizada. Dulce, cremoso, adictivo.' },
+        { name: 'Matcha Latte', price: '3,80 €', desc: 'Matcha ceremonial batido con leche vaporizada. Verde, suave, energía sin espresso.' },
+        { name: 'Chai Latte', price: '3,80 €', desc: 'Mezcla de especias infusionada con leche vaporizada. Cálido, especiado, reconfortante.' },
       ],
     },
   },
@@ -82,7 +82,7 @@ const es = {
   rrss: { eyebrow: 'Spoiler:', headline: '“Nuestras redes huelen a cookies.”', cta: 'Síguenos' },
   delivery: {
     eyebrow: 'Tres maneras de pedir',
-    title: { line1Pre: 'Tu ', brand: 'Beikit', line1Post: ',', line2: 'como lo quieras' },
+    title: { line1Pre: 'Tu ', brand: 'Beikit', line1Post: '', line2: 'como quieras' },
     subtitle: 'Pásate por el local, llámanos y recoge, o recíbelo en casa. Tú eliges cómo llevarte un trocito de Beikit.',
     options: [
       {
@@ -100,7 +100,7 @@ const es = {
         title: 'Llama y recoge',
         body: 'Haz tu pedido por teléfono, te avisamos cuando esté listo y pasas a buscarlo sin colas ni esperas.',
         ctas: [
-          { label: 'Llamar · 938 42 11 22', href: 'tel:+34938421122', external: false },
+          { label: 'Llamar · 603 91 94 73', href: 'tel:+34603919473', external: false },
         ],
       },
       {
@@ -118,7 +118,7 @@ const es = {
   footer: {
     title: 'Ponte en contacto',
     phonelabel: 'Teléfono',
-    phone: '938421122',
+    phone: '603919473',
     addrlabel: 'Dirección',
     address: 'Carrer Princesa, 10\n08401 Granollers',
     hourslabel: 'Horarios',

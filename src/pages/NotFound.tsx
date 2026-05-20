@@ -1,7 +1,8 @@
 import { Helmet } from 'react-helmet-async'
-import { Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
 import { useLanguage } from '../lib/i18n'
+import { EASE_ENTRANCE } from '../lib/motion'
+import { Button } from '../components/ui/Button'
 
 export function NotFound() {
   const { t } = useLanguage()
@@ -14,7 +15,7 @@ export function NotFound() {
         <meta name="robots" content="noindex" />
       </Helmet>
 
-      <section className="min-h-[85vh] bg-[#320e10] flex flex-col items-center justify-center px-6 text-center relative overflow-hidden">
+      <section className="min-h-[85vh] bg-dark flex flex-col items-center justify-center px-6 text-center relative overflow-hidden">
 
         {/* Warm ambient glow */}
         <div
@@ -28,7 +29,7 @@ export function NotFound() {
           className="absolute inset-0 flex items-center justify-center pointer-events-none select-none"
           aria-hidden="true"
         >
-          <span className="font-display text-[40vw] leading-none text-[#f6eadf]/[0.04]">
+          <span className="font-display text-[40vw] leading-none text-cream/[0.04]">
             404
           </span>
         </div>
@@ -64,36 +65,32 @@ export function NotFound() {
           className="relative z-10 flex flex-col items-center gap-8 max-w-lg"
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.65, ease: [0.25, 0.46, 0.45, 0.94] }}
+          transition={{ duration: 0.65, ease: EASE_ENTRANCE }}
         >
           {/* Orange accent */}
           <div className="flex items-center gap-3">
-            <span className="block w-8 h-[3px] bg-[#e8511b] rounded-full" />
-            <span className="font-body font-bold text-[11px] tracking-[0.28em] uppercase text-[#e8511b]">
+            <span className="block w-8 h-[3px] bg-orange rounded-full" />
+            <span className="font-body font-bold text-[11px] tracking-[0.28em] uppercase text-orange">
               Error 404
             </span>
-            <span className="block w-8 h-[3px] bg-[#e8511b] rounded-full" />
+            <span className="block w-8 h-[3px] bg-orange rounded-full" />
           </div>
 
           <div className="flex flex-col gap-4">
-            <h1 className="font-display text-[52px] md:text-[72px] leading-[1.05] text-[#f6eadf] whitespace-pre-line text-balance">
+            <h1 className="font-display text-[52px] md:text-[72px] leading-[1.05] text-cream whitespace-pre-line text-balance">
               {n.title}
             </h1>
-            <p className="font-body italic text-[18px] text-[#f6eadf]/40">
+            <p className="font-body italic text-[18px] text-cream/40">
               {n.sub}
             </p>
           </div>
 
-          <Link
-            to="/"
-            className="press focus-ring-dark font-body font-bold text-[12px] tracking-[0.15em] uppercase px-8 py-4 rounded-[14px] bg-[#e8511b] text-white hover:bg-[#d0481a] inline-flex items-center gap-2.5 shadow-[0_8px_24px_-6px_rgba(232,81,27,0.35)]"
-            style={{ transition: 'transform 160ms var(--ease-out), background-color 200ms var(--ease-out)' }}
-          >
+          <Button variant="orange" focusOnDark to="/" className="text-[12px] tracking-[0.15em] px-8 py-4 gap-2.5 shadow-[0_8px_24px_-6px_rgba(232,81,27,0.35)]">
             {n.cta}
             <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
               <path d="M5 12h14M12 5l7 7-7 7"/>
             </svg>
-          </Link>
+          </Button>
         </motion.div>
       </section>
     </>

@@ -21,14 +21,14 @@ const ca = {
     verMenos: 'Veure menys',
     items: {
       cookies: [
+        { name: 'Kinder', price: '5,00 €', desc: "Farcida de crema de Kinder amb chips de xocolata amb llet i coronada amb un mini Kinder Bueno." },
+        { name: 'Dinosaurus', price: '5,00 €', desc: "Farcida de crema de la famosa galeta, chips de xoco blanc i un toc de sal. Els teus mossos seran més grans que els d'un T-Rex!" },
         { name: 'NY Classic', price: '5,00 €', desc: "Un clàssic que mai falla, perfecte per als amants del simple però infal·lible. Amb chips de xocolata amb llet." },
         { name: 'Oreo', price: '5,00 €', desc: "Farcida amb una espectacular crema de Cookies & Cream, chips de xoco blanc i trossets d'Oreo. La nostra favorita!" },
-        { name: 'Lotus', price: '5,00 €', desc: "Farcida amb la famosa crema de speculoos i chips de xocolata amb llet. Dolça, intensa i absolutament irresistible." },
-        { name: 'Pistacchio', price: '5,00 €', desc: "Farcida d'addictiva crema de pistatxo, un toc salat, pistatxos i chips de xocolata blanca. Poc més a afegir…" },
-        { name: 'Kinder', price: '5,00 €', desc: "Farcida de crema de Kinder amb chips de xocolata amb llet i coronada amb un mini Kinder Bueno." },
         { name: 'Red Velvet', price: '5,00 €', desc: "Elaborada amb cacau, un toc vermell avainillat, farcida de frosting de formatge crema i chips xoco duo." },
-        { name: 'Dinosaurus', price: '5,00 €', desc: "Farcida de crema de la famosa galeta, chips de xoco blanc i un toc de sal. Els teus mossos seran més grans que els d'un T-Rex!" },
+        { name: 'Pistacchio', price: '5,00 €', desc: "Farcida d'addictiva crema de pistatxo, un toc salat, pistatxos i chips de xocolata blanca. Poc més a afegir…" },
         { name: 'Triple Choc', price: '5,00 €', desc: "Per als amants de la xocolata. Massa elaborada amb cacau pur i chips de xoco duo. Un mos plaent…" },
+        { name: 'Lotus', price: '5,00 €', desc: "Farcida amb la famosa crema de speculoos i chips de xocolata amb llet. Dolça, intensa i absolutament irresistible." },
       ],
       cheesecakes: [
         {
@@ -52,22 +52,22 @@ const ca = {
         },
       ],
       milkshakes: [
-        { name: 'Vainilla', price: '5,00 €', desc: "Vainilla bourbon i llet freda. El batut de tota la vida, però millorat." },
-        { name: 'Xocolata', price: '5,00 €', desc: "Cacau pur i salsa fudge. Dens, fosc, sense concessions." },
-        { name: 'Maduixa', price: '5,00 €', desc: "Maduixes fresques batudes amb gelat i llet sencera. Sabor d'estiu tot l'any." },
-        { name: 'Oreo', price: '5,00 €', desc: "Galetes Oreo triturades en un batut cremós. Cruixent a cada glop." },
-        { name: 'Lotus', price: '5,00 €', desc: "Galetes Lotus caramel·litzades amb gelat de vainilla. Una bogeria cremosa." },
-        { name: 'Dinosaurus', price: '5,00 €', desc: "La galeta de la infància batuda amb gelat. Nostàlgia en got alt." },
+        { name: 'Vainilla', price: '5,00 €', desc: "Gelat artesà de vainilla bourbon batut amb llet freda. El batut de tota la vida, espès i cremós de debò." },
+        { name: 'Xocolata', price: '5,00 €', desc: "Cacau pur i gelat artesà amb un fil de salsa fudge. Dens, fosc, sense concessions." },
+        { name: 'Maduixa', price: '5,00 €', desc: "Maduixa natural batuda amb gelat artesà i llet freda. Fresca, dolça, estiu a cada glop." },
+        { name: 'Oreo', price: '5,00 €', desc: "Galeta Oreo triturada dins d'un batut dens i cremós. Cruixent a cada glop, llaminera fins al fons." },
+        { name: 'Lotus', price: '5,00 €', desc: "Gelat de vainilla batut amb galeta Lotus caramel·litzada. El caramel speculoos, ara per beure." },
+        { name: 'Dinosaurus', price: '5,00 €', desc: "La galeta de la infància batuda amb gelat artesà. Espès, cremós, nostàlgic fins a l'últim glop." },
       ],
       otros: [
-        { name: 'Cafè Latte', price: '3,00 €', desc: "Espresso doble i llet vaporitzada. Equilibri perfecte entre força i suavitat." },
-        { name: 'Cafè French Vainilla', price: '3,20 €', desc: "Espresso amb crema de vainilla francesa. Dolç, aromàtic i elegant." },
-        { name: 'Cafè Oreo', price: '3,50 €', desc: "Espresso, galeta Oreo triturada i llet vaporitzada. El teu latte amb un cruixit addictiu." },
+        { name: 'Cafè Latte', price: '3,00 €', desc: "Espresso doble i llet vaporitzada, res més. L'equilibri perfecte entre força i suavitat." },
+        { name: 'Cafè French Vainilla', price: '3,20 €', desc: "Espresso amb crema de vainilla francesa i llet vaporitzada. Dolç, aromàtic, elegant." },
+        { name: 'Cafè Oreo', price: '3,50 €', desc: "Espresso, galeta Oreo triturada i llet vaporitzada. El teu latte de sempre, amb un cruixit addictiu." },
         { name: 'Cafè Lotus', price: '3,50 €', desc: "Espresso amb caramel speculoos i llet vaporitzada. Torrat, acaramel·lat, irresistible." },
         { name: 'Cafè Mocha', price: '3,50 €', desc: "Espresso, xocolata negra i llet vaporitzada. Per als que mai trien entre cafè i xocolata." },
-        { name: 'Cafè Mocha White', price: '3,50 €', desc: "Espresso, xocolata blanca i llet vaporitzada. Dolç, cremós i addictiu." },
-        { name: 'Matcha Latte', price: '3,80 €', desc: "Matcha cerimonial batut amb llet vaporitzada. Energia verda, sense espresso." },
-        { name: 'Chai Latte', price: '3,80 €', desc: "Mescla d'espècies infusionada amb llet vaporitzada. Càlid, picant i reconfortant." },
+        { name: 'Cafè Mocha White', price: '3,50 €', desc: "Espresso, xocolata blanca i llet vaporitzada. Dolç, cremós, addictiu." },
+        { name: 'Matcha Latte', price: '3,80 €', desc: "Matcha cerimonial batut amb llet vaporitzada. Verd, suau, energia sense espresso." },
+        { name: 'Chai Latte', price: '3,80 €', desc: "Mescla d'espècies infusionada amb llet vaporitzada. Càlid, especiat, reconfortant." },
       ],
     },
   },
@@ -84,7 +84,7 @@ const ca = {
   rrss: { eyebrow: 'Spoiler:', headline: '“Les nostres xarxes fan olor de cookies.”', cta: 'Segueix-nos' },
   delivery: {
     eyebrow: 'Tres maneres de demanar',
-    title: { line1Pre: 'El teu ', brand: 'Beikit', line1Post: ',', line2: 'com el vulguis' },
+    title: { line1Pre: 'El teu ', brand: 'Beikit', line1Post: '', line2: 'com vulguis' },
     subtitle: "Passa pel local, truca'ns i recull, o rep-ho a casa. Tu tries com emportar-te un trosset de Beikit.",
     options: [
       {
@@ -102,7 +102,7 @@ const ca = {
         title: 'Truca i recull',
         body: "Fes la teva comanda per telèfon, t'avisem quan estigui llesta i passes a buscar-la sense cues ni esperes.",
         ctas: [
-          { label: 'Trucar · 938 42 11 22', href: 'tel:+34938421122', external: false },
+          { label: 'Trucar · 603 91 94 73', href: 'tel:+34603919473', external: false },
         ],
       },
       {
@@ -120,7 +120,7 @@ const ca = {
   footer: {
     title: "Posa't en contacte",
     phonelabel: 'Telèfon',
-    phone: '938421122',
+    phone: '603919473',
     addrlabel: 'Adreça',
     address: 'Carrer Princesa, 10\n08401 Granollers',
     hourslabel: 'Horaris',

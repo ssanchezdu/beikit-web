@@ -15,13 +15,13 @@ export function Footer() {
   } as React.CSSProperties
 
   return (
-    <footer className="bg-[#320e10] relative">
+    <footer className="bg-dark relative">
       {/* Footer body */}
       <div className="relative z-10 px-6 md:px-12 pt-10 sm:pt-16 pb-8 sm:pb-10">
         <div className="max-w-5xl mx-auto">
 
           {/* Top section — logo + grid */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-12 gap-7 sm:gap-10 lg:gap-x-10 items-start pb-8 sm:pb-10 border-b border-[#f6eadf]/6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-12 gap-7 sm:gap-10 lg:gap-x-10 items-start pb-8 sm:pb-10 border-b border-cream/10">
 
             {/* Brand col */}
             <div className="sm:col-span-2 lg:col-span-3 flex flex-col gap-5 items-start">
@@ -33,7 +33,7 @@ export function Footer() {
                 loading="lazy"
                 alt="Beikit Bakery"
               />
-              <p className="font-body text-[12px] text-[#f6eadf]/55 tracking-[0.1em] uppercase leading-relaxed">
+              <p className="font-body text-[12px] text-cream/55 tracking-[0.1em] uppercase leading-relaxed">
                 American Bakery · Granollers, Spain
               </p>
 
@@ -44,7 +44,7 @@ export function Footer() {
                   target="_blank"
                   rel="noreferrer"
                   aria-label="Instagram"
-                  className="press focus-ring-dark w-10 h-10 rounded-full border border-[#f6eadf]/10 flex items-center justify-center text-[#f6eadf]/40 hover:border-[#e8511b] hover:text-[#e8511b] hover:shadow-[0_0_16px_-4px_rgba(232,81,27,0.3)]"
+                  className="press focus-ring-dark w-10 h-10 rounded-full border border-cream/10 flex items-center justify-center text-cream/40 hover:border-orange hover:text-orange hover:shadow-[0_0_16px_-4px_rgba(232,81,27,0.3)]"
                   style={socialTransition}
                 >
                   <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
@@ -58,7 +58,7 @@ export function Footer() {
                   target="_blank"
                   rel="noreferrer"
                   aria-label="TikTok"
-                  className="press focus-ring-dark w-10 h-10 rounded-full border border-[#f6eadf]/10 flex items-center justify-center text-[#f6eadf]/40 hover:border-[#e8511b] hover:text-[#e8511b] hover:shadow-[0_0_16px_-4px_rgba(232,81,27,0.3)]"
+                  className="press focus-ring-dark w-10 h-10 rounded-full border border-cream/10 flex items-center justify-center text-cream/40 hover:border-orange hover:text-orange hover:shadow-[0_0_16px_-4px_rgba(232,81,27,0.3)]"
                   style={socialTransition}
                 >
                   <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
@@ -70,18 +70,18 @@ export function Footer() {
 
             {/* Contact col */}
             <div className="lg:col-span-3 flex flex-col gap-5">
-              <h3 className="font-body font-bold text-[11px] tracking-[0.2em] uppercase text-[#e8511b]">
+              <h3 className="font-body font-bold text-[11px] tracking-[0.2em] uppercase text-orange">
                 {f.title}
               </h3>
               <div className="flex flex-col gap-1.5">
-                <span className="font-body text-[11px] text-[#f6eadf]/60 uppercase tracking-[0.1em]">{f.phonelabel}</span>
-                <a href={`tel:${f.phone}`} className="focus-ring-dark font-body text-[15px] text-[#f6eadf]/70 hover:text-[#e8511b]" style={colorTransition}>
+                <span className="font-body text-[11px] text-cream/60 uppercase tracking-[0.1em]">{f.phonelabel}</span>
+                <a href={`tel:${f.phone}`} className="focus-ring-dark font-body text-[15px] text-cream/70 hover:text-orange" style={colorTransition}>
                   {f.phone}
                 </a>
               </div>
               <div className="flex flex-col gap-1.5">
-                <span className="font-body text-[11px] text-[#f6eadf]/60 uppercase tracking-[0.1em]">{f.addrlabel}</span>
-                <address className="not-italic font-body text-[15px] text-[#f6eadf]/70 leading-snug whitespace-pre-line">
+                <span className="font-body text-[11px] text-cream/60 uppercase tracking-[0.1em]">{f.addrlabel}</span>
+                <address className="not-italic font-body text-[15px] text-cream/70 leading-snug whitespace-pre-line">
                   {f.address}
                 </address>
               </div>
@@ -89,7 +89,7 @@ export function Footer() {
 
             {/* Hours col */}
             <div className="lg:col-span-4 flex flex-col gap-5">
-              <h3 className="font-body font-bold text-[11px] tracking-[0.2em] uppercase text-[#e8511b]">
+              <h3 className="font-body font-bold text-[11px] tracking-[0.2em] uppercase text-orange">
                 {f.hourslabel}
               </h3>
               <dl className="grid grid-cols-[auto_1fr] gap-x-5 gap-y-2 font-body text-[13px] leading-[1.4]">
@@ -97,10 +97,10 @@ export function Footer() {
                   const closed = d.slots.length === 0
                   return (
                     <div key={d.day} className="contents">
-                      <dt className={`font-bold tracking-[0.14em] uppercase text-[11px] pt-[2px] ${closed ? 'text-[#f6eadf]/60' : 'text-[#f6eadf]/70'}`}>
+                      <dt className={`font-bold tracking-[0.14em] uppercase text-[11px] pt-[2px] ${closed ? 'text-cream/60' : 'text-cream/70'}`}>
                         {d.day}
                       </dt>
-                      <dd className={`tabular-nums ${closed ? 'text-[#f6eadf]/60 italic' : 'text-[#f6eadf]/75'}`}>
+                      <dd className={`tabular-nums ${closed ? 'text-cream/60 italic' : 'text-cream/75'}`}>
                         {closed ? f.hoursClosed : d.slots.join(' · ')}
                       </dd>
                     </div>
@@ -111,7 +111,7 @@ export function Footer() {
 
             {/* Order col */}
             <div className="lg:col-span-2 flex flex-col gap-5">
-              <h3 className="font-body font-bold text-[11px] tracking-[0.2em] uppercase text-[#e8511b]">
+              <h3 className="font-body font-bold text-[11px] tracking-[0.2em] uppercase text-orange">
                 {f.ordersLabel}
               </h3>
               <div className="flex flex-col gap-3">
@@ -119,54 +119,46 @@ export function Footer() {
                   href="https://glovoapp.com"
                   target="_blank"
                   rel="noreferrer"
-                  className="focus-ring-dark rounded-sm font-body text-[14px] text-[#f6eadf]/70 hover:text-[#e8511b] flex items-center gap-2.5"
+                  className="focus-ring-dark rounded-[2px] font-body text-[14px] text-cream/70 hover:text-orange flex items-center gap-2.5"
                   style={colorTransition}
                 >
-                  <span className="w-1.5 h-1.5 rounded-full bg-[#e8511b] shadow-[0_0_6px_rgba(232,81,27,0.4)]" />
+                  <span className="w-1.5 h-1.5 rounded-full bg-orange shadow-[0_0_6px_rgba(232,81,27,0.4)]" />
                   Glovo
                 </a>
                 <a
                   href="https://ubereats.com"
                   target="_blank"
                   rel="noreferrer"
-                  className="focus-ring-dark rounded-sm font-body text-[14px] text-[#f6eadf]/70 hover:text-[#e8511b] flex items-center gap-2.5"
+                  className="focus-ring-dark rounded-[2px] font-body text-[14px] text-cream/70 hover:text-orange flex items-center gap-2.5"
                   style={colorTransition}
                 >
-                  <span className="w-1.5 h-1.5 rounded-full bg-[#e8511b] shadow-[0_0_6px_rgba(232,81,27,0.4)]" />
+                  <span className="w-1.5 h-1.5 rounded-full bg-orange shadow-[0_0_6px_rgba(232,81,27,0.4)]" />
                   Uber Eats
                 </a>
-                <Link
-                  to="/catering"
-                  className="focus-ring-dark rounded-sm font-body text-[14px] text-[#f6eadf]/70 hover:text-[#f8b114] flex items-center gap-2.5"
-                  style={colorTransition}
-                >
-                  <span className="w-1.5 h-1.5 rounded-full bg-[#f8b114] shadow-[0_0_6px_rgba(248,177,20,0.4)]" />
-                  Catering
-                </Link>
               </div>
             </div>
           </div>
 
           {/* Bottom bar */}
           <div className="pt-8 flex flex-col md:flex-row items-center justify-between gap-4">
-            <p className="font-body text-[12px] text-[#f6eadf]/60">{l.copyright}</p>
+            <p className="font-body text-[12px] text-cream/60">{l.copyright}</p>
             <div className="flex items-center gap-4 flex-wrap justify-center">
-              <Link to="/aviso-legal" className="focus-ring-dark rounded-sm font-body text-[11px] text-[#f6eadf]/60 hover:text-[#f6eadf]/90" style={colorTransition}>
+              <Link to="/aviso-legal" className="focus-ring-dark rounded-[2px] font-body text-[11px] text-cream/60 hover:text-cream/90" style={colorTransition}>
                 {l.avisoLegal}
               </Link>
-              <span className="text-[#f6eadf]/10">·</span>
-              <Link to="/privacidad" className="focus-ring-dark rounded-sm font-body text-[11px] text-[#f6eadf]/60 hover:text-[#f6eadf]/90" style={colorTransition}>
+              <span className="text-cream/10">·</span>
+              <Link to="/privacidad" className="focus-ring-dark rounded-[2px] font-body text-[11px] text-cream/60 hover:text-cream/90" style={colorTransition}>
                 {l.privacidad}
               </Link>
-              <span className="text-[#f6eadf]/10">·</span>
-              <Link to="/cookies" className="focus-ring-dark rounded-sm font-body text-[11px] text-[#f6eadf]/60 hover:text-[#f6eadf]/90" style={colorTransition}>
+              <span className="text-cream/10">·</span>
+              <Link to="/cookies" className="focus-ring-dark rounded-[2px] font-body text-[11px] text-cream/60 hover:text-cream/90" style={colorTransition}>
                 {l.cookies}
               </Link>
-              <span className="text-[#f6eadf]/10">·</span>
+              <span className="text-cream/10">·</span>
               <button
                 type="button"
                 onClick={reopen}
-                className="focus-ring-dark rounded-sm font-body text-[11px] text-[#f6eadf]/60 hover:text-[#f6eadf]/90"
+                className="focus-ring-dark rounded-[2px] font-body text-[11px] text-cream/60 hover:text-cream/90"
                 style={colorTransition}
               >
                 {l.gestionarCookies}

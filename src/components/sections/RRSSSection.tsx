@@ -2,6 +2,8 @@ import { useEffect, useState } from 'react'
 import { motion } from 'framer-motion'
 import { useLanguage } from '../../lib/i18n'
 import { JellyWave } from '../ui/JellyWave'
+import { Button } from '../ui/Button'
+import { EASE_ENTRANCE } from '../../lib/motion'
 
 type InstagramPost = {
   id: string
@@ -13,7 +15,7 @@ type InstagramPost = {
 
 type IGCard = { src: string; href: string; caption: string; rotate: number }
 
-const EASE = [0.25, 0.46, 0.45, 0.94] as const
+const EASE = EASE_ENTRANCE
 /* Icons at two sizes: large for CTAs, small for card captions */
 const igIcon = (size: number) => (
   <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
@@ -73,10 +75,10 @@ function PostCard({ src, href, caption, rotate, iconSmall, iconHover, delay }: {
       viewport={{ once: true, amount: 0.2 }}
     >
       <div
-        className="bg-[#f6eadf] rounded-[20px] p-2.5 pb-3.5 shadow-[0_8px_32px_-6px_rgba(50,14,16,0.20),0_2px_8px_-2px_rgba(50,14,16,0.08)] group-hover:shadow-[0_16px_48px_-8px_rgba(50,14,16,0.28),0_4px_12px_-2px_rgba(50,14,16,0.10)] group-focus-visible:shadow-[0_16px_48px_-8px_rgba(50,14,16,0.28),0_4px_12px_-2px_rgba(50,14,16,0.10)]"
+        className="bg-cream rounded-lg p-2.5 pb-3.5 shadow-[0_8px_32px_-6px_rgba(50,14,16,0.20),0_2px_8px_-2px_rgba(50,14,16,0.08)] group-hover:shadow-[0_16px_48px_-8px_rgba(50,14,16,0.28),0_4px_12px_-2px_rgba(50,14,16,0.10)] group-focus-visible:shadow-[0_16px_48px_-8px_rgba(50,14,16,0.28),0_4px_12px_-2px_rgba(50,14,16,0.10)]"
         style={{ transition: 'box-shadow 350ms var(--ease-out)' }}
       >
-        <div className="relative overflow-hidden rounded-[14px] aspect-square">
+        <div className="relative overflow-hidden rounded-md aspect-square">
           <img
             src={src}
             alt=""
@@ -85,12 +87,12 @@ function PostCard({ src, href, caption, rotate, iconSmall, iconHover, delay }: {
             style={{ transition: 'transform 350ms var(--ease-out)' }}
           />
           <div
-            className="absolute inset-0 bg-[#320e10]/0 group-hover:bg-[#320e10]/40 group-focus-visible:bg-[#320e10]/40 flex items-center justify-center rounded-[14px]"
+            className="absolute inset-0 bg-dark/0 group-hover:bg-dark/40 group-focus-visible:bg-dark/40 flex items-center justify-center rounded-md"
             style={{ transition: 'background-color 250ms var(--ease-out)' }}
             aria-hidden="true"
           >
             <div
-              className="w-12 h-12 rounded-full bg-[#f6eadf] flex items-center justify-center text-[#320e10] opacity-0 scale-90 group-hover:opacity-100 group-hover:scale-100 group-focus-visible:opacity-100 group-focus-visible:scale-100"
+              className="w-12 h-12 rounded-full bg-cream flex items-center justify-center text-dark opacity-0 scale-90 group-hover:opacity-100 group-hover:scale-100 group-focus-visible:opacity-100 group-focus-visible:scale-100"
               style={{ transition: 'opacity 220ms var(--ease-out), transform 280ms cubic-bezier(0.34,1.45,0.64,1)' }}
             >
               {iconHover}
@@ -98,8 +100,8 @@ function PostCard({ src, href, caption, rotate, iconSmall, iconHover, delay }: {
           </div>
         </div>
         <div className="mt-2 px-1 flex items-center gap-2">
-          <span className="text-[#320e10]/40 flex-shrink-0">{iconSmall}</span>
-          <span className="font-body text-[12px] text-[#320e10]/60 leading-tight truncate">{caption}</span>
+          <span className="text-dark/40 flex-shrink-0">{iconSmall}</span>
+          <span className="font-body text-[12px] text-dark/60 leading-tight truncate">{caption}</span>
         </div>
       </div>
     </motion.a>
@@ -109,16 +111,15 @@ function PostCard({ src, href, caption, rotate, iconSmall, iconHover, delay }: {
 /* CTA button — shared style, consistent dimensions */
 function SocialCTA({ href, icon, label }: { href: string; icon: React.ReactNode; label: string }) {
   return (
-    <a
+    <Button
+      variant="dark"
       href={href}
-      target="_blank"
-      rel="noreferrer"
-      className="press hover-lift focus-ring font-body font-bold text-[13px] md:text-[14px] tracking-[0.12em] uppercase min-h-[48px] px-6 md:px-8 py-3 rounded-[14px] bg-[#320e10] text-[#f6eadf] hover:bg-[#4a1518] inline-flex items-center gap-3 shadow-[0_8px_24px_-6px_rgba(50,14,16,0.35)] hover:shadow-[0_12px_32px_-6px_rgba(50,14,16,0.45)]"
-      style={{ transition: 'transform 200ms var(--ease-out), background-color 200ms var(--ease-out), box-shadow 200ms var(--ease-out)' }}
+      external
+      className="hover-lift text-[13px] md:text-[14px] tracking-[0.12em] min-h-[48px] px-6 md:px-8 py-3 gap-3 shadow-[0_8px_24px_-6px_rgba(50,14,16,0.35)] hover:shadow-[0_12px_32px_-6px_rgba(50,14,16,0.45)]"
     >
       {icon}
       {label}
-    </a>
+    </Button>
   )
 }
 
@@ -157,7 +158,7 @@ export function RRSSSection() {
   const igCards = useInstagramPosts()
 
   return (
-    <section className="bg-[#f8b114] relative overflow-hidden">
+    <section className="bg-yellow relative overflow-hidden">
 
       {/* Warm golden glow */}
       <div
@@ -173,7 +174,7 @@ export function RRSSSection() {
           {/* ── Headline — "Spoiler:" big, subtitle smaller ──── */}
           <div className="flex flex-col items-center text-center">
             <motion.span
-              className="font-body font-bold text-[32px] sm:text-[40px] md:text-[56px] lg:text-[64px] uppercase leading-none tracking-[-0.03em] text-[#320e10] mb-2 md:mb-3"
+              className="font-body font-bold text-[32px] sm:text-[40px] md:text-[56px] lg:text-[64px] uppercase leading-none tracking-[-0.03em] text-dark mb-2 md:mb-3"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
@@ -182,7 +183,7 @@ export function RRSSSection() {
               {r.eyebrow}
             </motion.span>
             <motion.p
-              className="font-display text-[18px] sm:text-[22px] md:text-[32px] lg:text-[40px] leading-[1.1] text-[#320e10]/80"
+              className="font-display text-[18px] sm:text-[22px] md:text-[32px] lg:text-[40px] leading-[1.1] text-dark/80"
               initial={{ opacity: 0, y: 12 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}

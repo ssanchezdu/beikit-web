@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion'
 import { useLanguage } from '../../lib/i18n'
 import { JellyWave } from '../ui/JellyWave'
+import { EASE_ENTRANCE } from '../../lib/motion'
 
 function OptionIcon({ name }: { name: string }) {
   const common = {
@@ -49,7 +50,7 @@ export function DeliverySection() {
   const d = t.delivery
 
   return (
-    <section id="delivery" className="relative bg-[#f6eadf] overflow-hidden">
+    <section id="delivery" className="relative bg-cream overflow-hidden">
 
       {/* Warm ambient glow — top center */}
       <div
@@ -66,13 +67,13 @@ export function DeliverySection() {
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.65, ease: [0.25, 0.46, 0.45, 0.94] }}
+          transition={{ duration: 0.65, ease: EASE_ENTRANCE }}
         >
-          <span className="font-body font-bold text-[11px] tracking-[0.28em] uppercase text-[#e8511b] flex items-center gap-3">
-            <span className="block w-8 h-[2px] bg-[#e8511b] rounded-full" />
+          <span className="font-body font-bold text-[11px] tracking-[0.28em] uppercase text-orange flex items-center gap-3">
+            <span className="block w-8 h-[2px] bg-orange rounded-full" />
             {d.eyebrow}
           </span>
-          <h2 className="font-body font-bold leading-[0.95] tracking-[-0.02em] text-[#320e10]">
+          <h2 className="font-body font-bold leading-[0.95] tracking-[-0.02em] text-dark">
             <span className="block text-[36px] sm:text-[44px] md:text-[68px] lg:text-[82px]">
               {d.title.line1Pre.replace(/\s+$/, '')}
               {/*
@@ -91,7 +92,7 @@ export function DeliverySection() {
                 style={{
                   height: '0.82em',
                   width: '2.74em',
-                  backgroundColor: '#e8511b',
+                  backgroundColor: '#320e10',
                   WebkitMaskImage: 'url(/assets/svg/logo_beikit.svg)',
                   maskImage: 'url(/assets/svg/logo_beikit.svg)',
                   WebkitMaskRepeat: 'no-repeat',
@@ -107,7 +108,7 @@ export function DeliverySection() {
               {d.title.line2}
             </span>
           </h2>
-          <p className="font-body text-[15px] text-[#320e10]/55 max-w-xl leading-relaxed">
+          <p className="font-body text-[15px] text-dark/55 max-w-xl leading-relaxed">
             {d.subtitle}
           </p>
         </motion.div>
@@ -121,7 +122,7 @@ export function DeliverySection() {
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.2 }}
-              transition={{ duration: 0.55, delay: i * 0.12, ease: [0.25, 0.46, 0.45, 0.94] }}
+              transition={{ duration: 0.55, delay: i * 0.12, ease: EASE_ENTRANCE }}
             >
               {/* Icon + label */}
               <div className="flex items-center gap-4">
@@ -131,21 +132,21 @@ export function DeliverySection() {
                     style={{ background: 'radial-gradient(circle, rgba(232,81,27,0.10) 0%, transparent 70%)' }}
                     aria-hidden="true"
                   />
-                  <div className="relative z-10 w-14 h-14 rounded-full border-2 border-[#e8511b] flex items-center justify-center bg-[#f6eadf] text-[#e8511b] flex-shrink-0">
+                  <div className="relative z-10 w-14 h-14 rounded-full border-2 border-orange flex items-center justify-center bg-cream text-orange flex-shrink-0">
                     <OptionIcon name={opt.icon} />
                   </div>
                 </div>
-                <span className="font-body font-bold text-[10px] tracking-[0.24em] uppercase text-[#e8511b]">
+                <span className="font-body font-bold text-[10px] tracking-[0.24em] uppercase text-orange">
                   {opt.label}
                 </span>
               </div>
 
               {/* Content */}
               <div className="flex flex-col gap-2.5">
-                <h3 className="font-display text-[24px] md:text-[26px] leading-[1.1] text-[#320e10]">
+                <h3 className="font-display text-[24px] md:text-[26px] leading-[1.1] text-dark">
                   {opt.title}
                 </h3>
-                <p className="font-body text-[14px] text-[#320e10]/55 leading-relaxed">
+                <p className="font-body text-[14px] text-dark/55 leading-relaxed">
                   {opt.body}
                 </p>
               </div>
@@ -157,7 +158,7 @@ export function DeliverySection() {
                     key={j}
                     href={cta.href}
                     {...(cta.external ? { target: '_blank', rel: 'noreferrer' } : {})}
-                    className="press focus-ring group inline-flex items-center gap-2 font-body font-bold text-[11px] tracking-[0.16em] uppercase text-[#320e10] hover:text-[#e8511b] border-b border-[#320e10]/25 hover:border-[#e8511b] pb-1"
+                    className="press focus-ring group inline-flex items-center gap-2 font-body font-bold text-[11px] tracking-[0.16em] uppercase text-dark hover:text-orange border-b border-dark/25 hover:border-orange pb-1"
                     style={{ transition: 'color 200ms var(--ease-out), border-color 200ms var(--ease-out)' }}
                   >
                     {cta.label}

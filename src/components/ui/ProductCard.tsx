@@ -37,7 +37,7 @@ export function ProductCard({
   return (
     <article
       {...bind}
-      className="group relative rounded-[24px] sm:rounded-[32px] isolate"
+      className="group relative rounded-xl sm:rounded-2xl isolate"
       style={{
         backgroundColor: bg,
         color: fg,

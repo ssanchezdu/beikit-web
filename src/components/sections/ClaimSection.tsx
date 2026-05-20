@@ -1,13 +1,14 @@
 import { motion } from 'framer-motion'
 import { useLanguage } from '../../lib/i18n'
 import { JellyWave } from '../ui/JellyWave'
+import { EASE_ENTRANCE } from '../../lib/motion'
 
 export function ClaimSection() {
   const { t } = useLanguage()
   const c = t.claim
 
   return (
-    <section className="relative bg-[#e8511b]">
+    <section className="relative bg-orange">
 
       {/* Warm ambient glow — golden light from center */}
       <div
@@ -18,7 +19,7 @@ export function ClaimSection() {
 
       {/* Giant decorative quotation mark — background */}
       <div
-        className="absolute top-4 left-4 md:left-8 lg:left-12 font-display text-[120px] md:text-[180px] leading-none text-[#f6eadf]/[0.12] select-none pointer-events-none"
+        className="absolute top-4 left-4 md:left-8 lg:left-12 font-display text-[120px] md:text-[180px] leading-none text-cream/[0.12] select-none pointer-events-none"
         aria-hidden="true"
       >
         &ldquo;
@@ -26,7 +27,7 @@ export function ClaimSection() {
 
       {/* Decorative closing quote — bottom right */}
       <div
-        className="absolute bottom-28 right-4 md:right-8 lg:right-12 font-display text-[120px] md:text-[180px] leading-none text-[#f6eadf]/[0.12] select-none pointer-events-none rotate-180"
+        className="absolute bottom-28 right-4 md:right-8 lg:right-12 font-display text-[120px] md:text-[180px] leading-none text-cream/[0.12] select-none pointer-events-none rotate-180"
         aria-hidden="true"
       >
         &ldquo;
@@ -43,20 +44,20 @@ export function ClaimSection() {
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
         >
-          <span className="block w-12 h-[2px] bg-[#f6eadf]/40 rounded-full" />
-          <span className="font-body font-bold text-[11px] tracking-[0.3em] uppercase text-[#f6eadf]/70">
+          <span className="block w-12 h-[2px] bg-cream/40 rounded-full" />
+          <span className="font-body font-bold text-[11px] tracking-[0.3em] uppercase text-cream/70">
             Beikit Bakery
           </span>
-          <span className="block w-12 h-[2px] bg-[#f6eadf]/40 rounded-full" />
+          <span className="block w-12 h-[2px] bg-cream/40 rounded-full" />
         </motion.div>
 
         {/* Quote */}
         <motion.p
-          className="font-display text-[22px] sm:text-[28px] md:text-[40px] lg:text-[48px] leading-[1.1] text-[#f6eadf] drop-shadow-[0_2px_12px_rgba(50,14,16,0.15)] text-balance"
+          className="font-display text-[22px] sm:text-[28px] md:text-[40px] lg:text-[48px] leading-[1.1] text-cream drop-shadow-[0_2px_12px_rgba(50,14,16,0.15)] text-balance"
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.3 }}
-          transition={{ duration: 0.7, delay: 0.15, ease: [0.25, 0.46, 0.45, 0.94] }}
+          transition={{ duration: 0.7, delay: 0.15, ease: EASE_ENTRANCE }}
         >
           &ldquo;{c.text}&rdquo;
         </motion.p>
@@ -69,11 +70,11 @@ export function ClaimSection() {
           viewport={{ once: true }}
           transition={{ duration: 0.5, delay: 0.35 }}
         >
-          <span className="block w-8 h-[2px] bg-[#f6eadf]/60 rounded-full" />
-          <span className="font-body font-bold text-[12px] tracking-[0.25em] uppercase text-[#f6eadf]">
+          <span className="block w-8 h-[2px] bg-cream/60 rounded-full" />
+          <span className="font-body font-bold text-[12px] tracking-[0.25em] uppercase text-cream">
             {c.tagline}
           </span>
-          <span className="block w-8 h-[2px] bg-[#f6eadf]/60 rounded-full" />
+          <span className="block w-8 h-[2px] bg-cream/60 rounded-full" />
         </motion.div>
 
         {/* Brand mini logo */}

@@ -1,8 +1,9 @@
 import { motion } from 'framer-motion'
-import { Link } from 'react-router-dom'
 import { useLanguage } from '../../lib/i18n'
 import { JellyWave } from '../ui/JellyWave'
 import { MicroCtaContent } from '../ui/MicroCtaContent'
+import { Button } from '../ui/Button'
+import { EASE_ENTRANCE } from '../../lib/motion'
 
 /*
   Donutland-inspired hero: MASSIVE centered headline with product stickers
@@ -15,15 +16,14 @@ import { MicroCtaContent } from '../ui/MicroCtaContent'
   Typography: Beatrice SemiBold (font-body font-bold) in uppercase.
 */
 
-const LINE_EASE = [0.25, 0.46, 0.45, 0.94] as const
+const LINE_EASE = EASE_ENTRANCE
 
 export function HeroSection() {
   const { t } = useLanguage()
   const h = t.hero
-  const n = t.nav
 
   return (
-    <section className="relative bg-[#f6eadf] flex flex-col min-h-screen overflow-x-hidden">
+    <section className="relative bg-cream flex flex-col min-h-screen overflow-x-hidden">
 
       {/* Warm ambient glow — centered, large */}
       <div className="glow-warm absolute inset-0 pointer-events-none" aria-hidden="true" />
@@ -73,10 +73,10 @@ export function HeroSection() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.05, ease: LINE_EASE }}
           >
-            <span className="font-display text-[22px] md:text-[26px] text-[#e8511b] leading-none -rotate-3 translate-y-[1px]">
+            <span className="font-display text-[22px] md:text-[26px] text-orange leading-none -rotate-3 translate-y-[1px]">
               Heartmade
             </span>
-            <span className="font-body font-bold text-[11px] md:text-[12px] tracking-[0.28em] uppercase text-[#320e10] leading-none">
+            <span className="font-body font-bold text-[11px] md:text-[12px] tracking-[0.28em] uppercase text-dark leading-none">
               Everyday
             </span>
           </motion.span>
@@ -85,7 +85,7 @@ export function HeroSection() {
           <h1 className="relative z-10 text-center" aria-label={h.headline}>
             {/* Line 1 */}
             <motion.span
-              className="block font-body font-bold uppercase text-[#320e10] leading-[0.88] tracking-[-0.03em]"
+              className="block font-body font-bold uppercase text-dark leading-[0.88] tracking-[-0.03em]"
               style={{ fontSize: 'clamp(2.8rem, 9vw, 8.5rem)' }}
               initial={{ opacity: 0, y: 50 }}
               animate={{ opacity: 1, y: 0 }}
@@ -96,7 +96,7 @@ export function HeroSection() {
 
             {/* Line 2 — the star word */}
             <motion.span
-              className="block font-body font-bold uppercase text-[#320e10] leading-[0.88] tracking-[-0.04em]"
+              className="block font-body font-bold uppercase text-dark leading-[0.88] tracking-[-0.04em]"
               style={{ fontSize: 'clamp(3.2rem, 13vw, 12.5rem)' }}
               initial={{ opacity: 0, y: 60 }}
               animate={{ opacity: 1, y: 0 }}
@@ -107,7 +107,7 @@ export function HeroSection() {
 
             {/* Line 3 — "con"/"amb" + Beikit wordmark (baseline-locked, a11y-clean) */}
             <motion.span
-              className="flex items-baseline justify-center gap-[0.2em] font-body font-bold uppercase text-[#320e10] leading-[0.88] tracking-[-0.03em]"
+              className="flex items-baseline justify-center gap-[0.2em] font-body font-bold uppercase text-dark leading-[0.88] tracking-[-0.03em]"
               style={{ fontSize: 'clamp(2.8rem, 9vw, 8.5rem)' }}
               initial={{ opacity: 0, y: 50 }}
               animate={{ opacity: 1, y: 0 }}
@@ -159,22 +159,14 @@ export function HeroSection() {
         >
           {/* CTAs — centered row */}
           <div className="flex gap-3">
-            <a
+            <Button
+              variant="yellow"
               href="https://glovoapp.com"
-              target="_blank"
-              rel="noreferrer"
-              className="group/cta press focus-ring font-body font-bold text-[12px] md:text-[13px] tracking-[0.12em] uppercase px-5 md:px-8 py-3.5 md:py-4 rounded-[14px] bg-[#f8b114] text-[#320e10] hover:bg-[#e8a010] inline-flex items-center gap-2 shadow-[0_8px_30px_-4px_rgba(248,177,20,0.45)]"
-              style={{ transition: 'transform 160ms var(--ease-out), background-color 200ms var(--ease-out)' }}
+              external
+              className="group/cta text-[12px] md:text-[13px] tracking-[0.12em] px-5 md:px-8 py-3.5 md:py-4 gap-2 shadow-[0_8px_30px_-4px_rgba(248,177,20,0.45)]"
             >
               <MicroCtaContent label={h.cta} arrowSize={14} />
-            </a>
-            <Link
-              to="/catering"
-              className="press focus-ring font-body font-bold text-[12px] md:text-[13px] tracking-[0.12em] uppercase px-5 md:px-8 py-3.5 md:py-4 rounded-[14px] border-2 border-[#320e10] text-[#320e10] hover:bg-[#320e10] hover:text-[#f6eadf] inline-flex items-center justify-center"
-              style={{ transition: 'transform 160ms var(--ease-out), background-color 200ms var(--ease-out), color 200ms var(--ease-out)' }}
-            >
-              {n.catering}
-            </Link>
+            </Button>
           </div>
         </motion.div>
       </div>

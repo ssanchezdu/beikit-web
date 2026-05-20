@@ -49,7 +49,7 @@ export function Header() {
 
   return (
     <header
-      className="fixed top-0 left-0 right-0 z-50 bg-[#f6eadf]"
+      className="fixed top-0 left-0 right-0 z-50 bg-cream"
       style={{
         transform: visible ? 'translateY(0)' : 'translateY(-100%)',
         boxShadow: scrolled
@@ -63,7 +63,7 @@ export function Header() {
 
         {/* LEFT — Slogan */}
         <div className="flex items-center w-[96px] md:w-[120px]">
-          <span className="hidden md:block font-body font-bold text-[10px] tracking-[0.28em] uppercase text-[#320e10] leading-none">
+          <span className="hidden md:block font-body font-bold text-[10px] tracking-[0.28em] uppercase text-dark leading-none">
             {n.tagLeft}
           </span>
         </div>
@@ -73,7 +73,7 @@ export function Header() {
           <a
             href="/"
             onClick={goHome}
-            className="focus-ring rounded-md"
+            className="focus-ring rounded-[6px]"
             aria-label="Beikit Bakery — Inicio"
           >
             <img
@@ -98,10 +98,10 @@ export function Header() {
               onClick={() => setLang('es')}
               aria-pressed={lang === 'es'}
               aria-label="Español"
-              className={`focus-ring font-body font-bold text-[13px] min-w-[44px] min-h-[44px] inline-flex items-center justify-center rounded-lg leading-none ${
+              className={`focus-ring font-body font-bold text-[13px] min-w-[44px] min-h-[44px] inline-flex items-center justify-center rounded-[8px] leading-none ${
                 lang === 'es'
-                  ? 'text-[#320e10] bg-[#320e10]/[0.06]'
-                  : 'text-[#320e10]/55 hover:text-[#320e10]/80 hover:bg-[#320e10]/[0.03]'
+                  ? 'text-dark bg-dark/[0.06]'
+                  : 'text-dark/55 hover:text-dark/80 hover:bg-dark/[0.03]'
               }`}
               style={{ transition: 'color 240ms var(--ease-out), background-color 240ms var(--ease-out)' }}
             >
@@ -112,10 +112,10 @@ export function Header() {
               onClick={() => setLang('ca')}
               aria-pressed={lang === 'ca'}
               aria-label="Català"
-              className={`focus-ring font-body font-bold text-[13px] min-w-[44px] min-h-[44px] inline-flex items-center justify-center rounded-lg leading-none ${
+              className={`focus-ring font-body font-bold text-[13px] min-w-[44px] min-h-[44px] inline-flex items-center justify-center rounded-[8px] leading-none ${
                 lang === 'ca'
-                  ? 'text-[#320e10] bg-[#320e10]/[0.06]'
-                  : 'text-[#320e10]/55 hover:text-[#320e10]/80 hover:bg-[#320e10]/[0.03]'
+                  ? 'text-dark bg-dark/[0.06]'
+                  : 'text-dark/55 hover:text-dark/80 hover:bg-dark/[0.03]'
               }`}
               style={{ transition: 'color 240ms var(--ease-out), background-color 240ms var(--ease-out)' }}
             >

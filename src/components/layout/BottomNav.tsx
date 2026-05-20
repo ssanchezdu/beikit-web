@@ -39,15 +39,6 @@ const iconPedir = (
   </svg>
 )
 
-const iconCatering = (
-  <svg {...svgProps}>
-    <rect x="3" y="4" width="18" height="18" rx="2" />
-    <line x1="16" y1="2" x2="16" y2="6" />
-    <line x1="8" y1="2" x2="8" y2="6" />
-    <line x1="3" y1="10" x2="21" y2="10" />
-  </svg>
-)
-
 export function BottomNav() {
   const { t } = useLanguage()
   const n = t.nav
@@ -57,13 +48,12 @@ export function BottomNav() {
     { to: '/', label: n.inicio, icon: iconInicio, active: pathname === '/' },
     { to: '/#menu', label: n.carta, icon: iconCarta, active: false },
     { to: '/#delivery', label: n.pedir, icon: iconPedir, active: false },
-    { to: '/catering', label: n.catering, icon: iconCatering, active: pathname === '/catering' },
   ]
 
   return (
     <nav
       aria-label="Navegación principal"
-      className="md:hidden fixed bottom-0 inset-x-0 z-50 bg-[#f6eadf] border-t border-[#320e10]/10 pb-[env(safe-area-inset-bottom)]"
+      className="md:hidden fixed bottom-0 inset-x-0 z-50 bg-cream border-t border-dark/10 pb-[env(safe-area-inset-bottom)]"
       style={{ boxShadow: '0 -4px 16px -6px rgba(50,14,16,0.10)' }}
     >
       <ul className="flex">
@@ -73,7 +63,7 @@ export function BottomNav() {
               to={it.to}
               aria-current={it.active ? 'page' : undefined}
               className={`press focus-ring flex flex-col items-center justify-center gap-1 min-h-[56px] py-2 ${
-                it.active ? 'text-[#e8511b]' : 'text-[#320e10]/55'
+                it.active ? 'text-orange' : 'text-dark/55'
               }`}
               style={{ transition: 'color 200ms var(--ease-out)' }}
             >

@@ -4,14 +4,15 @@ import { useLanguage } from '../../lib/i18n'
 import { ProductCardCompact, type ImageShape } from '../ui/ProductCardCompact'
 import { JellyWave } from '../ui/JellyWave'
 import { MicroCtaContent } from '../ui/MicroCtaContent'
+import { EASE_ENTRANCE } from '../../lib/motion'
 
 const UBER_EATS_URL = 'https://ubereats.com'
 const FEATURED_COUNT = 3
 
 /* Brand-consistent accent palette per category — warm, edible, non-generic. */
 const ACCENTS = {
-  // NY Classic, Oreo, Lotus, Pistacchio, Kinder, Red Velvet, Dinosaurus, Triple Choc
-  cookies:     ['#c97f3a', '#d9cfc2', '#d49856', '#b5c47a', '#ead7b8', '#d16a5a', '#f0d890', '#a56b47'],
+  // Kinder, Dinosaurus, NY Classic, Oreo, Red Velvet, Pistacchio, Triple Choc, Lotus
+  cookies:     ['#ead7b8', '#f0d890', '#c97f3a', '#d9cfc2', '#d16a5a', '#b5c47a', '#a56b47', '#d49856'],
   // Flat list across both cheesecake subgroups in order
   cheesecakes: ['#f0e3cf', '#d9cfc2', '#b5c47a', '#d49856', '#ead7b8', '#eab0bd', '#d9cfc2', '#b5c47a', '#d49856'],
   // Vainilla, Chocolate, Fresa, Oreo, Lotus, Dinosaurus
@@ -131,8 +132,8 @@ export function MenuSection() {
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
         >
-          <span className="block w-10 h-[3px] bg-[#e8511b] rounded-full" />
-          <span className="font-body font-bold text-[11px] tracking-[0.28em] uppercase text-[#e8511b]">
+          <span className="block w-10 h-[3px] bg-orange rounded-full" />
+          <span className="font-body font-bold text-[11px] tracking-[0.28em] uppercase text-orange">
             Nuestra carta
           </span>
         </motion.div>
@@ -204,7 +205,7 @@ function CategoryBlock({ cat, verTodos, verMenos, masPedidoLabel, pideYaLabel, a
         initial={{ opacity: 0, y: 24 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, amount: 0.4 }}
-        transition={{ duration: 0.55, ease: [0.25, 0.46, 0.45, 0.94] }}
+        transition={{ duration: 0.55, ease: EASE_ENTRANCE }}
       >
         {cat.titleType === 'svg' ? (
           <img
@@ -214,15 +215,15 @@ function CategoryBlock({ cat, verTodos, verMenos, masPedidoLabel, pideYaLabel, a
           />
         ) : (
           <>
-            <span className="font-display text-[18px] md:text-[22px] leading-none text-[#e8511b] -rotate-3 -mb-3 md:-mb-4 self-start pl-2 md:pl-4">
+            <span className="font-display text-[18px] md:text-[22px] leading-none text-orange -rotate-3 -mb-3 md:-mb-4 self-start pl-2 md:pl-4">
               {cat.eyebrow}
             </span>
-            <h3 className="font-gulp font-normal lowercase text-[56px] sm:text-[72px] md:text-[104px] lg:text-[128px] leading-[0.9] tracking-[-0.02em] text-[#f6eadf] mb-3 sm:mb-4 md:mb-6">
+            <h3 className="font-gulp font-normal lowercase text-[56px] sm:text-[72px] md:text-[104px] lg:text-[128px] leading-[0.9] tracking-[-0.02em] text-cream mb-3 sm:mb-4 md:mb-6">
               {cat.title}
             </h3>
           </>
         )}
-        <p className="font-body text-[14px] md:text-[16px] leading-[1.65] text-[#f6eadf]/65 max-w-[58ch] text-pretty">
+        <p className="font-body text-[14px] md:text-[16px] leading-[1.65] text-cream/65 max-w-[58ch] text-pretty">
           {cat.description}
         </p>
       </motion.header>
@@ -240,7 +241,7 @@ function CategoryBlock({ cat, verTodos, verMenos, masPedidoLabel, pideYaLabel, a
               transition={{
                 duration: 0.5,
                 delay: i * 0.08,
-                ease: [0.25, 0.46, 0.45, 0.94],
+                ease: EASE_ENTRANCE,
               }}
             >
               <ProductCardCompact
@@ -269,7 +270,7 @@ function CategoryBlock({ cat, verTodos, verMenos, masPedidoLabel, pideYaLabel, a
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}
-            transition={{ duration: 0.45, ease: [0.25, 0.46, 0.45, 0.94] }}
+            transition={{ duration: 0.45, ease: EASE_ENTRANCE }}
             className="overflow-hidden"
           >
             <div className={expandedGrid}>
@@ -308,7 +309,7 @@ function CategoryBlock({ cat, verTodos, verMenos, masPedidoLabel, pideYaLabel, a
             type="button"
             onClick={() => setExpanded((v) => !v)}
             aria-expanded={expanded}
-            className="group/cta press focus-ring inline-flex items-center gap-2 font-body font-bold uppercase tracking-[0.16em] text-[11px] md:text-[12px] px-6 py-3 rounded-full border-2 border-[#f6eadf]/20 text-[#f6eadf] hover:border-[#e8511b] hover:text-[#e8511b]"
+            className="group/cta press focus-ring inline-flex items-center gap-2 font-body font-bold uppercase tracking-[0.16em] text-[11px] md:text-[12px] px-6 py-3 rounded-full border-2 border-cream/20 text-cream hover:border-orange hover:text-orange"
             style={{
               transition:
                 'border-color 240ms var(--ease-out), color 240ms var(--ease-out), transform 180ms var(--ease-out)',

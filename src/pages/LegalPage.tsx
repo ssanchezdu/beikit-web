@@ -1,7 +1,8 @@
 import { Helmet } from 'react-helmet-async'
-import { Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
 import { useLanguage, type Lang } from '../lib/i18n'
+import { EASE_ENTRANCE } from '../lib/motion'
+import { Button } from '../components/ui/Button'
 
 export type LegalDocKey = 'avisoLegal' | 'privacidad' | 'cookies'
 
@@ -43,7 +44,7 @@ const CONTENT: Record<LegalDocKey, Record<Lang, Doc>> = {
           heading: 'Datos identificativos',
           body: [
             'En cumplimiento de la Ley 34/2002, de 11 de julio, de Servicios de la Sociedad de la Información y de Comercio Electrónico (LSSI-CE), se facilitan los siguientes datos del titular de este sitio web:',
-            'Titular: [nombre o razón social del titular]. NIF/CIF: [NIF o CIF]. Domicilio: Carrer Princesa, 10, 08401 Granollers (Barcelona). Correo electrónico: [email de contacto]. Teléfono: 938 42 11 22.',
+            'Titular: [nombre o razón social del titular]. NIF/CIF: [NIF o CIF]. Domicilio: Carrer Princesa, 10, 08401 Granollers (Barcelona). Correo electrónico: contacto@beikitbakery.com. Teléfono: 603 91 94 73.',
           ],
         },
         {
@@ -85,7 +86,7 @@ const CONTENT: Record<LegalDocKey, Record<Lang, Doc>> = {
           heading: 'Dades identificatives',
           body: [
             "En compliment de la Llei 34/2002, d'11 de juliol, de Serveis de la Societat de la Informació i de Comerç Electrònic (LSSI-CE), es faciliten les dades següents del titular d'aquest lloc web:",
-            'Titular: [nom o raó social del titular]. NIF/CIF: [NIF o CIF]. Domicili: Carrer Princesa, 10, 08401 Granollers (Barcelona). Correu electrònic: [email de contacte]. Telèfon: 938 42 11 22.',
+            'Titular: [nom o raó social del titular]. NIF/CIF: [NIF o CIF]. Domicili: Carrer Princesa, 10, 08401 Granollers (Barcelona). Correu electrònic: contacto@beikitbakery.com. Telèfon: 603 91 94 73.',
           ],
         },
         {
@@ -128,7 +129,7 @@ const CONTENT: Record<LegalDocKey, Record<Lang, Doc>> = {
         {
           heading: 'Responsable del tratamiento',
           body: [
-            'Responsable: [nombre o razón social del titular]. NIF/CIF: [NIF o CIF]. Domicilio: Carrer Princesa, 10, 08401 Granollers (Barcelona). Correo electrónico: [email de contacto].',
+            'Responsable: [nombre o razón social del titular]. NIF/CIF: [NIF o CIF]. Domicilio: Carrer Princesa, 10, 08401 Granollers (Barcelona). Correo electrónico: contacto@beikitbakery.com.',
           ],
         },
         {
@@ -165,7 +166,7 @@ const CONTENT: Record<LegalDocKey, Record<Lang, Doc>> = {
         {
           heading: 'Tus derechos',
           body: [
-            'Puedes ejercer tus derechos de acceso, rectificación, supresión, oposición, limitación del tratamiento y portabilidad escribiendo a [email de contacto], indicando el derecho que deseas ejercer.',
+            'Puedes ejercer tus derechos de acceso, rectificación, supresión, oposición, limitación del tratamiento y portabilidad escribiendo a contacto@beikitbakery.com, indicando el derecho que deseas ejercer.',
             'Si consideras que el tratamiento no se ajusta a la normativa, puedes presentar una reclamación ante la Agencia Española de Protección de Datos (www.aepd.es).',
           ],
         },
@@ -177,7 +178,7 @@ const CONTENT: Record<LegalDocKey, Record<Lang, Doc>> = {
         {
           heading: 'Responsable del tractament',
           body: [
-            'Responsable: [nom o raó social del titular]. NIF/CIF: [NIF o CIF]. Domicili: Carrer Princesa, 10, 08401 Granollers (Barcelona). Correu electrònic: [email de contacte].',
+            'Responsable: [nom o raó social del titular]. NIF/CIF: [NIF o CIF]. Domicili: Carrer Princesa, 10, 08401 Granollers (Barcelona). Correu electrònic: contacto@beikitbakery.com.',
           ],
         },
         {
@@ -214,7 +215,7 @@ const CONTENT: Record<LegalDocKey, Record<Lang, Doc>> = {
         {
           heading: 'Els teus drets',
           body: [
-            "Pots exercir els teus drets d'accés, rectificació, supressió, oposició, limitació del tractament i portabilitat escrivint a [email de contacte], indicant el dret que vols exercir.",
+            "Pots exercir els teus drets d'accés, rectificació, supressió, oposició, limitació del tractament i portabilitat escrivint a contacto@beikitbakery.com, indicant el dret que vols exercir.",
             "Si consideres que el tractament no s'ajusta a la normativa, pots presentar una reclamació davant l'Agència Espanyola de Protecció de Dades (www.aepd.es).",
           ],
         },
@@ -299,24 +300,24 @@ export function LegalPage({ doc }: { doc: LegalDocKey }) {
         <meta name="robots" content="noindex" />
       </Helmet>
 
-      <section className="bg-[#f6eadf] min-h-[80vh] px-6 md:px-12 pt-[120px] pb-24">
+      <section className="bg-cream min-h-[80vh] px-6 md:px-12 pt-[120px] pb-24">
         <motion.article
           className="max-w-[680px] mx-auto"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, ease: [0.25, 0.46, 0.45, 0.94] }}
+          transition={{ duration: 0.5, ease: EASE_ENTRANCE }}
         >
-          <h1 className="font-display text-[40px] md:text-[56px] leading-[1.05] text-[#320e10]">
+          <h1 className="font-display text-[40px] md:text-[56px] leading-[1.05] text-dark">
             {d.title}
           </h1>
-          <p className="font-body text-[13px] text-[#320e10]/55 mt-3">
+          <p className="font-body text-[13px] text-dark/55 mt-3">
             {ui.updated}: {UPDATED[lang]}
           </p>
 
           {/* Draft notice — remove once content is legally reviewed */}
           <p
             role="note"
-            className="font-body text-[13px] leading-[1.6] text-[#320e10]/80 bg-[#f8b114]/20 border border-[#f8b114]/50 rounded-[12px] px-4 py-3 mt-6"
+            className="font-body text-[13px] leading-[1.6] text-dark/80 bg-yellow/20 border border-yellow/50 rounded-sm px-4 py-3 mt-6"
           >
             {ui.draft}
           </p>
@@ -324,11 +325,11 @@ export function LegalPage({ doc }: { doc: LegalDocKey }) {
           <div className="flex flex-col gap-9 mt-10">
             {d.sections.map((s) => (
               <section key={s.heading} className="flex flex-col gap-3">
-                <h2 className="font-body font-bold text-[17px] md:text-[19px] text-[#320e10]">
+                <h2 className="font-body font-bold text-[17px] md:text-[19px] text-dark">
                   {s.heading}
                 </h2>
                 {s.body.map((p, i) => (
-                  <p key={i} className="font-body text-[15px] leading-[1.7] text-[#320e10]/75">
+                  <p key={i} className="font-body text-[15px] leading-[1.7] text-dark/75">
                     {p}
                   </p>
                 ))}
@@ -336,16 +337,12 @@ export function LegalPage({ doc }: { doc: LegalDocKey }) {
             ))}
           </div>
 
-          <Link
-            to="/"
-            className="press focus-ring font-body font-bold text-[12px] tracking-[0.14em] uppercase px-7 py-3.5 rounded-[14px] bg-[#320e10] text-[#f6eadf] hover:bg-[#4a1518] inline-flex items-center gap-2.5 mt-12"
-            style={{ transition: 'transform 160ms var(--ease-out), background-color 200ms var(--ease-out)' }}
-          >
+          <Button variant="dark" to="/" className="text-[12px] tracking-[0.14em] px-7 py-3.5 gap-2.5 mt-12">
             <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
               <path d="M19 12H5M12 19l-7-7 7-7" />
             </svg>
             {ui.back}
-          </Link>
+          </Button>
         </motion.article>
       </section>
     </>
