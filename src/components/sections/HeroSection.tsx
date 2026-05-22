@@ -3,6 +3,7 @@ import { useLanguage } from '../../lib/i18n'
 import { JellyWave } from '../ui/JellyWave'
 import { MicroCtaContent } from '../ui/MicroCtaContent'
 import { Button } from '../ui/Button'
+import { GoogleRating } from '../ui/GoogleRating'
 import { EASE_ENTRANCE } from '../../lib/motion'
 
 /*
@@ -17,6 +18,10 @@ import { EASE_ENTRANCE } from '../../lib/motion'
 */
 
 const LINE_EASE = EASE_ENTRANCE
+
+/* Beikit Bakery on Google Maps — opened from the hero rating badge. */
+const GOOGLE_MAPS_URL =
+  'https://www.google.com/maps/place/Beikit+Bakery/@41.6065687,2.2834196,19.22z/data=!4m6!3m5!1s0x12a4c70c2e2af1ad:0x5a049bbc1b26709f!8m2!3d41.6063713!4d2.2839208!16s%2Fg%2F11z2nfsmsf?entry=ttu&g_ep=EgoyMDI2MDUxNy4wIKXMDSoASAFQAw%3D%3D'
 
 export function HeroSection() {
   const { t } = useLanguage()
@@ -168,6 +173,15 @@ export function HeroSection() {
               <MicroCtaContent label={h.cta} arrowSize={14} />
             </Button>
           </div>
+
+          {/* Google rating — social proof. Hardcoded test value (no live sync). */}
+          <GoogleRating
+            rating={5}
+            score={h.rating.score}
+            reviews={h.rating.reviews}
+            ariaLabel={h.rating.aria}
+            href={GOOGLE_MAPS_URL}
+          />
         </motion.div>
       </div>
 

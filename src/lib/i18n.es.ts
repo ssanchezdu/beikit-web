@@ -7,6 +7,11 @@ const es = {
     proofLocation: 'Granollers',
     cta: 'PIDE AHORA',
     ctaSecondary: 'VER CARTA',
+    rating: {
+      score: '5,0',
+      reviews: '46 reseñas en Google',
+      aria: 'Valoración de 5 sobre 5 estrellas en Google · 46 reseñas. Abrir en Google Maps',
+    },
   },
   menu: {
     cookies:     { title: 'Cookies',     tagline: 'Crujientes por fuera, perfectas por dentro.', description: 'Cookies americanas hechas a mano, con un exterior ligeramente crujiente y un interior tierno que se derriten en cada bocado.' },
