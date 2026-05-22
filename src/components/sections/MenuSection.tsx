@@ -26,10 +26,10 @@ const ACCENTS = {
   cookies:     ['#ead7b8', '#f0d890', '#c97f3a', '#d9cfc2', '#d16a5a', '#b5c47a', '#a56b47', '#d49856'],
   // Flat list across both cheesecake subgroups in order
   cheesecakes: ['#f0e3cf', '#d9cfc2', '#b5c47a', '#d49856', '#ead7b8', '#eab0bd', '#d9cfc2', '#b5c47a', '#d49856'],
-  // Vainilla, Chocolate, Fresa, Oreo, Lotus, Dinosaurus
-  milkshakes:  ['#f6eadf', '#a56b47', '#eab0bd', '#d9cfc2', '#d49856', '#f0d890'],
-  // Café Latte, French Vainilla, Oreo, Lotus, Mocha, Mocha White, Matcha, Chai
-  otros:       ['#d9b88e', '#ead7b8', '#d9cfc2', '#d49856', '#a56b47', '#ead0c8', '#b5c47a', '#e8a45c'],
+  // Oreo, Fresa, Dinosaurus, Vainilla, Chocolate, Lotus
+  milkshakes:  ['#d9cfc2', '#eab0bd', '#f0d890', '#f6eadf', '#a56b47', '#d49856'],
+  // Café Latte, Oreo, Matcha, French Vainilla, Lotus, Mocha, Mocha White, Chai
+  otros:       ['#d9b88e', '#d9cfc2', '#b5c47a', '#ead7b8', '#d49856', '#a56b47', '#ead0c8', '#e8a45c'],
 } as const
 
 type Item = { name: string; price: string; desc: string }
