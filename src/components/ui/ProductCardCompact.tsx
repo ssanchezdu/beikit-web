@@ -14,7 +14,7 @@ interface ProductCardCompactProps {
   bestseller?: boolean
   bestsellerLabel?: string
   imageShape: ImageShape
-  overflow?: boolean
+  framedPhoto?: boolean
   noImageShadowOnHover?: boolean
 }
 
@@ -25,7 +25,7 @@ const INVERTED_TEXT = '#320e10'
 /*
   Unified image-box system. Every box carries roughly the same visual mass; its
   aspect ratio matches the product photo so the image fills the box edge to edge
-  — square cookies, landscape cheesecake slices, tall milkshake/latte glasses.
+  — square cookies, landscape cheesecake slices & milkshake photos, tall latte glasses.
 */
 const IMAGE_BOX: Record<ImageShape, string> = {
   // square is sized larger than equal-area would suggest: a round cookie only
@@ -46,19 +46,13 @@ export function ProductCardCompact({
   bestseller = false,
   bestsellerLabel = 'Más pedido',
   imageShape,
-  overflow = false,
+  framedPhoto = false,
   noImageShadowOnHover = false,
 }: ProductCardCompactProps) {
   const { hovered, reduceMotion, bind } = useCardHover()
 
   const imageSize = IMAGE_BOX[imageShape]
-
-  // Towering treatment (milkshakes): pull the image up so it breaks the frame,
-  // sitting lower than before, with a minimal gap to the title.
-  // pointer-events-none keeps the overflowing part from intercepting clicks.
-  const imageWrap = overflow
-    ? `-mt-[32px] sm:-mt-[40px] md:-mt-[48px] mb-1 pointer-events-none ${imageSize}`
-    : `mb-5 sm:mb-6 ${imageSize}`
+  const imageWrap = `mb-5 sm:mb-6 ${imageSize}`
 
   const bg = hovered ? accent : BASE_BG
   const fg = hovered ? INVERTED_TEXT : BASE_TEXT
@@ -111,7 +105,9 @@ export function ProductCardCompact({
           src={photo}
           alt=""
           loading="lazy"
-          className="w-full h-full object-contain select-none"
+          className={`w-full h-full select-none ${
+            framedPhoto ? 'object-cover rounded-xl' : 'object-contain'
+          }`}
         />
       </motion.div>
 

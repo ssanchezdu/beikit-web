@@ -119,7 +119,7 @@ export function Header() {
               }`}
               style={{ transition: 'color 240ms var(--ease-out), background-color 240ms var(--ease-out)' }}
             >
-              CA
+              CAT
             </button>
           </div>
         </div>

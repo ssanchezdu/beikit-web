@@ -35,13 +35,13 @@ const ttIcon = (size: number) => (
 const IG_ROTATIONS = [-3, 2.5] as const
 
 const IG_FALLBACK: IGCard[] = [
-  { src: '/ig-reel-DW6wMOQiJdF.jpg', href: 'https://www.instagram.com/reel/DW6wMOQiJdF/', caption: 'Ver reel en Instagram', rotate: IG_ROTATIONS[0] },
-  { src: 'https://placehold.co/400x400/e8511b/f6eadf?text=IG+2', href: 'https://www.instagram.com/beikit_bakery/', caption: 'Cookie lovers only', rotate: IG_ROTATIONS[1] },
+  { src: '/tt-video-7641997539968945430.jpg', href: 'https://www.instagram.com/reel/DYkNAIoIyT3/', caption: 'Ver reel en Instagram', rotate: IG_ROTATIONS[0] },
+  { src: '/tt-video-7626799052440505622.jpg', href: 'https://www.instagram.com/reel/DW6wMOQiJdF/', caption: 'Ver reel en Instagram', rotate: IG_ROTATIONS[1] },
 ]
 
 const TT_POSTS = [
-  { src: 'https://placehold.co/400x400/320e10/f6eadf?text=TT+1', href: 'https://www.tiktok.com/@beikit_bakery', caption: 'Behind the scenes', rotate: -2 },
-  { src: 'https://placehold.co/400x400/e8511b/f6eadf?text=TT+2', href: 'https://www.tiktok.com/@beikit_bakery', caption: 'How we bake it', rotate: 3 },
+  { src: '/tt-video-7634215210190163203.jpg', href: 'https://www.tiktok.com/@beikit_bakery/video/7634215210190163203', caption: 'Ver en TikTok', rotate: -2 },
+  { src: '/tt-video-7631268682877947158.jpg', href: 'https://www.tiktok.com/@beikit_bakery/video/7631268682877947158', caption: 'Ver en TikTok', rotate: 3 },
 ]
 
 function PostCard({ src, href, caption, rotate, iconSmall, iconHover, delay }: {

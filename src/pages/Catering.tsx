@@ -480,7 +480,7 @@ type ProductCard = {
 const PRODUCT_PHOTOS: Record<string, string> = {
   Cheesecakes: '/assets/images/clasicaporcion.webp',
   Cookies: '/assets/images/nyclassic.webp',
-  Milkshakes: '/assets/images/milkshake.webp',
+  Milkshakes: '/assets/images/milkshake_vanilla.webp',
   Lattes: '/assets/images/cafelatte.webp',
 }
 
@@ -489,12 +489,11 @@ function photoFor(title: string) {
 }
 
 // Per-family image footprint inside the 4:3 media zone. The wide cheesecake
-// slice fills the zone easily so it needs a smaller cap; the tall milkshake and
-// latte glasses need a larger cap to read big.
+// slice fills the zone easily so it needs a smaller cap; the tall latte
+// glasses need a larger cap to read big. (Milkshakes use a full-bleed photo.)
 const PRODUCT_IMAGE_SIZE: Record<string, string> = {
   Cheesecakes: 'max-w-[72%] max-h-[76%]',
   Cookies:     'max-w-[88%] max-h-[90%]',
-  Milkshakes:  'max-w-[96%] max-h-full',
   Lattes:      'max-w-[96%] max-h-full',
 }
 function imageSizeFor(title: string) {
@@ -519,15 +518,26 @@ function ProductoCardBlock({ card, i }: { card: ProductCard; i: number }) {
           style={{ background: 'radial-gradient(ellipse at 50% 44%, rgba(248,177,20,0.16) 0%, rgba(232,81,27,0.07) 42%, transparent 72%)' }}
           aria-hidden="true"
         />
-        {/* Product photo — large and dominant, for appetite appeal */}
+        {/* Product photo — large and dominant, for appetite appeal.
+            Milkshakes ship as a framed portrait photo; the rest are cutouts. */}
         <div className="absolute inset-0 flex items-center justify-center">
-          <img
-            src={photoFor(card.title)}
-            alt=""
-            loading="lazy"
-            className={`w-auto h-auto ${imageSizeFor(card.title)} object-contain drop-shadow-[0_18px_40px_rgba(0,0,0,0.45)] group-hover:scale-[1.06] select-none pointer-events-none`}
-            style={{ transition: 'transform 600ms var(--ease-out)' }}
-          />
+          {card.title === 'Milkshakes' ? (
+            <img
+              src={photoFor(card.title)}
+              alt=""
+              loading="lazy"
+              className="h-[88%] w-auto object-contain rounded-xl drop-shadow-[0_18px_40px_rgba(0,0,0,0.45)] group-hover:scale-[1.06] select-none pointer-events-none"
+              style={{ transition: 'transform 600ms var(--ease-out)' }}
+            />
+          ) : (
+            <img
+              src={photoFor(card.title)}
+              alt=""
+              loading="lazy"
+              className={`w-auto h-auto ${imageSizeFor(card.title)} object-contain drop-shadow-[0_18px_40px_rgba(0,0,0,0.45)] group-hover:scale-[1.06] select-none pointer-events-none`}
+              style={{ transition: 'transform 600ms var(--ease-out)' }}
+            />
+          )}
         </div>
         {/* Hairline separator at bottom of media */}
         <div className="absolute left-0 right-0 bottom-0 h-px bg-cream/10" aria-hidden="true" />

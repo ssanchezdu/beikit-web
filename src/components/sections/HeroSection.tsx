@@ -161,7 +161,7 @@ export function HeroSection() {
           <div className="flex gap-3">
             <Button
               variant="yellow"
-              href="https://glovoapp.com"
+              href="https://www.ubereats.com/es/store/beikit-bakery/LbmFt-JFQYibr4MoySomkw"
               external
               className="group/cta text-[12px] md:text-[13px] tracking-[0.12em] px-5 md:px-8 py-3.5 md:py-4 gap-2 shadow-[0_8px_30px_-4px_rgba(248,177,20,0.45)]"
             >

@@ -116,16 +116,6 @@ export function Footer() {
               </h3>
               <div className="flex flex-col gap-3">
                 <a
-                  href="https://glovoapp.com"
-                  target="_blank"
-                  rel="noreferrer"
-                  className="focus-ring-dark rounded-[2px] font-body text-[14px] text-cream/70 hover:text-orange flex items-center gap-2.5"
-                  style={colorTransition}
-                >
-                  <span className="w-1.5 h-1.5 rounded-full bg-orange shadow-[0_0_6px_rgba(232,81,27,0.4)]" />
-                  Glovo
-                </a>
-                <a
                   href="https://ubereats.com"
                   target="_blank"
                   rel="noreferrer"

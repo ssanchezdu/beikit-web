@@ -39,6 +39,17 @@ const iconPedir = (
   </svg>
 )
 
+/**
+ * Brief haptic pulse for tap feedback — Saffer's "selection" pattern
+ * (very short, tactile). No-op on browsers without the Vibration API
+ * (notably iOS Safari), so visual feedback always remains the source of truth.
+ */
+function tapHaptic() {
+  if (typeof navigator !== 'undefined' && typeof navigator.vibrate === 'function') {
+    navigator.vibrate(10)
+  }
+}
+
 export function BottomNav() {
   const { t } = useLanguage()
   const n = t.nav
@@ -61,11 +72,16 @@ export function BottomNav() {
           <li key={it.to} className="flex-1">
             <Link
               to={it.to}
+              onClick={tapHaptic}
               aria-current={it.active ? 'page' : undefined}
-              className={`press focus-ring flex flex-col items-center justify-center gap-1 min-h-[56px] py-2 ${
+              className={`focus-ring flex flex-col items-center justify-center gap-1 min-h-[56px] py-2 active:bg-orange/10 active:text-orange active:scale-[0.94] ${
                 it.active ? 'text-orange' : 'text-dark/55'
               }`}
-              style={{ transition: 'color 200ms var(--ease-out)' }}
+              style={{
+                transition:
+                  'color 200ms var(--ease-out), background-color 150ms var(--ease-out), transform 120ms var(--ease-out)',
+                transformOrigin: 'center',
+              }}
             >
               {it.icon}
               <span className="font-body font-bold text-[10px] tracking-[0.06em] uppercase leading-none">
