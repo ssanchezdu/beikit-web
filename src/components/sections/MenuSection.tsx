@@ -83,14 +83,14 @@ const CHEESECAKE_IMAGES: Record<number, string> = {
 /* Milkshake photos — landscape product shots, keyed by carta name in both
    languages (ES "Chocolate"/"Fresa" · CA "Xocolata"/"Maduixa"). */
 const MILKSHAKE_IMAGES: Record<string, string> = {
-  Vainilla: '/assets/images/milkshake_vanilla.webp',
-  Chocolate: '/assets/images/milkshake_chocolate.webp',
-  Xocolata: '/assets/images/milkshake_chocolate.webp',
-  Fresa: '/assets/images/milkshake_fresa.webp',
-  Maduixa: '/assets/images/milkshake_fresa.webp',
-  Oreo: '/assets/images/milkshake_oreo.webp',
-  Lotus: '/assets/images/milkshake_lotus.webp',
-  Dinosaurus: '/assets/images/milkshake_dinosaurus.webp',
+  Vainilla: '/assets/images/milkshake_vanilla.png',
+  Chocolate: '/assets/images/milkshake_chocolate.png',
+  Xocolata: '/assets/images/milkshake_chocolate.png',
+  Fresa: '/assets/images/milkshake_fresa.png',
+  Maduixa: '/assets/images/milkshake_fresa.png',
+  Oreo: '/assets/images/milkshake_oreo.png',
+  Lotus: '/assets/images/milkshake_lotus.png',
+  Dinosaurus: '/assets/images/milkshake_dinosaurus.png',
 }
 
 const CHEESECAKE_UBER_EATS_URLS: Record<number, string> = {
@@ -172,7 +172,7 @@ export function MenuSection() {
       title: m.milkshakes.title,
       description: m.milkshakes.description,
       items: m.items.milkshakes,
-      photo: '/assets/images/milkshake_vanilla.webp',
+      photo: '/assets/images/milkshake_vanilla.png',
       itemImages: MILKSHAKE_IMAGES,
       itemUrls: MILKSHAKE_UBER_EATS_URLS,
       imageShape: 'tall' as const,

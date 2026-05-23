@@ -160,7 +160,7 @@ const ca = {
     valores: {
       tag: 'Qui som',
       title: 'Rebosteria americana feta amb amor, cada dia.',
-      body1: "Som Juan i Anna, els fundadors de Beikit. Després d'anys perfeccionant les nostres receptes, obrim les portes de la nostra bakery americana a Granollers amb un objectiu clar: portar l'autèntic sabor americà a la teva taula — i ara també als teus actes.",
+      body1: "Som Juan i Anna, els fundadors de Beikit. Després d'anys perfeccionant les nostres receptes, obrim les portes de la nostra bakery americana a Granollers amb un objectiu clar: portar l'autèntic sabor americà a la teva taula i ara també als teus actes.",
       body2: "Cada comanda de càtering la preparem amb la mateixa dedicació que posem a la nostra botiga. Sense dreceres, sense congelats. Heartmade Everyday.",
       cards: [
         { emoji: '🚚', title: 'Entrega inclosa', desc: 'Granollers + 30 km, sense cost ocult en actes des de 50 pax' },
@@ -174,7 +174,7 @@ const ca = {
       title: "L'essencial, abans de demanar",
       cards: [
         { kpi: '20', unit: 'pax', label: 'Comanda mínima', desc: 'Per a serveis complets. Safates soltes des de 10 pax.' },
-        { kpi: '7', unit: 'dies', label: 'Antelació recomanada', desc: 'Per a actes grans demana amb 14 dies — temporada alta omple ràpid.' },
+        { kpi: '7', unit: 'dies', label: 'Antelació recomanada', desc: 'Per a actes grans demana amb 14 dies, temporada alta omple ràpid.' },
         { kpi: '30', unit: 'km', label: 'Radi de lliurament', desc: 'Granollers i voltants. Més lluny? Pregunta-nos.' },
         { kpi: '48', unit: 'h', label: 'Temps de resposta', desc: 'Contestem cada sol·licitud en menys de 48 hores hàbils.' },
       ],
@@ -182,7 +182,7 @@ const ca = {
     pasos: {
       tag: 'El procés',
       title: 'Com funciona',
-      subtitle: 'Un procés simple i transparent — del teu primer missatge a l\'últim mos de l\'acte.',
+      subtitle: 'Un procés simple i transparent, del teu primer missatge a l\'últim mos de l\'acte.',
       steps: [
         { time: 'Dia 0', title: 'Sol·licita', desc: "Omple el formulari o escriu-nos per WhatsApp. Explica'ns acte, data i nombre de persones." },
         { time: '< 48h', title: 'Reps proposta', desc: "Confirmem disponibilitat i enviem pressupost tancat amb opcions i productes suggerits." },
@@ -223,7 +223,7 @@ const ca = {
     productos: {
       tag: 'Què oferim',
       title: 'Productes disponibles',
-      intro: 'La nostra carta completa adaptada per a actes. Tria el que imagines o explica-nos-ho — ho resolem junts.',
+      intro: 'La nostra carta completa adaptada per a actes.',
       cards: [
         { badge: 'Bestseller', title: 'Cookies', desc: "Crumble cookies acabades de coure, amb l'exterior cruixent i l'interior tendre. Perfectes per a coffee breaks i esmorzars corporatius.", pills: ['NY Classic', 'Oreo', 'Lotus', 'Pistacchio', 'Kinder', 'Red Velvet', 'Dinosaurus', 'Triple Choc'] },
         { title: 'Cheesecakes', desc: "Dues famílies: forn cremoses i mousse fredes. Format individual o per compartir, ideals per a qualsevol celebració.", pills: ['Clàssica', 'Oreo', 'Pistacchio', 'Lotus', 'Kinder', 'Maduixa'] },
@@ -240,16 +240,16 @@ const ca = {
       nombre: 'Nom',
       email: 'Correu electrònic',
       telefono: 'Telèfon',
-      telefonoOptional: '— Opcional',
+      telefonoOptional: '(Opcional)',
       tipoEvento: "Tipus d'acte",
       fecha: 'Data aproximada',
       personas: 'Nombre de persones',
       personasOptions: ['10–25', '25–50', '50–100', '100–200', '+200'],
       productos: "Què t'interessa?",
-      productosHelp: 'Tria una o diverses opcions — després ho concretem amb tu',
+      productosHelp: 'Tria una o diverses opcions, després ho concretem amb tu',
       productosOptions: ['Cookies', 'Cheesecakes', 'Milkshakes', 'Lattes', 'Pastissos a mida', 'Encara no ho sé'],
       mensaje: 'Missatge',
-      mensajeOptional: '— Opcional',
+      mensajeOptional: '(Opcional)',
       privacidadPre: 'He llegit i accepto la ',
       privacidadLink: 'Política de Privacitat',
       submit: "Enviar sol·licitud",

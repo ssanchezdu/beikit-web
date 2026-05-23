@@ -14,8 +14,10 @@ export function Home() {
     <>
       <Helmet>
         <html lang={lang} />
-        <title>Beikit Bakery — American Bakery en Granollers</title>
+        <title>Beikit Bakery</title>
         <meta name="description" content="Cookies, cheesecakes y milkshakes artesanales. American Bakery en Granollers. Pedidos a domicilio vía Uber Eats." />
+        {/* og:title keeps the full descriptive form for link previews —
+            shorter tab titles, richer share cards. */}
         <meta property="og:title" content="Beikit Bakery — American Bakery en Granollers" />
         <meta property="og:description" content="Cookies, cheesecakes y milkshakes artesanales. Heartmade Everyday." />
         <meta property="og:type" content="website" />

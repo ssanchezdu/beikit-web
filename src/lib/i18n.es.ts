@@ -158,7 +158,7 @@ const es = {
     valores: {
       tag: 'Quiénes somos',
       title: 'Repostería americana hecha con amor, cada día.',
-      body1: 'Somos Juan y Anna, los fundadores de Beikit. Después de años perfeccionando nuestras recetas, abrimos las puertas de nuestra bakery americana en Granollers con un objetivo claro: traer el auténtico sabor americano a tu mesa — y ahora también a tus eventos.',
+      body1: 'Somos Juan y Anna, los fundadores de Beikit. Después de años perfeccionando nuestras recetas, abrimos las puertas de nuestra bakery americana en Granollers con un objetivo claro: traer el auténtico sabor americano a tu mesa y ahora también a tus eventos.',
       body2: 'Cada pedido de catering lo preparamos con la misma dedicación que ponemos en nuestra tienda. Sin atajos, sin congelados. Heartmade Everyday.',
       cards: [
         { emoji: '🚚', title: 'Entrega incluida', desc: 'Granollers + 30 km, sin coste oculto en eventos desde 50 pax' },
@@ -172,7 +172,7 @@ const es = {
       title: 'Lo esencial, antes de pedir',
       cards: [
         { kpi: '20', unit: 'pax', label: 'Pedido mínimo', desc: 'Para servicios completos. Bandejas sueltas desde 10 pax.' },
-        { kpi: '7', unit: 'días', label: 'Antelación recomendada', desc: 'Para eventos grandes pide con 14 días — temporada alta llena rápido.' },
+        { kpi: '7', unit: 'días', label: 'Antelación recomendada', desc: 'Para eventos grandes pide con 14 días, temporada alta llena rápido.' },
         { kpi: '30', unit: 'km', label: 'Radio de entrega', desc: 'Granollers y alrededores. Más lejos? Pregúntanos.' },
         { kpi: '48', unit: 'h', label: 'Tiempo de respuesta', desc: 'Contestamos toda solicitud en menos de 48 horas hábiles.' },
       ],
@@ -180,7 +180,7 @@ const es = {
     pasos: {
       tag: 'El proceso',
       title: 'Cómo funciona',
-      subtitle: 'Un proceso simple y transparente — de tu primer mensaje al último bocado del evento.',
+      subtitle: 'Un proceso simple y transparente, de tu primer mensaje al último bocado del evento.',
       steps: [
         { time: 'Día 0', title: 'Solicita', desc: 'Rellena el formulario o escríbenos por WhatsApp. Cuéntanos evento, fecha y nº de personas.' },
         { time: '< 48h', title: 'Recibes propuesta', desc: 'Confirmamos disponibilidad y enviamos presupuesto cerrado con opciones y productos sugeridos.' },
@@ -221,7 +221,7 @@ const es = {
     productos: {
       tag: 'Qué ofrecemos',
       title: 'Productos disponibles',
-      intro: 'Nuestra carta completa adaptada para eventos. Elige lo que imaginas o cuéntanoslo — lo resolvemos juntos.',
+      intro: 'Nuestra carta completa adaptada para eventos.',
       cards: [
         { badge: 'Bestseller', title: 'Cookies', desc: 'Crumble cookies recién horneadas, con el exterior crujiente y el interior tierno. Perfectas para coffee breaks y desayunos corporativos.', pills: ['NY Classic', 'Oreo', 'Lotus', 'Pistacchio', 'Kinder', 'Red Velvet', 'Dinosaurus', 'Triple Choc'] },
         { title: 'Cheesecakes', desc: 'Dos familias: horneadas cremosas y mousse frías. Formato individual o para compartir, ideales para cualquier celebración.', pills: ['Clásica', 'Oreo', 'Pistacchio', 'Lotus', 'Kinder', 'Fresa'] },
@@ -238,16 +238,16 @@ const es = {
       nombre: 'Nombre',
       email: 'Email',
       telefono: 'Teléfono',
-      telefonoOptional: '— Opcional',
+      telefonoOptional: '(Opcional)',
       tipoEvento: 'Tipo de evento',
       fecha: 'Fecha aproximada',
       personas: 'Número de personas',
       personasOptions: ['10–25', '25–50', '50–100', '100–200', '+200'],
       productos: '¿Qué te interesa?',
-      productosHelp: 'Selecciona uno o varios — luego concretamos contigo',
+      productosHelp: 'Selecciona uno o varios, luego concretamos contigo',
       productosOptions: ['Cookies', 'Cheesecakes', 'Milkshakes', 'Lattes', 'Tartas a medida', 'No lo sé aún'],
       mensaje: 'Mensaje',
-      mensajeOptional: '— Opcional',
+      mensajeOptional: '(Opcional)',
       privacidadPre: 'He leído y acepto la ',
       privacidadLink: 'Política de Privacidad',
       submit: 'Enviar solicitud',

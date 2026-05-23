@@ -217,69 +217,22 @@ function ValoresSection() {
               aria-hidden="true"
             />
 
+            {/* Photo of Juan & Anna — same asset as NosotrosSection on Home.
+                Catering visitors are deciding to trust us with their event;
+                showing the actual founders is stronger social proof than a
+                decorative sticker composition. All floating chips were
+                stripped so nothing competes with the founders' faces. */}
             <div className="relative rounded-xl md:rounded-2xl overflow-hidden shadow-[0_24px_64px_-14px_rgba(50,14,16,0.24),0_10px_28px_-10px_rgba(50,14,16,0.12)] lg:h-full">
-              <div
-                className="aspect-[5/4] lg:aspect-auto lg:h-full relative"
-                style={{ background: 'radial-gradient(ellipse at 30% 30%, #5c2d2e 0%, #3b1315 45%, #2a0c0e 100%)' }}
-              >
-                {/* Sticker composition — cheesecake top right, cookies bottom left, milkshake mid */}
+              <div className="aspect-[5/4] lg:aspect-auto lg:h-full">
                 <img
-                  src="/assets/svg/sticker_cheesecake.svg"
-                  alt=""
-                  aria-hidden="true"
-                  className="absolute top-[6%] right-[-6%] w-[60%] max-w-[320px] opacity-[0.42] rotate-[8deg] drop-shadow-[0_24px_50px_rgba(0,0,0,0.45)] select-none pointer-events-none"
-                />
-                <img
-                  src="/assets/svg/sticker_cookies.svg"
-                  alt=""
-                  aria-hidden="true"
-                  className="absolute bottom-[-4%] left-[-8%] w-[72%] max-w-[360px] opacity-[0.48] -rotate-[6deg] drop-shadow-[0_24px_50px_rgba(0,0,0,0.45)] select-none pointer-events-none"
-                />
-                <img
-                  src="/assets/svg/sticker_milkshake.svg"
-                  alt=""
-                  aria-hidden="true"
-                  className="absolute top-[42%] right-[18%] w-[32%] max-w-[160px] opacity-[0.35] rotate-[-4deg] drop-shadow-[0_18px_40px_rgba(0,0,0,0.40)] select-none pointer-events-none"
-                />
-
-                {/* Warm grain overlay */}
-                <div
-                  className="absolute inset-0 pointer-events-none mix-blend-overlay"
-                  style={{ background: 'radial-gradient(ellipse at 30% 30%, rgba(248,177,20,0.22) 0%, transparent 55%)' }}
-                  aria-hidden="true"
-                />
-                <div
-                  className="absolute inset-0 pointer-events-none"
-                  style={{ background: 'linear-gradient(to top, rgba(50,14,16,0.40) 0%, rgba(50,14,16,0.10) 40%, transparent 72%)' }}
-                  aria-hidden="true"
+                  src="/assets/images/fundadores.webp"
+                  alt="Juan y Anna, fundadores de Beikit Bakery, frente a su local en Granollers"
+                  width="1100"
+                  height="1532"
+                  loading="lazy"
+                  className="w-full h-full object-cover"
                 />
               </div>
-
-              {/* Floating chip — top left */}
-              <motion.div
-                className="absolute top-4 left-4 md:top-6 md:left-6 bg-dark/85 backdrop-blur-sm rounded-full px-4 py-2 shadow-[0_8px_24px_-6px_rgba(0,0,0,0.30)]"
-                initial={{ opacity: 0, y: -10 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.4, delay: 0.35, ease: EASE }}
-              >
-                <span className="font-body font-bold text-[10px] tracking-[0.22em] uppercase text-yellow">
-                  · Eventos & Corporativo
-                </span>
-              </motion.div>
-
-              {/* Floating chip — bottom right */}
-              <motion.div
-                className="absolute bottom-4 right-4 md:bottom-6 md:right-6 bg-cream/92 backdrop-blur-sm rounded-md px-4 py-2.5 shadow-[0_4px_16px_-4px_rgba(50,14,16,0.15)]"
-                initial={{ opacity: 0, y: 12 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.4, delay: 0.45, ease: EASE }}
-              >
-                <span className="font-body font-bold text-[11px] tracking-[0.18em] uppercase text-orange">
-                  Heartmade Everyday
-                </span>
-              </motion.div>
             </div>
           </motion.div>
 
@@ -480,7 +433,7 @@ type ProductCard = {
 const PRODUCT_PHOTOS: Record<string, string> = {
   Cheesecakes: '/assets/images/clasicaporcion.webp',
   Cookies: '/assets/images/nyclassic.webp',
-  Milkshakes: '/assets/images/milkshake_vanilla.webp',
+  Milkshakes: '/assets/images/milkshake_vanilla.png',
   Lattes: '/assets/images/cafelatte.webp',
 }
 
@@ -1313,8 +1266,9 @@ export function Catering() {
         <html lang={lang} />
         {/* Not yet launched — reachable by direct URL but kept out of search engines */}
         <meta name="robots" content="noindex" />
-        <title>Catering para empresas y eventos en Granollers — Beikit Bakery</title>
+        <title>Beikit Bakery - Catering</title>
         <meta name="description" content="Catering dulce artesano en Granollers y 30 km. Cookies, cheesecakes y coffee breaks para empresas, bodas y celebraciones desde 20 personas. Presupuesto gratis en 48h." />
+        {/* og:title keeps the full descriptive form for link previews. */}
         <meta property="og:title" content="Catering Beikit — Coffee breaks, bodas y eventos corporativos" />
         <meta property="og:description" content="Repostería americana artesanal para tus eventos. Desde 8€/persona. Presupuesto en 48h. Facturamos a empresas." />
         <meta property="og:type" content="website" />

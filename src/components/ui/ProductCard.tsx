@@ -37,6 +37,7 @@ export function ProductCard({
   return (
     <article
       {...bind}
+      ref={bind.ref as React.RefObject<HTMLElement>}
       className="group relative rounded-xl sm:rounded-2xl isolate"
       style={{
         backgroundColor: bg,
@@ -45,6 +46,8 @@ export function ProductCard({
         transition:
           'background-color 240ms var(--ease-out), color 240ms var(--ease-out), transform 240ms var(--ease-out)',
         transform: hovered && !reduceMotion ? 'translateY(-3px)' : 'translateY(0)',
+        WebkitTapHighlightColor: 'transparent',
+        touchAction: 'manipulation',
       }}
     >
       {/* ── MOBILE layout (< 640px): stacked vertically ──────────── */}

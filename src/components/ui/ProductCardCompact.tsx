@@ -61,6 +61,7 @@ export function ProductCardCompact({
   return (
     <article
       {...bind}
+      ref={bind.ref as React.RefObject<HTMLElement>}
       className="group relative rounded-lg sm:rounded-xl flex flex-col items-center text-center px-5 pt-7 pb-5 sm:pt-9 sm:pb-7 isolate h-full"
       style={{
         backgroundColor: bg,
@@ -68,6 +69,10 @@ export function ProductCardCompact({
         transition:
           'background-color 220ms var(--ease-out), color 220ms var(--ease-out), transform 220ms var(--ease-out)',
         transform: hovered && !reduceMotion ? 'translateY(-4px)' : 'translateY(0)',
+        /* Mobile polish: kill iOS' grey tap-highlight (we render our own
+           color inversion) and skip the legacy 300ms tap delay. */
+        WebkitTapHighlightColor: 'transparent',
+        touchAction: 'manipulation',
       }}
     >
       {/* Bestseller ribbon */}
