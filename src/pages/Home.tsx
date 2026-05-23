@@ -21,7 +21,17 @@ export function Home() {
         <meta property="og:title" content="Beikit Bakery — American Bakery en Granollers" />
         <meta property="og:description" content="Cookies, cheesecakes y milkshakes artesanales. Heartmade Everyday." />
         <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://beikitbakery.com" />
+        <meta property="og:site_name" content="Beikit Bakery" />
         <meta property="og:locale" content={lang === 'es' ? 'es_ES' : 'ca_ES'} />
+        <meta property="og:image" content="https://beikitbakery.com/og-image.png" />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
+        <meta property="og:image:alt" content="Beikit Bakery — American Bakery en Granollers" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Beikit Bakery — American Bakery en Granollers" />
+        <meta name="twitter:description" content="Cookies, cheesecakes y milkshakes artesanales. Heartmade Everyday." />
+        <meta name="twitter:image" content="https://beikitbakery.com/og-image.png" />
         <link rel="canonical" href="https://beikitbakery.com" />
       </Helmet>
 

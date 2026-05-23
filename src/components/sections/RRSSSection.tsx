@@ -47,31 +47,27 @@ const TT_POSTS = [
 function PostCard({ src, href, caption, rotate, iconSmall, iconHover, delay }: {
   src: string; href: string; caption: string; rotate: number; iconSmall: React.ReactNode; iconHover: React.ReactNode; delay: number
 }) {
+  /* All transform changes use the full `transform` string instead of Framer's
+     `x`/`y`/`scale`/`rotate` shorthand — the shorthand routes through rAF on
+     the main thread and drops frames during scroll. The string form is GPU-
+     accelerated. Emil specifically flags this. */
+  const hoverTransition = { type: 'spring' as const, duration: 0.45, bounce: 0.18 }
+  const hoverTransform = 'translateY(-8px) scale(1.05) rotate(0deg)'
+
   return (
     <motion.a
       href={href}
       target="_blank"
       rel="noreferrer"
       className="group focus-ring block relative"
-      initial={{ opacity: 0, y: 40, rotate: rotate * 2 }}
+      initial={{ opacity: 0, transform: `translateY(40px) rotate(${rotate * 2}deg)` }}
       whileInView={{
         opacity: 1,
-        y: 0,
-        rotate,
+        transform: `translateY(0px) rotate(${rotate}deg)`,
         transition: { duration: 0.6, delay, ease: EASE },
       }}
-      whileHover={{
-        y: -8,
-        scale: 1.05,
-        rotate: 0,
-        transition: { type: 'spring', duration: 0.45, bounce: 0.18 },
-      }}
-      whileFocus={{
-        y: -8,
-        scale: 1.05,
-        rotate: 0,
-        transition: { type: 'spring', duration: 0.45, bounce: 0.18 },
-      }}
+      whileHover={{ transform: hoverTransform, transition: hoverTransition }}
+      whileFocus={{ transform: hoverTransform, transition: hoverTransition }}
       viewport={{ once: true, amount: 0.2 }}
     >
       <div

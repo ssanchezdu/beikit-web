@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react'
-import type { PointerEvent as ReactPointerEvent, RefObject } from 'react'
+import type { PointerEvent as ReactPointerEvent } from 'react'
 import { useReducedMotion } from 'framer-motion'
 import { useHoverCapable } from './useHoverCapable'
 
@@ -18,10 +18,14 @@ import { useHoverCapable } from './useHoverCapable'
   `false` on real touch devices, so the old mouse-only bindings never fired
   there. DevTools' mobile viewport keeps the underlying mouse pointer fine,
   which is why the bug only surfaced on hardware.
+
+  `ref` is returned separately (not nested in `bind`) so that consumers can
+  attach it directly with `<article ref={ref} ...>` instead of going through
+  `bind.ref`, which the React Compiler's ref-rules treat as a ref access
+  during render.
 */
 
 interface CardHoverBind {
-  ref: RefObject<HTMLElement | null>
   onMouseEnter?: () => void
   onMouseLeave?: () => void
   onFocus: () => void
@@ -55,25 +59,25 @@ export function useCardHover() {
     }
   }, [hoverCapable, hovered])
 
-  const bind: CardHoverBind = {
-    ref,
-    onFocus: () => setHovered(true),
-    onBlur: () => setHovered(false),
-  }
+  const bind: CardHoverBind = hoverCapable
+    ? {
+        onFocus: () => setHovered(true),
+        onBlur: () => setHovered(false),
+        onMouseEnter: () => setHovered(true),
+        onMouseLeave: () => setHovered(false),
+      }
+    : {
+        onFocus: () => setHovered(true),
+        onBlur: () => setHovered(false),
+        // Toggle on tap. Skip when the user tapped the CTA so a direct tap
+        // on the button opens the link instead of just previewing the card.
+        onPointerUp: (e: ReactPointerEvent) => {
+          if (e.pointerType === 'mouse') return
+          const target = e.target as HTMLElement
+          if (target.closest('a, button')) return
+          setHovered((prev) => !prev)
+        },
+      }
 
-  if (hoverCapable) {
-    bind.onMouseEnter = () => setHovered(true)
-    bind.onMouseLeave = () => setHovered(false)
-  } else {
-    // Toggle on tap. Skip when the user tapped the CTA so a direct tap on
-    // the button opens the link instead of just previewing the card.
-    bind.onPointerUp = (e: ReactPointerEvent) => {
-      if (e.pointerType === 'mouse') return
-      const target = e.target as HTMLElement
-      if (target.closest('a, button')) return
-      setHovered((prev) => !prev)
-    }
-  }
-
-  return { hovered, reduceMotion: Boolean(reduceMotion), bind }
+  return { hovered, reduceMotion: Boolean(reduceMotion), ref, bind }
 }

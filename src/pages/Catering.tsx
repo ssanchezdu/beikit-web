@@ -1164,12 +1164,17 @@ function StickyCta() {
     window.addEventListener('scroll', onScroll, { passive: true })
 
     // Hide sticky CTA when user reaches the form (avoid duplicate CTA).
-    // Retry until the form node mounts — StickyCta may mount before FormSection.
+    // Retry until the form node mounts — StickyCta may mount before
+    // FormSection. Cap the retries (~5s @ 60fps) so we never spin forever
+    // if something deeper is wrong with the page.
     let observer: IntersectionObserver | null = null
     let rafId = 0
+    let attempts = 0
+    const MAX_ATTEMPTS = 300
     const attach = () => {
       const formEl = document.getElementById('catering-form')
       if (!formEl) {
+        if (attempts++ >= MAX_ATTEMPTS) return
         rafId = requestAnimationFrame(attach)
         return
       }
@@ -1273,6 +1278,16 @@ export function Catering() {
         <meta property="og:description" content="Repostería americana artesanal para tus eventos. Desde 8€/persona. Presupuesto en 48h. Facturamos a empresas." />
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://beikitbakery.com/catering" />
+        <meta property="og:site_name" content="Beikit Bakery" />
+        <meta property="og:locale" content={lang === 'es' ? 'es_ES' : 'ca_ES'} />
+        <meta property="og:image" content="https://beikitbakery.com/og-image.png" />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
+        <meta property="og:image:alt" content="Beikit Bakery — Catering" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Catering Beikit — Coffee breaks, bodas y eventos corporativos" />
+        <meta name="twitter:description" content="Repostería americana artesanal para tus eventos. Desde 8€/persona. Presupuesto en 48h." />
+        <meta name="twitter:image" content="https://beikitbakery.com/og-image.png" />
         <link rel="canonical" href="https://beikitbakery.com/catering" />
         <script type="application/ld+json">{JSON.stringify(faqJsonLd)}</script>
         <script type="application/ld+json">{JSON.stringify(serviceJsonLd)}</script>

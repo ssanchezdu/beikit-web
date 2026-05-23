@@ -116,7 +116,7 @@ export function Footer() {
               </h3>
               <div className="flex flex-col gap-3">
                 <a
-                  href="https://ubereats.com"
+                  href="https://www.ubereats.com/es/store/beikit-bakery/LbmFt-JFQYibr4MoySomkw"
                   target="_blank"
                   rel="noreferrer"
                   className="focus-ring-dark rounded-[2px] font-body text-[14px] text-cream/70 hover:text-orange flex items-center gap-2.5"

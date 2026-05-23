@@ -77,7 +77,7 @@ export function ClaimSection() {
           <span className="block w-8 h-[2px] bg-cream/60 rounded-full" />
         </motion.div>
 
-        {/* Brand mini logo */}
+        {/* Brand mini logo — decorative brand presence, not interactive. */}
         <motion.div
           className="group relative w-16 h-16 md:w-20 md:h-20 cursor-pointer"
           initial={{ opacity: 0, scale: 0.6, rotate: -12 }}

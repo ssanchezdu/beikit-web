@@ -412,7 +412,9 @@ function CategoryBlock({ cat, verTodos, verMenos, masPedidoLabel, pideYaLabel, a
                   className="inline-flex"
                   style={{
                     transform: expanded ? 'rotate(180deg)' : 'rotate(0deg)',
-                    transition: 'transform 320ms var(--ease-out)',
+                    /* 220ms keeps the rotate under Emil's 300ms UI ceiling
+                       while still reading as a deliberate flip, not a snap. */
+                    transition: 'transform 220ms var(--ease-out)',
                   }}
                 >
                   <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">

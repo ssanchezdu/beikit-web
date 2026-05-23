@@ -1,0 +1,13 @@
+# Beikit Bakery — crawler rules
+# /catering is still in pre-launch (per its <meta name="robots" content="noindex"/>)
+# and the legal pages are not interesting to search engines.
+
+User-agent: *
+Allow: /
+Disallow: /catering
+Disallow: /gracias
+Disallow: /aviso-legal
+Disallow: /privacidad
+Disallow: /cookies
+
+Sitemap: https://beikitbakery.com/sitemap.xml

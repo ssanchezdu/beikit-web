@@ -49,7 +49,7 @@ export function ProductCardCompact({
   framedPhoto = false,
   noImageShadowOnHover = false,
 }: ProductCardCompactProps) {
-  const { hovered, reduceMotion, bind } = useCardHover()
+  const { hovered, reduceMotion, ref, bind } = useCardHover()
 
   const imageSize = IMAGE_BOX[imageShape]
   const imageWrap = `mb-5 sm:mb-6 ${imageSize}`
@@ -60,8 +60,8 @@ export function ProductCardCompact({
 
   return (
     <article
+      ref={ref as React.RefObject<HTMLElement>}
       {...bind}
-      ref={bind.ref as React.RefObject<HTMLElement>}
       className="group relative rounded-lg sm:rounded-xl flex flex-col items-center text-center px-5 pt-7 pb-5 sm:pt-9 sm:pb-7 isolate h-full"
       style={{
         backgroundColor: bg,
@@ -141,8 +141,11 @@ export function ProductCardCompact({
         style={{
           backgroundColor: hovered ? '#320e10' : '#f8b114',
           color: hovered ? '#f6eadf' : '#320e10',
+          /* Asymmetric tempo: bg/color 220ms (calm state-flip from the
+             surrounding card), transform 160ms (snappy press feedback —
+             Emil's sweet spot for button-press is 100-160ms). */
           transition:
-            'background-color 220ms var(--ease-out), color 220ms var(--ease-out), transform 180ms var(--ease-out)',
+            'background-color 220ms var(--ease-out), color 220ms var(--ease-out), transform 160ms var(--ease-out)',
         }}
         aria-label={`${pideYaLabel} — ${name}`}
       >

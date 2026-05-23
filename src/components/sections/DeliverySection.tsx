@@ -173,7 +173,10 @@ export function DeliverySection() {
                       strokeLinejoin="round"
                       aria-hidden="true"
                       style={{ transition: 'transform 200ms var(--ease-out)' }}
-                      className="group-hover:translate-x-0.5"
+                      /* 4px (translate-x-1) — minimum needed for the arrow
+                         motion to register as intentional, per Emil. 2px
+                         (translate-x-0.5) was barely perceptible. */
+                      className="group-hover:translate-x-1"
                     >
                       <path d="M5 12h14M12 5l7 7-7 7" />
                     </svg>

@@ -27,7 +27,7 @@ export function ProductCard({
   pideYaLabel,
   orderHref,
 }: ProductCardProps) {
-  const { hovered, reduceMotion, bind } = useCardHover()
+  const { hovered, reduceMotion, ref, bind } = useCardHover()
 
   const bg = hovered ? accent : BASE_BG
   const fg = hovered ? INVERTED_TEXT : BASE_TEXT
@@ -36,8 +36,8 @@ export function ProductCard({
 
   return (
     <article
+      ref={ref as React.RefObject<HTMLElement>}
       {...bind}
-      ref={bind.ref as React.RefObject<HTMLElement>}
       className="group relative rounded-xl sm:rounded-2xl isolate"
       style={{
         backgroundColor: bg,
@@ -93,8 +93,9 @@ export function ProductCard({
             style={{
               backgroundColor: hovered ? '#320e10' : '#f8b114',
               color: hovered ? '#f6eadf' : '#320e10',
+              /* Asymmetric tempo: 220ms color (calm), 160ms transform (snappy press). */
               transition:
-                'background-color 220ms var(--ease-out), color 220ms var(--ease-out), transform 180ms var(--ease-out)',
+                'background-color 220ms var(--ease-out), color 220ms var(--ease-out), transform 160ms var(--ease-out)',
             }}
           >
             <MicroCtaContent label={pideYaLabel} />

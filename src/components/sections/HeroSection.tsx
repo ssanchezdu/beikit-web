@@ -168,7 +168,11 @@ export function HeroSection() {
               variant="yellow"
               href="https://www.ubereats.com/es/store/beikit-bakery/LbmFt-JFQYibr4MoySomkw"
               external
-              className="group/cta text-[12px] md:text-[13px] tracking-[0.12em] px-5 md:px-8 py-3.5 md:py-4 gap-2 shadow-[0_8px_30px_-4px_rgba(248,177,20,0.45)]"
+              /* Shadow swells on hover — the box-shadow transition is
+                 already wired in Button.tsx (200ms); now it has an
+                 amplified state to interpolate towards. Reinforces the
+                 lift implicit in `.press` without changing transform. */
+              className="group/cta text-[12px] md:text-[13px] tracking-[0.12em] px-5 md:px-8 py-3.5 md:py-4 gap-2 shadow-[0_8px_30px_-4px_rgba(248,177,20,0.45)] hover:shadow-[0_14px_40px_-4px_rgba(248,177,20,0.60)]"
             >
               <MicroCtaContent label={h.cta} arrowSize={14} />
             </Button>
