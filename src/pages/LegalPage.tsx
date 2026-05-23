@@ -10,26 +10,24 @@ type Section = { heading: string; body: string[] }
 type Doc = { title: string; sections: Section[] }
 
 /*
-  BORRADOR. El texto legal de abajo es una plantilla estándar (LSSI-CE 34/2002 y
-  RGPD/LOPDGDD). Los marcadores [ … ] deben completarse con los datos reales del
-  negocio y el conjunto debe ser revisado por un asesor legal antes de publicar.
+  Texto legal estándar (LSSI-CE 34/2002 y RGPD/LOPDGDD) con los datos del
+  titular (Anna Pujol Fernández, DNI 43575252G) ya integrados. Sigue siendo
+  plantilla — recomendable revisión con asesor legal si el negocio cambia de
+  forma jurídica (autónomo → sociedad), añade tratamientos de datos nuevos o
+  empieza a operar fuera de España.
 */
 
 const UPDATED: Record<Lang, string> = {
-  es: '15 de mayo de 2026',
-  ca: '15 de maig de 2026',
+  es: '23 de mayo de 2026',
+  ca: '23 de maig de 2026',
 }
 
-const UI: Record<Lang, { draft: string; updated: string; back: string }> = {
+const UI: Record<Lang, { updated: string; back: string }> = {
   es: {
-    draft:
-      'Borrador pendiente de revisión legal. Completa los campos marcados [entre corchetes] y revisa el contenido con un asesor antes de publicar.',
     updated: 'Última actualización',
     back: 'Volver al inicio',
   },
   ca: {
-    draft:
-      'Esborrany pendent de revisió legal. Completa els camps marcats [entre claudàtors] i revisa el contingut amb un assessor abans de publicar.',
     updated: 'Última actualització',
     back: "Tornar a l'inici",
   },
@@ -44,7 +42,7 @@ const CONTENT: Record<LegalDocKey, Record<Lang, Doc>> = {
           heading: 'Datos identificativos',
           body: [
             'En cumplimiento de la Ley 34/2002, de 11 de julio, de Servicios de la Sociedad de la Información y de Comercio Electrónico (LSSI-CE), se facilitan los siguientes datos del titular de este sitio web:',
-            'Titular: [nombre o razón social del titular]. NIF/CIF: [NIF o CIF]. Domicilio: Carrer Princesa, 10, 08401 Granollers (Barcelona). Correo electrónico: contacto@beikitbakery.com. Teléfono: 603 91 94 73.',
+            'Titular: Anna Pujol Fernández. DNI: 43575252G. Domicilio: Carrer Princesa, 10, 08401 Granollers (Barcelona). Correo electrónico: contacto@beikitbakery.com. Teléfono: 603 91 94 73.',
           ],
         },
         {
@@ -86,7 +84,7 @@ const CONTENT: Record<LegalDocKey, Record<Lang, Doc>> = {
           heading: 'Dades identificatives',
           body: [
             "En compliment de la Llei 34/2002, d'11 de juliol, de Serveis de la Societat de la Informació i de Comerç Electrònic (LSSI-CE), es faciliten les dades següents del titular d'aquest lloc web:",
-            'Titular: [nom o raó social del titular]. NIF/CIF: [NIF o CIF]. Domicili: Carrer Princesa, 10, 08401 Granollers (Barcelona). Correu electrònic: contacto@beikitbakery.com. Telèfon: 603 91 94 73.',
+            'Titular: Anna Pujol Fernández. DNI: 43575252G. Domicili: Carrer Princesa, 10, 08401 Granollers (Barcelona). Correu electrònic: contacto@beikitbakery.com. Telèfon: 603 91 94 73.',
           ],
         },
         {
@@ -129,7 +127,7 @@ const CONTENT: Record<LegalDocKey, Record<Lang, Doc>> = {
         {
           heading: 'Responsable del tratamiento',
           body: [
-            'Responsable: [nombre o razón social del titular]. NIF/CIF: [NIF o CIF]. Domicilio: Carrer Princesa, 10, 08401 Granollers (Barcelona). Correo electrónico: contacto@beikitbakery.com.',
+            'Responsable: Anna Pujol Fernández. DNI: 43575252G. Domicilio: Carrer Princesa, 10, 08401 Granollers (Barcelona). Correo electrónico: contacto@beikitbakery.com.',
           ],
         },
         {
@@ -178,7 +176,7 @@ const CONTENT: Record<LegalDocKey, Record<Lang, Doc>> = {
         {
           heading: 'Responsable del tractament',
           body: [
-            'Responsable: [nom o raó social del titular]. NIF/CIF: [NIF o CIF]. Domicili: Carrer Princesa, 10, 08401 Granollers (Barcelona). Correu electrònic: contacto@beikitbakery.com.',
+            'Responsable: Anna Pujol Fernández. DNI: 43575252G. Domicili: Carrer Princesa, 10, 08401 Granollers (Barcelona). Correu electrònic: contacto@beikitbakery.com.',
           ],
         },
         {
@@ -312,14 +310,6 @@ export function LegalPage({ doc }: { doc: LegalDocKey }) {
           </h1>
           <p className="font-body text-[13px] text-dark/55 mt-3">
             {ui.updated}: {UPDATED[lang]}
-          </p>
-
-          {/* Draft notice — remove once content is legally reviewed */}
-          <p
-            role="note"
-            className="font-body text-[13px] leading-[1.6] text-dark/80 bg-yellow/20 border border-yellow/50 rounded-sm px-4 py-3 mt-6"
-          >
-            {ui.draft}
           </p>
 
           <div className="flex flex-col gap-9 mt-10">
