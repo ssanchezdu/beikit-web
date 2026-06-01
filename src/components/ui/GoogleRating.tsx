@@ -70,7 +70,7 @@ export function GoogleRating({ rating, score, reviews, ariaLabel, href }: Google
       {/* Score · review count — quiet brand-dark microcopy */}
       <span className="font-body text-[13px] leading-none whitespace-nowrap" aria-hidden="true">
         <span className="font-semibold text-dark/80">{score}</span>
-        <span className="text-dark/25">{'  ·  '}</span>
+        <span style={{ display: 'inline-block', width: 8 }} />
         <span className="text-dark/55 underline-offset-2 group-hover:underline group-focus-visible:underline">
           {reviews}
         </span>

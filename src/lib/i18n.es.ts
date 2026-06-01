@@ -9,8 +9,8 @@ const es = {
     ctaSecondary: 'VER CARTA',
     rating: {
       score: '5,0',
-      reviews: '46 reseñas en Google',
-      aria: 'Valoración de 5 sobre 5 estrellas en Google · 46 reseñas. Abrir en Google Maps',
+      reviews: '48 reseñas en Google',
+      aria: 'Valoración de 5 sobre 5 estrellas en Google · 48 reseñas. Abrir en Google Maps',
     },
   },
   menu: {

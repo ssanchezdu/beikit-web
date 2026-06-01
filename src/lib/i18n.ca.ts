@@ -11,8 +11,8 @@ const ca = {
     ctaSecondary: 'VEURE CARTA',
     rating: {
       score: '5,0',
-      reviews: '46 ressenyes a Google',
-      aria: 'Valoració de 5 sobre 5 estrelles a Google · 46 ressenyes. Obrir a Google Maps',
+      reviews: '48 ressenyes a Google',
+      aria: 'Valoració de 5 sobre 5 estrelles a Google · 48 ressenyes. Obrir a Google Maps',
     },
   },
   menu: {
