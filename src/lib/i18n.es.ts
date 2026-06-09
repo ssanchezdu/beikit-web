@@ -1,4 +1,4 @@
-const es = {
+﻿const es = {
   nav: { inicio: 'Inicio', carta: 'Carta', pedir: 'Pedir', catering: 'Catering', tagLeft: 'AMERICAN BAKERY', tagRight: 'HEARTMADE EVERYDAY' },
   hero: {
     headline: 'Date un capricho con Beikit',
@@ -8,9 +8,9 @@ const es = {
     cta: 'PIDE AHORA',
     ctaSecondary: 'VER CARTA',
     rating: {
-      score: '5,0',
-      reviews: '48 reseñas en Google',
-      aria: 'Valoración de 5 sobre 5 estrellas en Google · 48 reseñas. Abrir en Google Maps',
+      score: '4,9',
+      reviews: '54 reseñas en Google',
+      aria: 'Valoración de 4,9 sobre 5 estrellas en Google · 54 reseñas. Abrir en Google Maps',
     },
   },
   menu: {

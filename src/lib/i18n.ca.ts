@@ -1,4 +1,4 @@
-import type es from './i18n.es'
+﻿import type es from './i18n.es'
 
 const ca = {
   nav: { inicio: 'Inici', carta: 'Carta', pedir: 'Demanar', catering: 'Càtering', tagLeft: 'AMERICAN BAKERY', tagRight: 'HEARTMADE EVERYDAY' },
@@ -10,9 +10,9 @@ const ca = {
     cta: 'DEMANA ARA',
     ctaSecondary: 'VEURE CARTA',
     rating: {
-      score: '5,0',
-      reviews: '48 ressenyes a Google',
-      aria: 'Valoració de 5 sobre 5 estrelles a Google · 48 ressenyes. Obrir a Google Maps',
+      score: '4,9',
+      reviews: '54 ressenyes a Google',
+      aria: 'Valoració de 4,9 sobre 5 estrelles a Google · 54 ressenyes. Obrir a Google Maps',
     },
   },
   menu: {
