@@ -69,7 +69,7 @@ export function DeliverySection() {
           viewport={{ once: true }}
           transition={{ duration: 0.65, ease: EASE_ENTRANCE }}
         >
-          <span className="font-body font-bold text-[11px] tracking-[0.28em] uppercase text-orange flex items-center gap-3">
+          <span className="font-body font-bold text-[14px] tracking-[0.28em] uppercase text-orange flex items-center gap-3">
             <span className="block w-8 h-[2px] bg-orange rounded-full" />
             {d.eyebrow}
           </span>

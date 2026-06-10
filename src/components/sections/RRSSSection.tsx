@@ -89,7 +89,7 @@ function PostCard({ src, href, caption, rotate, iconSmall, iconHover, delay }: {
           >
             <div
               className="w-12 h-12 rounded-full bg-cream flex items-center justify-center text-dark opacity-0 scale-90 group-hover:opacity-100 group-hover:scale-100 group-focus-visible:opacity-100 group-focus-visible:scale-100"
-              style={{ transition: 'opacity 220ms var(--ease-out), transform 280ms cubic-bezier(0.34,1.45,0.64,1)' }}
+              style={{ transition: 'opacity 220ms var(--ease-out), transform 280ms var(--ease-out)' }}
             >
               {iconHover}
             </div>

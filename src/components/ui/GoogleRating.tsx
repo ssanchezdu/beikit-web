@@ -71,7 +71,7 @@ export function GoogleRating({ rating, score, reviews, ariaLabel, href }: Google
       <span className="font-body text-[13px] leading-none whitespace-nowrap" aria-hidden="true">
         <span className="font-semibold text-dark/80">{score}</span>
         <span style={{ display: 'inline-block', width: 8 }} />
-        <span className="text-dark/55 underline-offset-2 group-hover:underline group-focus-visible:underline">
+        <span className="text-dark/75 underline-offset-2 group-hover:underline group-focus-visible:underline">
           {reviews}
         </span>
       </span>

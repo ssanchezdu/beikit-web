@@ -45,7 +45,7 @@ export function ClaimSection() {
           transition={{ duration: 0.5 }}
         >
           <span className="block w-12 h-[2px] bg-cream/40 rounded-full" />
-          <span className="font-body font-bold text-[11px] tracking-[0.3em] uppercase text-cream/70">
+          <span className="font-body font-bold text-[11px] tracking-[0.3em] uppercase text-cream/70" aria-hidden="true">
             Beikit Bakery
           </span>
           <span className="block w-12 h-[2px] bg-cream/40 rounded-full" />
@@ -71,7 +71,7 @@ export function ClaimSection() {
           transition={{ duration: 0.5, delay: 0.35 }}
         >
           <span className="block w-8 h-[2px] bg-cream/60 rounded-full" />
-          <span className="font-body font-bold text-[12px] tracking-[0.25em] uppercase text-cream">
+          <span className="font-body font-bold text-[14px] tracking-[0.25em] uppercase text-cream">
             {c.tagline}
           </span>
           <span className="block w-8 h-[2px] bg-cream/60 rounded-full" />
@@ -79,12 +79,13 @@ export function ClaimSection() {
 
         {/* Brand mini logo — decorative brand presence, not interactive. */}
         <motion.div
-          className="group relative w-16 h-16 md:w-20 md:h-20 cursor-pointer"
+          aria-hidden="true"
+          className="group relative w-16 h-16 md:w-20 md:h-20"
           initial={{ opacity: 0, scale: 0.6, rotate: -12 }}
           whileInView={{ opacity: 1, scale: 1, rotate: 0 }}
           whileHover={{ scale: 1.1, rotate: 6 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.35, delay: 0, ease: [0.34, 1.56, 0.64, 1] }}
+          transition={{ duration: 0.35, delay: 0, ease: [0.23, 1, 0.32, 1] }}
         >
           <img
             src="/assets/svg/Vector.svg"
