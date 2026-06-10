@@ -53,6 +53,7 @@ export function NosotrosSection() {
                   width="1100"
                   height="1532"
                   loading="lazy"
+                  decoding="async"
                   className="w-full h-full object-cover"
                 />
               </div>
@@ -71,7 +72,7 @@ export function NosotrosSection() {
               transition={{ duration: 0.5, delay: 0.08, ease: EASE }}
             >
               <span className="block w-10 h-[3px] bg-orange rounded-full" />
-              <span className="font-body font-bold text-[11px] tracking-[0.28em] uppercase text-orange">
+              <span className="font-body font-bold text-[14px] tracking-[0.28em] uppercase text-orange">
                 {n.label}
               </span>
             </motion.div>
@@ -105,13 +106,13 @@ export function NosotrosSection() {
               viewport={{ once: true, amount: 0.2 }}
               transition={{ duration: 0.6, delay: 0.32, ease: EASE }}
             >
-              <p className="font-body text-[15px] leading-[1.8] text-dark/55">{n.body1}</p>
-              <p className="font-body text-[15px] leading-[1.8] text-dark/55">{n.body2}</p>
+              <p className="font-body text-[15px] leading-[1.8] text-dark/70">{n.body1}</p>
+              <p className="font-body text-[15px] leading-[1.8] text-dark/70">{n.body2}</p>
             </motion.div>
 
             {/* ── Signature block — personal, warm ────────────── */}
             <motion.div
-              className="pt-8 border-t border-dark/10"
+              className="pt-8"
               initial={{ opacity: 0, y: 16 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
@@ -143,7 +144,7 @@ export function NosotrosSection() {
                   <span className="font-display text-[28px] md:text-[32px] leading-none text-dark -rotate-[1.5deg]">
                     Juan & Anna
                   </span>
-                  <span className="font-body text-[12px] text-dark/45 tracking-[0.06em] mt-1.5 italic">
+                  <span className="font-body text-[12px] text-dark/65 tracking-[0.06em] mt-2 italic">
                     Fundadores, Beikit Bakery
                   </span>
                 </div>

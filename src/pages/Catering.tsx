@@ -139,7 +139,7 @@ function CateringHero() {
               variant="yellow"
               focusOnDark
               href="#catering-form"
-              className="group/cta text-[12px] md:text-[13px] tracking-[0.12em] px-6 md:px-8 py-3.5 md:py-4 gap-2 shadow-[0_10px_32px_-6px_rgba(248,177,20,0.50)]"
+              className="group/cta text-[12px] md:text-[13px] tracking-[0.12em] px-6 md:px-8 py-3.5 md:py-4 shadow-[0_10px_32px_-6px_rgba(248,177,20,0.50)]"
             >
               <MicroCtaContent
                 label={h.cta}
@@ -433,7 +433,7 @@ type ProductCard = {
 const PRODUCT_PHOTOS: Record<string, string> = {
   Cheesecakes: '/assets/images/clasicaporcion.webp',
   Cookies: '/assets/images/nyclassic.webp',
-  Milkshakes: '/assets/images/milkshake_vanilla.png',
+  Milkshakes: '/assets/images/milkshake_vanilla.webp',
   Lattes: '/assets/images/cafelatte.webp',
 }
 
@@ -1034,7 +1034,7 @@ function MidCtaSection() {
           <Button
             variant="orange"
             href="#catering-form"
-            className="group/cta text-[12px] md:text-[13px] tracking-[0.12em] px-7 md:px-8 py-3.5 md:py-4 gap-2 shadow-[0_10px_28px_-8px_rgba(232,81,27,0.45)]"
+            className="group/cta text-[12px] md:text-[13px] tracking-[0.12em] px-7 md:px-8 py-3.5 md:py-4 shadow-[0_10px_28px_-8px_rgba(232,81,27,0.45)]"
           >
             <MicroCtaContent label={m.primary} arrowSize={14} />
           </Button>

@@ -14,10 +14,8 @@ export function Home() {
     <>
       <Helmet>
         <html lang={lang} />
-        <title>Beikit Bakery</title>
+        <title>Beikit Bakery — American Bakery en Granollers</title>
         <meta name="description" content="Cookies, cheesecakes y milkshakes artesanales. American Bakery en Granollers. Pedidos a domicilio vía Uber Eats." />
-        {/* og:title keeps the full descriptive form for link previews —
-            shorter tab titles, richer share cards. */}
         <meta property="og:title" content="Beikit Bakery — American Bakery en Granollers" />
         <meta property="og:description" content="Cookies, cheesecakes y milkshakes artesanales. Heartmade Everyday." />
         <meta property="og:type" content="website" />
@@ -33,6 +31,28 @@ export function Home() {
         <meta name="twitter:description" content="Cookies, cheesecakes y milkshakes artesanales. Heartmade Everyday." />
         <meta name="twitter:image" content="https://beikitbakery.com/og-image.png" />
         <link rel="canonical" href="https://beikitbakery.com" />
+        <script type="application/ld+json">{`{
+  "@context": "https://schema.org",
+  "@type": "Bakery",
+  "name": "Beikit Bakery",
+  "description": "American Bakery en Granollers. Cookies, cheesecakes y milkshakes artesanales. Heartmade Everyday.",
+  "url": "https://beikitbakery.com",
+  "telephone": "+34603919473",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "Carrer Princesa, 10",
+    "addressLocality": "Granollers",
+    "postalCode": "08401",
+    "addressCountry": "ES"
+  },
+  "servesCuisine": ["American"],
+  "priceRange": "€€",
+  "image": "https://beikitbakery.com/og-image.png",
+  "sameAs": [
+    "https://www.instagram.com/beikit_bakery/",
+    "https://www.ubereats.com/es/store/beikit-bakery/LbmFt-JFQYibr4MoySomkw"
+  ]
+}`}</script>
       </Helmet>
 
       <HeroSection />

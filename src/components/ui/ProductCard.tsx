@@ -89,7 +89,7 @@ export function ProductCard({
             href={orderHref}
             target="_blank"
             rel="noreferrer"
-            className="group/cta press focus-ring mt-1 self-start inline-flex items-center gap-2 font-body font-bold uppercase tracking-[0.14em] text-[11px] px-5 py-[10px] rounded-full"
+            className="group/cta press focus-ring mt-1 self-start inline-flex items-center font-body font-bold uppercase tracking-[0.14em] text-[11px] px-5 py-[10px] rounded-full"
             style={{
               backgroundColor: hovered ? '#320e10' : '#f8b114',
               color: hovered ? '#f6eadf' : '#320e10',
@@ -197,7 +197,7 @@ export function ProductCard({
               href={orderHref}
               target="_blank"
               rel="noreferrer"
-              className="group/cta press focus-ring mt-2 self-start inline-flex items-center gap-2 font-body font-bold uppercase tracking-[0.14em] text-[12px] px-6 py-[12px] rounded-full"
+              className="group/cta press focus-ring mt-2 self-start inline-flex items-center font-body font-bold uppercase tracking-[0.14em] text-[12px] px-6 py-[12px] rounded-full"
               style={{
                 backgroundColor: hovered ? '#320e10' : '#f8b114',
                 color: hovered ? '#f6eadf' : '#320e10',

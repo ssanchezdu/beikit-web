@@ -108,7 +108,7 @@ export function DeliverySection() {
               {d.title.line2}
             </span>
           </h2>
-          <p className="font-body text-[15px] text-dark/55 max-w-xl leading-relaxed">
+          <p className="font-body text-[15px] text-dark/70 max-w-xl leading-relaxed">
             {d.subtitle}
           </p>
         </motion.div>
@@ -136,17 +136,17 @@ export function DeliverySection() {
                     <OptionIcon name={opt.icon} />
                   </div>
                 </div>
-                <span className="font-body font-bold text-[10px] tracking-[0.24em] uppercase text-orange">
+                <span className="font-body font-bold text-[10px] tracking-[0.24em] uppercase text-orange" aria-hidden="true">
                   {opt.label}
                 </span>
               </div>
 
               {/* Content */}
-              <div className="flex flex-col gap-2.5">
+              <div className="flex flex-col gap-3">
                 <h3 className="font-display text-[24px] md:text-[26px] leading-[1.1] text-dark">
                   {opt.title}
                 </h3>
-                <p className="font-body text-[14px] text-dark/55 leading-relaxed">
+                <p className="font-body text-[14px] text-dark/70 leading-relaxed">
                   {opt.body}
                 </p>
               </div>

@@ -5,12 +5,13 @@ import { EASE_ENTRANCE } from '../lib/motion'
 import { Button } from '../components/ui/Button'
 
 export function NotFound() {
-  const { t } = useLanguage()
+  const { t, lang } = useLanguage()
   const n = t.notFound
 
   return (
     <>
       <Helmet>
+        <html lang={lang} />
         <title>404 — Beikit Bakery</title>
         <meta name="robots" content="noindex" />
       </Helmet>

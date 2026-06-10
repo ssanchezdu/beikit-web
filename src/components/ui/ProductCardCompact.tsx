@@ -78,7 +78,7 @@ export function ProductCardCompact({
       {/* Bestseller ribbon */}
       {bestseller && (
         <span
-          className="absolute -top-2 right-4 z-10 font-body font-bold uppercase tracking-[0.18em] text-[9px] px-2.5 py-1 rounded-full whitespace-nowrap"
+          className="absolute top-2 right-2 z-10 font-body font-bold uppercase tracking-[0.18em] text-[9px] px-3 py-1 rounded-full whitespace-nowrap"
           style={{
             backgroundColor: '#f8b114',
             color: '#320e10',
@@ -104,12 +104,13 @@ export function ProductCardCompact({
           scale: hovered && !reduceMotion ? 1.06 : 1,
           rotate: hovered && !reduceMotion ? 4 : 0,
         }}
-        transition={{ type: 'spring', stiffness: 220, damping: 18, mass: 0.8 }}
+        transition={{ type: 'spring', stiffness: 300, damping: 22, mass: 0.8 }}
       >
         <img
           src={photo}
           alt=""
           loading="lazy"
+          decoding="async"
           className={`w-full h-full select-none ${
             framedPhoto ? 'object-cover rounded-xl' : 'object-contain'
           }`}
@@ -137,7 +138,7 @@ export function ProductCardCompact({
         href={orderHref}
         target="_blank"
         rel="noreferrer"
-        className="group/cta press focus-ring mt-auto inline-flex items-center gap-2 font-body font-bold uppercase tracking-[0.14em] text-[11px] px-5 py-[10px] rounded-full"
+        className="group/cta press focus-ring mt-auto inline-flex items-center font-body font-bold uppercase tracking-[0.14em] text-[11px] px-5 py-[10px] rounded-full"
         style={{
           backgroundColor: hovered ? '#320e10' : '#f8b114',
           color: hovered ? '#f6eadf' : '#320e10',

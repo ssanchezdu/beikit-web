@@ -101,7 +101,7 @@ export function Header() {
               className={`press focus-ring font-body font-bold text-[13px] min-w-[44px] min-h-[44px] inline-flex items-center justify-center rounded-[8px] leading-none ${
                 lang === 'es'
                   ? 'text-dark bg-dark/[0.06]'
-                  : 'text-dark/55 hover:text-dark/80 hover:bg-dark/[0.03]'
+                  : 'text-dark/70 hover:text-dark/80 hover:bg-dark/[0.03]'
               }`}
               /* press = transform 160ms on top of color/bg */
               style={{ transition: 'color 240ms var(--ease-out), background-color 240ms var(--ease-out), transform 160ms var(--ease-out)' }}
@@ -116,7 +116,7 @@ export function Header() {
               className={`press focus-ring font-body font-bold text-[13px] min-w-[44px] min-h-[44px] inline-flex items-center justify-center rounded-[8px] leading-none ${
                 lang === 'ca'
                   ? 'text-dark bg-dark/[0.06]'
-                  : 'text-dark/55 hover:text-dark/80 hover:bg-dark/[0.03]'
+                  : 'text-dark/70 hover:text-dark/80 hover:bg-dark/[0.03]'
               }`}
               style={{ transition: 'color 240ms var(--ease-out), background-color 240ms var(--ease-out), transform 160ms var(--ease-out)' }}
             >

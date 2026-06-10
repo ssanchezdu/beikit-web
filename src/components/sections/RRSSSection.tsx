@@ -51,7 +51,7 @@ function PostCard({ src, href, caption, rotate, iconSmall, iconHover, delay }: {
      `x`/`y`/`scale`/`rotate` shorthand — the shorthand routes through rAF on
      the main thread and drops frames during scroll. The string form is GPU-
      accelerated. Emil specifically flags this. */
-  const hoverTransition = { type: 'spring' as const, duration: 0.45, bounce: 0.18 }
+  const hoverTransition = { type: 'spring' as const, stiffness: 400, damping: 28 }
   const hoverTransform = 'translateY(-8px) scale(1.05) rotate(0deg)'
 
   return (
@@ -64,15 +64,17 @@ function PostCard({ src, href, caption, rotate, iconSmall, iconHover, delay }: {
       whileInView={{
         opacity: 1,
         transform: `translateY(0px) rotate(${rotate}deg)`,
+
         transition: { duration: 0.6, delay, ease: EASE },
       }}
       whileHover={{ transform: hoverTransform, transition: hoverTransition }}
       whileFocus={{ transform: hoverTransform, transition: hoverTransition }}
+      whileTap={{ transform: 'translateY(-4px) scale(0.97) rotate(0deg)', transition: { duration: 0.1 } }}
       viewport={{ once: true, amount: 0.2 }}
     >
       <div
         className="bg-cream rounded-lg p-2.5 pb-3.5 shadow-[0_8px_32px_-6px_rgba(50,14,16,0.20),0_2px_8px_-2px_rgba(50,14,16,0.08)] group-hover:shadow-[0_16px_48px_-8px_rgba(50,14,16,0.28),0_4px_12px_-2px_rgba(50,14,16,0.10)] group-focus-visible:shadow-[0_16px_48px_-8px_rgba(50,14,16,0.28),0_4px_12px_-2px_rgba(50,14,16,0.10)]"
-        style={{ transition: 'box-shadow 350ms var(--ease-out)' }}
+        style={{ transition: 'box-shadow 180ms var(--ease-out)' }}
       >
         <div className="relative overflow-hidden rounded-md aspect-square">
           <img
@@ -80,7 +82,7 @@ function PostCard({ src, href, caption, rotate, iconSmall, iconHover, delay }: {
             alt=""
             loading="lazy"
             className="w-full h-full object-cover group-hover:scale-[1.06] group-focus-visible:scale-[1.06]"
-            style={{ transition: 'transform 350ms var(--ease-out)' }}
+            style={{ transition: 'transform 200ms var(--ease-out)' }}
           />
           <div
             className="absolute inset-0 bg-dark/0 group-hover:bg-dark/40 group-focus-visible:bg-dark/40 flex items-center justify-center rounded-md"
@@ -89,7 +91,7 @@ function PostCard({ src, href, caption, rotate, iconSmall, iconHover, delay }: {
           >
             <div
               className="w-12 h-12 rounded-full bg-cream flex items-center justify-center text-dark opacity-0 scale-90 group-hover:opacity-100 group-hover:scale-100 group-focus-visible:opacity-100 group-focus-visible:scale-100"
-              style={{ transition: 'opacity 220ms var(--ease-out), transform 280ms var(--ease-out)' }}
+              style={{ transition: 'opacity 180ms var(--ease-out), transform 200ms var(--ease-out)' }}
             >
               {iconHover}
             </div>
@@ -124,7 +126,7 @@ function useInstagramPosts(): IGCard[] {
 
   useEffect(() => {
     let cancelled = false
-    fetch('/instagram-posts.json', { cache: 'no-cache' })
+    fetch('/instagram-posts.json', { cache: 'default' })
       .then((res) => (res.ok ? res.json() : null))
       .then((posts: InstagramPost[] | null) => {
         if (cancelled || !Array.isArray(posts) || posts.length < 2) return
@@ -207,7 +209,7 @@ export function RRSSSection() {
               />
               <div className="grid grid-cols-2 gap-3 md:gap-4 w-full">
                 {igCards.map((post, i) => (
-                  <PostCard key={i} {...post} iconSmall={igIcon(14)} iconHover={igIcon(20)} delay={0.2 + i * 0.1} />
+                  <PostCard key={i} {...post} iconSmall={igIcon(14)} iconHover={igIcon(20)} delay={0.15 + i * 0.05} />
                 ))}
               </div>
             </motion.div>
@@ -227,7 +229,7 @@ export function RRSSSection() {
               />
               <div className="grid grid-cols-2 gap-3 md:gap-4 w-full">
                 {TT_POSTS.map((post, i) => (
-                  <PostCard key={i} {...post} iconSmall={ttIcon(14)} iconHover={ttIcon(20)} delay={0.3 + i * 0.1} />
+                  <PostCard key={i} {...post} iconSmall={ttIcon(14)} iconHover={ttIcon(20)} delay={0.15 + i * 0.05} />
                 ))}
               </div>
             </motion.div>

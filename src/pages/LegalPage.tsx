@@ -294,6 +294,7 @@ export function LegalPage({ doc }: { doc: LegalDocKey }) {
   return (
     <>
       <Helmet>
+        <html lang={lang} />
         <title>{d.title} — Beikit Bakery</title>
         <meta name="robots" content="noindex" />
       </Helmet>

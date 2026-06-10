@@ -115,7 +115,7 @@ export function BottomNav() {
 
   return (
     <nav
-      aria-label="Navegación principal"
+      aria-label={n.navLabel}
       className="md:hidden fixed bottom-0 inset-x-0 z-50 bg-cream border-t border-dark/10 pb-[env(safe-area-inset-bottom)]"
       style={{ boxShadow: '0 -4px 16px -6px rgba(50,14,16,0.10)' }}
     >

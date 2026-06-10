@@ -5,12 +5,13 @@ import { EASE_ENTRANCE } from '../lib/motion'
 import { Button } from '../components/ui/Button'
 
 export function Gracias() {
-  const { t } = useLanguage()
+  const { t, lang } = useLanguage()
   const g = t.gracias
 
   return (
     <>
       <Helmet>
+        <html lang={lang} />
         <title>Solicitud recibida — Beikit Bakery</title>
         <meta name="robots" content="noindex" />
       </Helmet>

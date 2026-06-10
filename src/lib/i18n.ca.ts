@@ -1,7 +1,7 @@
 ﻿import type es from './i18n.es'
 
 const ca = {
-  nav: { inicio: 'Inici', carta: 'Carta', pedir: 'Demanar', catering: 'Càtering', tagLeft: 'AMERICAN BAKERY', tagRight: 'HEARTMADE EVERYDAY' },
+  nav: { inicio: 'Inici', carta: 'Carta', pedir: 'Demanar', catering: 'Càtering', tagLeft: 'AMERICAN BAKERY', tagRight: 'HEARTMADE EVERYDAY', skipLink: 'Saltar al contingut', navLabel: 'Navegació principal' },
   hero: {
     headline: 'Fes-te un regal amb Beikit',
     headlineLines: { line1: 'Fes-te un', line2: 'regal', line3: 'amb' },

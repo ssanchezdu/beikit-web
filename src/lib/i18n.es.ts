@@ -1,5 +1,5 @@
 ﻿const es = {
-  nav: { inicio: 'Inicio', carta: 'Carta', pedir: 'Pedir', catering: 'Catering', tagLeft: 'AMERICAN BAKERY', tagRight: 'HEARTMADE EVERYDAY' },
+  nav: { inicio: 'Inicio', carta: 'Carta', pedir: 'Pedir', catering: 'Catering', tagLeft: 'AMERICAN BAKERY', tagRight: 'HEARTMADE EVERYDAY', skipLink: 'Saltar al contenido', navLabel: 'Navegación principal' },
   hero: {
     headline: 'Date un capricho con Beikit',
     headlineLines: { line1: 'Date un', line2: 'capricho', line3: 'con' },

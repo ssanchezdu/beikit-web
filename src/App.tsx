@@ -1,7 +1,7 @@
 import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom'
 import { lazy, Suspense, useEffect } from 'react'
 import { MotionConfig } from 'framer-motion'
-import { LanguageProvider } from './lib/i18n'
+import { LanguageProvider, useLanguage } from './lib/i18n'
 import { CookieConsentProvider } from './lib/cookieConsent'
 import { Header } from './components/layout/Header'
 import { Footer } from './components/layout/Footer'
@@ -44,6 +44,7 @@ function ScrollManager() {
 }
 
 function Shell() {
+  const { t } = useLanguage()
   const { pathname } = useLocation()
   // Catering has its own sticky CTA — the global bottom nav would collide with it.
   const showBottomNav = pathname !== '/catering'
@@ -51,7 +52,7 @@ function Shell() {
   return (
     <>
       <ScrollManager />
-      <a href="#main-content" className="skip-link">Saltar al contenido</a>
+      <a href="#main-content" className="skip-link">{t.nav.skipLink}</a>
       <div className={`min-h-screen flex flex-col ${showBottomNav ? 'pb-[64px] md:pb-0' : ''}`}>
         <Header />
         <main id="main-content" className="flex-1">
