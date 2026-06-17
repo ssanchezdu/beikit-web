@@ -31,28 +31,8 @@ export function Home() {
         <meta name="twitter:description" content="Cookies, cheesecakes y milkshakes artesanales. Heartmade Everyday." />
         <meta name="twitter:image" content="https://beikitbakery.com/og-image.png" />
         <link rel="canonical" href="https://beikitbakery.com" />
-        <script type="application/ld+json">{`{
-  "@context": "https://schema.org",
-  "@type": "Bakery",
-  "name": "Beikit Bakery",
-  "description": "American Bakery en Granollers. Cookies, cheesecakes y milkshakes artesanales. Heartmade Everyday.",
-  "url": "https://beikitbakery.com",
-  "telephone": "+34603919473",
-  "address": {
-    "@type": "PostalAddress",
-    "streetAddress": "Carrer Princesa, 10",
-    "addressLocality": "Granollers",
-    "postalCode": "08401",
-    "addressCountry": "ES"
-  },
-  "servesCuisine": ["American"],
-  "priceRange": "€€",
-  "image": "https://beikitbakery.com/og-image.png",
-  "sameAs": [
-    "https://www.instagram.com/beikit_bakery/",
-    "https://www.ubereats.com/es/store/beikit-bakery/LbmFt-JFQYibr4MoySomkw"
-  ]
-}`}</script>
+        {/* JSON-LD lives statically in index.html so non-JS crawlers get it;
+            duplicating it here would render a second identical block. */}
       </Helmet>
 
       <HeroSection />

@@ -5,14 +5,60 @@
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
     <meta name="theme-color" content="#f6eadf" />
-    <meta name="description" content="Beikit Bakery — American Bakery en Granollers. Cookies, cheesecakes y milkshakes artesanales. Heartmade Everyday." />
+    <title>Beikit Bakery | American Bakery en Granollers</title>
+    <meta name="description" content="Cookies, cheesecakes y milkshakes artesanales. American Bakery en Granollers. Pedidos a domicilio vía Uber Eats." />
+    <link rel="canonical" href="https://beikitbakery.com" />
+
+    <!-- Open Graph / Twitter — kept static in the served HTML so social
+         scrapers (WhatsApp, Instagram, Facebook, X, LinkedIn) that don't run
+         JS get a rich preview. react-helmet-async overrides these per-route
+         once the app hydrates (e.g. on the legal pages). -->
+    <meta property="og:title" content="Beikit Bakery | American Bakery en Granollers" />
+    <meta property="og:description" content="Cookies, cheesecakes y milkshakes artesanales. Heartmade Everyday." />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://beikitbakery.com" />
+    <meta property="og:site_name" content="Beikit Bakery" />
+    <meta property="og:locale" content="es_ES" />
+    <meta property="og:image" content="https://beikitbakery.com/og-image.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Beikit Bakery | American Bakery en Granollers" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Beikit Bakery | American Bakery en Granollers" />
+    <meta name="twitter:description" content="Cookies, cheesecakes y milkshakes artesanales. Heartmade Everyday." />
+    <meta name="twitter:image" content="https://beikitbakery.com/og-image.png" />
+
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Bakery",
+        "name": "Beikit Bakery",
+        "description": "American Bakery en Granollers. Cookies, cheesecakes y milkshakes artesanales. Heartmade Everyday.",
+        "url": "https://beikitbakery.com",
+        "telephone": "+34603919473",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "Carrer Princesa, 10",
+          "addressLocality": "Granollers",
+          "postalCode": "08401",
+          "addressCountry": "ES"
+        },
+        "servesCuisine": ["American"],
+        "priceRange": "€€",
+        "image": "https://beikitbakery.com/og-image.png",
+        "sameAs": [
+          "https://www.instagram.com/beikit_bakery/",
+          "https://www.ubereats.com/es/store/beikit-bakery/LbmFt-JFQYibr4MoySomkw"
+        ]
+      }
+    </script>
+
     <link rel="preconnect" href="https://formspree.io" />
     <link rel="preload" href="/fonts/Beatrice%20Regular.woff2" as="font" type="font/woff2" crossorigin />
     <link rel="preload" href="/fonts/Beatrice%20SemiBold.woff2" as="font" type="font/woff2" crossorigin />
     <link rel="preload" href="/fonts/folkies-vantage-script.woff2" as="font" type="font/woff2" crossorigin />
     <link rel="preconnect" href="https://www.ubereats.com" />
     <link rel="dns-prefetch" href="https://www.ubereats.com" />
-    <title>Beikit Bakery</title>
   </head>
   <body>
     <div id="root"></div>
