@@ -16,7 +16,7 @@
       "source": "pbakaus/impeccable",
       "sourceType": "github",
       "skillPath": ".agents/skills/impeccable/SKILL.md",
-      "computedHash": "1e379bf23b32000ec12e120fcfcec7f2f3845ed5c210864ad7467ad525de065f"
+      "computedHash": "87d128e3980037fa8e203062cd8fcf2f4d35c340fd8eb93b6c02ab050315bea8"
     },
     "make-interfaces-feel-better": {
       "source": "jakubkrehel/make-interfaces-feel-better",

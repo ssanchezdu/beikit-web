@@ -162,8 +162,11 @@ export function HeroSection() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.65, ease: LINE_EASE }}
         >
-          {/* CTAs — centered row */}
-          <div className="flex gap-3">
+          {/* CTAs — primary off-site (order) + secondary in-page (browse the
+             menu first). The secondary keeps undecided visitors on the page so
+             the product photography below can build appetite before the Uber
+             Eats handoff. */}
+          <div className="flex flex-wrap justify-center gap-3">
             <Button
               variant="yellow"
               href="https://www.ubereats.com/es/store/beikit-bakery/LbmFt-JFQYibr4MoySomkw"
@@ -175,6 +178,13 @@ export function HeroSection() {
               className="group/cta text-[12px] md:text-[13px] tracking-[0.12em] px-5 md:px-8 py-3.5 md:py-4 shadow-[0_8px_30px_-4px_rgba(248,177,20,0.45)] hover:shadow-[0_14px_40px_-4px_rgba(248,177,20,0.60)]"
             >
               <MicroCtaContent label={h.cta} arrowSize={14} />
+            </Button>
+            <Button
+              variant="outline-dark"
+              href="#menu"
+              className="border-dark/25 hover:border-dark hover:bg-dark hover:text-cream text-[12px] md:text-[13px] tracking-[0.12em] px-5 md:px-8 py-3.5 md:py-4"
+            >
+              {h.ctaSecondary}
             </Button>
           </div>
 

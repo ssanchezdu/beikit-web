@@ -35,13 +35,13 @@ const ttIcon = (size: number) => (
 const IG_ROTATIONS = [-3, 2.5] as const
 
 const IG_FALLBACK: IGCard[] = [
-  { src: '/tt-video-7641997539968945430.jpg', href: 'https://www.instagram.com/reel/DYkNAIoIyT3/', caption: 'Ver reel en Instagram', rotate: IG_ROTATIONS[0] },
-  { src: '/tt-video-7626799052440505622.jpg', href: 'https://www.instagram.com/reel/DW6wMOQiJdF/', caption: 'Ver reel en Instagram', rotate: IG_ROTATIONS[1] },
+  { src: '/tt-video-7650230712511024406.jpg', href: 'https://www.instagram.com/p/DZdVdzEI4Se/', caption: 'Ver reel en Instagram', rotate: IG_ROTATIONS[0] },
+  { src: '/tt-video-7641997539968945430.jpg', href: 'https://www.instagram.com/reel/DYkNAIoIyT3/', caption: 'Ver reel en Instagram', rotate: IG_ROTATIONS[1] },
 ]
 
 const TT_POSTS = [
-  { src: '/tt-video-7634215210190163203.jpg', href: 'https://www.tiktok.com/@beikit_bakery/video/7634215210190163203', caption: 'Ver en TikTok', rotate: -2 },
-  { src: '/tt-video-7631268682877947158.jpg', href: 'https://www.tiktok.com/@beikit_bakery/video/7631268682877947158', caption: 'Ver en TikTok', rotate: 3 },
+  { src: '/tt-video-7645000677625842966.jpg', href: 'https://www.tiktok.com/@beikit_bakery/video/7645000677625842966', caption: 'Ver en TikTok', rotate: -2 },
+  { src: '/tt-video-7634215210190163203.jpg', href: 'https://www.tiktok.com/@beikit_bakery/video/7634215210190163203', caption: 'Ver en TikTok', rotate: 3 },
 ]
 
 function PostCard({ src, href, caption, rotate, iconSmall, iconHover, delay }: {

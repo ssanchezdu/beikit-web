@@ -135,7 +135,7 @@ export function BottomNav() {
                 onClick={handleClick(it.id)}
                 aria-current={it.active ? 'page' : undefined}
                 className={`focus-ring relative flex flex-col items-center justify-center gap-1 min-h-[56px] py-2 ${pressClasses} ${
-                  it.active ? 'text-orange' : 'text-dark/55'
+                  it.active ? 'text-orange' : 'text-dark/70'
                 }`}
                 style={{
                   /* Asymmetric tempo: color crossfade is the calm
