@@ -49,7 +49,7 @@ export function NosotrosSection() {
               <div className="aspect-[4/3] sm:aspect-[5/6] lg:aspect-auto lg:h-full">
                 <img
                   src="/assets/images/fundadores.webp"
-                  alt="Juan y Anna, fundadores de Beikit Bakery, frente a su local en Granollers"
+                  alt={n.foundersAlt}
                   width="1100"
                   height="1532"
                   loading="lazy"
@@ -145,7 +145,7 @@ export function NosotrosSection() {
                     Juan & Anna
                   </span>
                   <span className="font-body text-[12px] text-dark/65 tracking-[0.06em] mt-2 italic">
-                    Fundadores, Beikit Bakery
+                    {n.foundersRole}
                   </span>
                 </div>
               </div>

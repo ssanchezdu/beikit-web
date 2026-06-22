@@ -1,5 +1,6 @@
 import { createContext, useCallback, useContext, useEffect, useRef, useState } from 'react'
 import es from './i18n.es'
+import ca from './i18n.ca'
 
 export type Lang = 'es' | 'ca'
 export type Translations = typeof es
@@ -35,7 +36,7 @@ function readStoredLang(): Lang {
 }
 
 // Cache loaded language modules so we hit the network only once per language.
-const cache: Partial<Record<Lang, Translations>> = { es }
+const cache: Partial<Record<Lang, Translations>> = { es, ca }
 
 async function loadLang(lang: Lang): Promise<Translations> {
   const cached = cache[lang]
@@ -53,7 +54,7 @@ async function loadLang(lang: Lang): Promise<Translations> {
 export function LanguageProvider({ children }: { children: React.ReactNode }) {
   const initial = readStoredLang()
   const [lang, setLangState] = useState<Lang>(initial)
-  const [t, setT] = useState<Translations>(initial === 'es' ? es : es)
+  const [t, setT] = useState<Translations>(initial === 'es' ? es : ca)
 
   /* Token monotonically increments per setLang call so an out-of-order
      promise resolution (es → ca → es with ca still loading) can detect
@@ -74,21 +75,19 @@ export function LanguageProvider({ children }: { children: React.ReactNode }) {
   const setLang = useCallback((next: Lang) => {
     if (next === lang) return
     const token = ++reqRef.current
-    try {
-      localStorage.setItem(STORAGE_KEY, next)
-    } catch {
-      /* localStorage unavailable — non-fatal, language still applies for the
-         current session. */
-    }
     if (next === 'es') {
+      try { localStorage.setItem(STORAGE_KEY, 'es') } catch { /* non-fatal */ }
       setLangState('es')
       setT(es)
       return
     }
     loadLang(next).then((loaded) => {
       if (token !== reqRef.current) return
+      try { localStorage.setItem(STORAGE_KEY, next) } catch { /* non-fatal */ }
       setLangState(next)
       setT(loaded)
+    }).catch(() => {
+      /* Language module failed to load — keep current language, no stored change */
     })
   }, [lang])
 

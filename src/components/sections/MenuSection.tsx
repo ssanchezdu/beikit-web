@@ -210,7 +210,7 @@ export function MenuSection() {
         >
           <span className="block w-10 h-[3px] bg-orange rounded-full" />
           <span className="font-body font-bold text-[11px] tracking-[0.28em] uppercase text-orange">
-            Nuestra carta
+            {m.eyebrow}
           </span>
         </motion.div>
       </div>
@@ -354,43 +354,51 @@ function CategoryBlock({ cat, verTodos, verMenos, masPedidoLabel, pideYaLabel, a
         })}
       </div>
 
-      {/* Expanded grid — rest of items. Expansion animates; collapse is
-          instant + scroll-anchored to keep the button under the user's finger
-          (the prior exit-height animation caused content above the button to
-          shrink mid-scroll, teleporting users to the next section). */}
-      {expanded && hasRest && (
-        <motion.div
-          initial={{ opacity: 0, height: 0 }}
-          animate={{ opacity: 1, height: 'auto' }}
-          transition={{ duration: 0.45, ease: EASE_ENTRANCE }}
-          className="overflow-hidden"
+      {/* Expanded grid — rest of items. Uses CSS grid-template-rows for
+          smooth expansion (transform-compatible, no layout reflow per frame).
+          Collapse is instant + scroll-anchored so the button stays put. */}
+      {hasRest && (
+        <div
+          className="grid"
+          style={{
+            gridTemplateRows: expanded ? '1fr' : '0fr',
+            transition: expanded ? 'grid-template-rows 450ms var(--ease-out)' : 'none',
+          }}
+          aria-hidden={!expanded}
         >
-          <div className={expandedGrid}>
-            {rest.map((item, i) => {
-              const accent = accents[(FEATURED_COUNT + i) % accents.length]
-              return (
-                <motion.div
-                  key={`${cat.key}-rest-${i}`}
-                  initial={{ opacity: 0, y: 12 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.35, delay: i * 0.05 }}
-                >
-                  <ProductCardCompact
-                    name={item.name}
-                    description={item.desc}
-                    photo={cat.itemImagesByIndex?.[FEATURED_COUNT + i] ?? cat.itemImages?.[item.name] ?? cat.photo}
-                    accent={accent}
-                    pideYaLabel={pideYaLabel}
-                    orderHref={cat.itemUrlsByIndex?.[FEATURED_COUNT + i] ?? cat.itemUrls?.[item.name] ?? UBER_EATS_URL}
-                    imageShape={cat.imageShape}
-                    framedPhoto={cat.key === 'milkshakes'}
-                    noImageShadowOnHover={cat.key !== 'cheesecakes' && cat.key !== 'milkshakes'}
-                  />
-                </motion.div>
-              )
-            })}
+          <div className="overflow-hidden">
+            <motion.div
+              initial={false}
+              animate={{ opacity: expanded ? 1 : 0 }}
+              transition={{ duration: 0.3, delay: expanded ? 0.1 : 0 }}
+              className={expandedGrid}
+            >
+              {rest.map((item, i) => {
+                const accent = accents[(FEATURED_COUNT + i) % accents.length]
+                return (
+                  <motion.div
+                    key={`${cat.key}-rest-${i}`}
+                    initial={false}
+                    animate={{ opacity: expanded ? 1 : 0, y: expanded ? 0 : 12 }}
+                    transition={{ duration: 0.35, delay: expanded ? i * 0.05 : 0 }}
+                  >
+                    <ProductCardCompact
+                      name={item.name}
+                      description={item.desc}
+                      photo={cat.itemImagesByIndex?.[FEATURED_COUNT + i] ?? cat.itemImages?.[item.name] ?? cat.photo}
+                      accent={accent}
+                      pideYaLabel={pideYaLabel}
+                      orderHref={cat.itemUrlsByIndex?.[FEATURED_COUNT + i] ?? cat.itemUrls?.[item.name] ?? UBER_EATS_URL}
+                      imageShape={cat.imageShape}
+                      framedPhoto={cat.key === 'milkshakes'}
+                      noImageShadowOnHover={cat.key !== 'cheesecakes' && cat.key !== 'milkshakes'}
+                    />
+                  </motion.div>
+                )
+              })}
+            </motion.div>
           </div>
-        </motion.div>
+        </div>
       )}
 
       {/* Expand toggle */}

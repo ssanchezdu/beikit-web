@@ -8,16 +8,16 @@ import { RRSSSection } from '../components/sections/RRSSSection'
 import { DeliverySection } from '../components/sections/DeliverySection'
 
 export function Home() {
-  const { lang } = useLanguage()
+  const { lang, t } = useLanguage()
 
   return (
     <>
       <Helmet>
         <html lang={lang} />
-        <title>Beikit Bakery | American Bakery en Granollers</title>
-        <meta name="description" content="Cookies, cheesecakes y milkshakes artesanales. American Bakery en Granollers. Pedidos a domicilio vía Uber Eats." />
-        <meta property="og:title" content="Beikit Bakery | American Bakery en Granollers" />
-        <meta property="og:description" content="Cookies, cheesecakes y milkshakes artesanales. Heartmade Everyday." />
+        <title>{t.meta.homeTitle}</title>
+        <meta name="description" content={t.meta.homeDesc} />
+        <meta property="og:title" content={t.meta.homeTitle} />
+        <meta property="og:description" content={t.meta.homeOgDesc} />
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://beikitbakery.com" />
         <meta property="og:site_name" content="Beikit Bakery" />
@@ -25,10 +25,10 @@ export function Home() {
         <meta property="og:image" content="https://beikitbakery.com/og-image.png" />
         <meta property="og:image:width" content="1200" />
         <meta property="og:image:height" content="630" />
-        <meta property="og:image:alt" content="Beikit Bakery | American Bakery en Granollers" />
+        <meta property="og:image:alt" content={t.meta.homeTitle} />
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Beikit Bakery | American Bakery en Granollers" />
-        <meta name="twitter:description" content="Cookies, cheesecakes y milkshakes artesanales. Heartmade Everyday." />
+        <meta name="twitter:title" content={t.meta.homeTitle} />
+        <meta name="twitter:description" content={t.meta.homeOgDesc} />
         <meta name="twitter:image" content="https://beikitbakery.com/og-image.png" />
         <link rel="canonical" href="https://beikitbakery.com" />
         {/* JSON-LD lives statically in index.html so non-JS crawlers get it;

@@ -10,7 +10,12 @@ import { Button } from '../components/ui/Button'
 import { EASE_ENTRANCE } from '../lib/motion'
 
 const WHATSAPP_NUMBER = '34603919473'
-const WHATSAPP_HREF = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent('Hola Beikit! Me gustaría información sobre catering para mi evento.')}`
+function getWhatsAppHref(lang: 'es' | 'ca') {
+  const message = lang === 'ca'
+    ? "Hola Beikit! M'agradaria informació sobre càtering per al meu acte."
+    : "Hola Beikit! Me gustaría información sobre catering para mi evento."
+  return `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`
+}
 const FORMSPREE_ENDPOINT = import.meta.env.VITE_FORMSPREE_ENDPOINT ?? ''
 
 type FormData = {
@@ -33,6 +38,7 @@ const EASE = EASE_ENTRANCE
 function CateringHero() {
   const { t, lang } = useLanguage()
   const h = t.catering.hero
+  const whatsAppHref = getWhatsAppHref(lang)
   // CA star word ("el teu event" — 12 chars) is wider than ES ("tu evento" — 9 chars).
   // Tighten the clamp so it doesn't bleed past the safe container on desktop/tablet.
   const starSize = lang === 'ca'
@@ -153,7 +159,7 @@ function CateringHero() {
             <Button
               variant="outline-cream"
               focusOnDark
-              href={WHATSAPP_HREF}
+              href={whatsAppHref}
               external
               className="border-cream/30 hover:bg-whatsapp hover:text-white hover:border-whatsapp text-[12px] md:text-[13px] tracking-[0.12em] px-6 md:px-8 py-3.5 md:py-4 gap-2"
             >
@@ -182,6 +188,7 @@ function CateringHero() {
 function ValoresSection() {
   const { t } = useLanguage()
   const v = t.catering.valores
+  const n = t.nosotros
 
   return (
     <section className="relative bg-cream overflow-hidden">
@@ -226,7 +233,7 @@ function ValoresSection() {
               <div className="aspect-[5/4] lg:aspect-auto lg:h-full">
                 <img
                   src="/assets/images/fundadores.webp"
-                  alt="Juan y Anna, fundadores de Beikit Bakery, frente a su local en Granollers"
+                  alt={n.foundersAlt}
                   width="1100"
                   height="1532"
                   loading="lazy"
@@ -308,7 +315,7 @@ function ValoresSection() {
                     Juan &amp; Anna
                   </span>
                   <span className="font-body text-[12px] text-dark/50 tracking-[0.06em] mt-1.5 italic">
-                    Fundadores, Beikit Bakery
+                    {n.foundersRole}
                   </span>
                 </div>
               </div>
@@ -583,8 +590,9 @@ function ProductosSection() {
 // Form section — redesigned: chip-based selectors, sectioned layout, reduced friction.
 // ---------------------------------------------------------------------------
 function FormSection() {
-  const { t } = useLanguage()
+  const { t, lang } = useLanguage()
   const f = t.catering.form
+  const whatsAppHref = getWhatsAppHref(lang)
   const navigate = useNavigate()
   const [serverError, setServerError] = useState(false)
 
@@ -923,7 +931,7 @@ function FormSection() {
 
             {/* WhatsApp fallback — secondary, low-emphasis */}
             <a
-              href={WHATSAPP_HREF}
+              href={whatsAppHref}
               target="_blank"
               rel="noopener noreferrer"
               className="press focus-ring font-body text-[13px] text-cream/70 hover:text-whatsapp inline-flex items-center justify-center gap-2 self-center"
@@ -1005,8 +1013,9 @@ function InfoSection() {
 // MidCta — halfway conversion nudge with WhatsApp fallback
 // ---------------------------------------------------------------------------
 function MidCtaSection() {
-  const { t } = useLanguage()
+  const { t, lang } = useLanguage()
   const m = t.catering.midcta
+  const whatsAppHref = getWhatsAppHref(lang)
 
   return (
     <section className="relative bg-cream py-20 md:py-24 px-6 md:px-12 overflow-hidden">
@@ -1040,7 +1049,7 @@ function MidCtaSection() {
           </Button>
           <Button
             variant="outline-dark"
-            href={WHATSAPP_HREF}
+            href={whatsAppHref}
             external
             className="border-dark/15 hover:border-whatsapp hover:text-whatsapp-ink hover:bg-whatsapp/5 text-[12px] md:text-[13px] tracking-[0.12em] px-7 md:px-8 py-3.5 md:py-4 gap-2"
           >
@@ -1142,8 +1151,9 @@ function FaqSection() {
 // Sticky mobile CTA — appears after user scrolls past hero
 // ---------------------------------------------------------------------------
 function StickyCta() {
-  const { t } = useLanguage()
+  const { t, lang } = useLanguage()
   const s = t.catering.sticky
+  const whatsAppHref = getWhatsAppHref(lang)
   const [show, setShow] = useState(false)
   const [inFormSection, setInFormSection] = useState(false)
 
@@ -1214,7 +1224,7 @@ function StickyCta() {
       </Button>
       <Button
         variant="whatsapp"
-        href={WHATSAPP_HREF}
+        href={whatsAppHref}
         external
         aria-label="WhatsApp"
         className="w-14 shadow-[0_10px_30px_-6px_rgba(37,211,102,0.55)]"
@@ -1261,9 +1271,11 @@ export function Catering() {
       telephone: '+34603919473',
       url: 'https://beikitbakery.com',
     },
-    areaServed: { '@type': 'Place', name: 'Granollers y 30 km' },
-    description: 'Catering dulce artesano para empresas, bodas y celebraciones desde 20 personas.',
-  }), [])
+    areaServed: { '@type': 'Place', name: lang === 'ca' ? 'Granollers i 30 km' : 'Granollers y 30 km' },
+    description: lang === 'ca'
+      ? 'Càtering dolç artesà per a empreses, casaments i celebracions des de 20 persones.'
+      : 'Catering dulce artesano para empresas, bodas y celebraciones desde 20 personas.',
+  }), [lang])
 
   return (
     <>

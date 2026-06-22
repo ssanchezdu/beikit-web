@@ -14,6 +14,7 @@
     },
   },
   menu: {
+    eyebrow: 'Nuestra carta',
     cookies:     { title: 'Cookies',     tagline: 'Crujientes por fuera, perfectas por dentro.', description: 'Cookies americanas hechas a mano, con un exterior ligeramente crujiente y un interior tierno que se derriten en cada bocado.' },
     cheesecakes: { title: 'Cheesecakes', tagline: 'Cremosas, irresistibles, nuestras.', description: 'Base crujiente, relleno aterciopelado. Un trozo y entiendes por qué la receta es nuestro secreto mejor guardado.' },
     milkshakes:  { title: 'Milkshakes',  tagline: 'El batido que lo cambia todo.', description: 'Helado artesano, leche fría y mucho mimo en cada vaso. Espeso, intenso, americano de verdad.' },
@@ -83,6 +84,8 @@
     headline: 'Donde cada receta cuenta una historia hecha a mano.',
     body1: 'Lo que empezó como una pasión compartida por la cultura americana, hoy se ha convertido en nuestro proyecto de vida. Un lugar donde damos forma a todo lo que nos inspira, creando recetas que mezclan tradición, creatividad y mucho mimo.',
     body2: 'Cada cookie, cada cheesecake y cada detalle está hecho a mano, con ingredientes seleccionados y el cuidado de quien disfruta cada paso del proceso.',
+    foundersAlt: 'Juan y Anna, fundadores de Beikit Bakery, frente a su local en Granollers',
+    foundersRole: 'Fundadores, Beikit Bakery',
   },
   rrss: { eyebrow: 'Spoiler:', headline: '“Nuestras redes huelen a cookies.”', cta: 'Síguenos' },
   delivery: {
@@ -274,6 +277,11 @@
     title: 'Oops, esta página\nno existe.',
     sub: 'Pero nuestras cookies sí.',
     cta: 'Volver al inicio →',
+  },
+  meta: {
+    homeTitle: 'Beikit Bakery | American Bakery en Granollers',
+    homeDesc: 'Cookies, cheesecakes y milkshakes artesanales. American Bakery en Granollers. Pedidos a domicilio vía Uber Eats.',
+    homeOgDesc: 'Cookies, cheesecakes y milkshakes artesanales. Heartmade Everyday.',
   },
   legal: {
     avisoLegal: 'Aviso Legal',
