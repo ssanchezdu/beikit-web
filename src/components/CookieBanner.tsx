@@ -41,7 +41,7 @@ export function CookieBanner() {
 
             {/* Equal-weight actions — same size; neither suppressed (AEPD) */}
             <div className="flex gap-3 shrink-0">
-              <Button variant="outline-dark" onClick={reject} className="border-dark hover:bg-dark/[0.05] text-[12px] tracking-[0.1em] px-5 py-3">
+              <Button variant="outline-dark" onClick={reject} className="text-[12px] tracking-[0.1em] px-5 py-3">
                 {c.reject}
               </Button>
               <Button variant="dark" onClick={accept} className="text-[12px] tracking-[0.1em] px-5 py-3">

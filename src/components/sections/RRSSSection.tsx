@@ -113,7 +113,7 @@ function SocialCTA({ href, icon, label }: { href: string; icon: React.ReactNode;
       variant="dark"
       href={href}
       external
-      className="hover-lift text-[13px] md:text-[14px] tracking-[0.12em] min-h-[48px] px-6 md:px-8 py-3 gap-3 shadow-[0_8px_24px_-6px_rgba(50,14,16,0.35)] hover:shadow-[0_12px_32px_-6px_rgba(50,14,16,0.45)]"
+      className="text-[13px] md:text-[14px] tracking-[0.12em] min-h-[48px] px-6 md:px-8 py-3 gap-3"
     >
       {icon}
       {label}

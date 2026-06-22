@@ -1,73 +1,38 @@
-# React + TypeScript + Vite
+# Beikit Web
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Sitio web de **Beikit** — marca de repostería / cafetería / catering (cookies, cheesecakes, milkshakes, café frío). Web bilingüe ES / CA.
 
-Currently, two official plugins are available:
+## Stack
+- **React 19** + **TypeScript** + **Vite 8** (SPA con `react-router-dom` 7)
+- **Tailwind CSS v3** (PostCSS) — config en `tailwind.config.ts`, base en `src/index.css`
+- **framer-motion 12** para animación (respeta `prefers-reduced-motion`)
+- `react-helmet-async` (SEO por página), `react-hook-form` (formularios)
+- i18n propio (`src/lib/i18n.tsx`, strings en `i18n.es.ts` / `i18n.ca.ts`)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
-
-## React Compiler
-
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
-
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+## Comandos
+```bash
+npm install      # instalar dependencias
+npm run dev      # servidor de desarrollo → http://localhost:5173
+npm run build    # prebuild (fetch:ig) + tsc -b + vite build
+npm run preview  # previsualizar el build de producción
+npm run lint     # ESLint
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## Estructura
+- `src/pages/` — rutas (`Home`, `Catering`, `Gracias`, `LegalPage`, `NotFound`)
+- `src/components/layout/` — `Header`, `Footer`, `BottomNav`
+- `src/components/sections/` — secciones de la home (`Hero`, `Menu`, `Nosotros`, `RRSS`, `Delivery`, `Claim`)
+- `src/components/ui/` — primitivos reutilizables (`Button`, `ProductCard`, `GoogleRating`, …)
+- `src/lib/` — i18n, `motion.ts` (variants/easing), hooks, consentimiento de cookies
+- `public/assets/` — imágenes, SVG (logos, títulos, stickers) y fuentes auto-hospedadas
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+## Marca
+Tokens definidos en `tailwind.config.ts`:
+- **Colores:** `cream`, `yellow`, `dark`, `orange` (+ estados `*-hover`, `surface-dark`, `whatsapp`, `error`)
+- **Fuentes:** `font-display` (Folkies Vantage Script), `font-body` (Beatrice), `font-gulp` (Gulp)
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+Ver [CLAUDE.md](CLAUDE.md) para las convenciones de trabajo y la guía de diseño.
+
+## Notas
+- Rutas con lazy loading + `ScrollManager` (con soporte de hash). Chunks de vendor separados en `vite.config.ts`.
+- `fetch-instagram.mjs` se ejecuta en `prebuild` para refrescar datos de redes sociales.

@@ -14,9 +14,10 @@ export default {
         dark:   '#320e10',
         orange: '#e8511b',
         // ── Interaction states ──────────────────────────────────
-        'orange-hover': '#d0481a',
-        'yellow-hover': '#e8a010',
-        'dark-hover':   '#4a1518',
+        'orange-hover':   '#d0481a',
+        'yellow-hover':   '#e8a010',
+        'dark-hover':     '#4a1518',
+        'whatsapp-hover': '#1faa52',
         // ── Surfaces ────────────────────────────────────────────
         'surface-dark': '#3b1315', // elevated dark surface (cards, inputs)
         // ── Utility ─────────────────────────────────────────────

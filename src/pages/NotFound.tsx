@@ -86,7 +86,7 @@ export function NotFound() {
             </p>
           </div>
 
-          <Button variant="orange" focusOnDark to="/" className="text-[12px] tracking-[0.15em] px-8 py-4 gap-2.5 shadow-[0_8px_24px_-6px_rgba(232,81,27,0.35)]">
+          <Button variant="orange" focusOnDark to="/" className="text-[12px] tracking-[0.15em] px-8 py-4 gap-2.5">
             {n.cta}
             <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
               <path d="M5 12h14M12 5l7 7-7 7"/>

@@ -70,7 +70,7 @@ export function Gracias() {
             <span className="block w-8 h-[2px] bg-orange/30 rounded-full" />
           </div>
 
-          <Button variant="dark" to="/" className="text-[12px] tracking-[0.15em] px-8 py-4 gap-2.5 shadow-[0_8px_24px_-6px_rgba(50,14,16,0.25)]">
+          <Button variant="dark" to="/" className="text-[12px] tracking-[0.15em] px-8 py-4 gap-2.5">
             {g.cta}
             <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
               <path d="M5 12h14M12 5l7 7-7 7"/>

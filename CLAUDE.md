@@ -1,54 +1,48 @@
-# CLAUDE.md — Frontend Website Rules
+# CLAUDE.md — Beikit Web
 
-## Always Do First
-- **Invoke the `frontend-design` skill** before writing any frontend code, every session, no exceptions.
+Production website for **Beikit**, a bakery / café / catering brand (cookies, cheesecakes, milkshakes, iced coffee). Bilingual ES / CA. This is a real, live product site — design and build with high craft, and feel free to improve things. There is no "reference image to match"; you own the design decisions unless the user specifies otherwise.
 
-## Reference Images
-- If a reference image is provided: match layout, spacing, typography, and color exactly. Swap in placeholder content (images via `https://placehold.co/`, generic copy). Do not improve or add to the design.
-- If no reference image: design from scratch with high craft (see guardrails below).
-- Screenshot your output, compare against reference, fix mismatches, re-screenshot. Do at least 2 comparison rounds. Stop only when no visible differences remain or user says so.
+## Stack
+- **React 19** + **TypeScript** + **Vite 8** (SPA, `react-router-dom` 7)
+- **Tailwind CSS v3** via PostCSS — config in `tailwind.config.ts`, base layer in `src/index.css`. **Not** the CDN build.
+- **framer-motion 12** for animation (`MotionConfig reducedMotion="user"` is set globally in `App.tsx` — honor reduced motion)
+- `react-helmet-async` for per-page `<head>` / SEO, `react-hook-form` for forms
+- i18n via custom `LanguageProvider` (`src/lib/i18n.tsx`, strings in `i18n.es.ts` / `i18n.ca.ts`)
 
-## Local Server
-- **Always serve on localhost** — never screenshot a `file:///` URL.
-- Start the dev server: `node serve.mjs` (serves the project root at `http://localhost:3000`)
-- `serve.mjs` lives in the project root. Start it in the background before taking any screenshots.
-- If the server is already running, do not start a second instance.
+## Project layout
+- `src/pages/` — route components (`Home`, `Catering`, `Gracias`, `LegalPage`, `NotFound`)
+- `src/components/layout/` — `Header`, `Footer`, `BottomNav`
+- `src/components/sections/` — Home page sections (`Hero`, `Menu`, `Nosotros`, `RRSS`, `Delivery`, `Claim`)
+- `src/components/ui/` — reusable primitives (`Button`, `ProductCard`, `GoogleRating`, …)
+- `src/lib/` — i18n, `motion.ts` (shared variants/easing), hooks (`useActiveSection`, `useCardHover`, `useButtonMotion`, `useHoverCapable`), `cookieConsent`
+- `public/assets/` — real brand assets: `images/` (product `.webp`/`.png`), `svg/` (logos, titles, stickers), `fonts/`
 
-## Screenshot Workflow
-- Puppeteer is installed at `C:/Users/nateh/AppData/Local/Temp/puppeteer-test/`. Chrome cache is at `C:/Users/nateh/.cache/puppeteer/`.
-- **Always screenshot from localhost:** `node screenshot.mjs http://localhost:3000`
-- Screenshots are saved automatically to `./temporary screenshots/screenshot-N.png` (auto-incremented, never overwritten).
-- Optional label suffix: `node screenshot.mjs http://localhost:3000 label` → saves as `screenshot-N-label.png`
-- `screenshot.mjs` lives in the project root. Use it as-is.
-- After screenshotting, read the PNG from `temporary screenshots/` with the Read tool — Claude can see and analyze the image directly.
-- When comparing, be specific: "heading is 32px but reference shows ~24px", "card gap is 16px but should be 24px"
-- Check: spacing/padding, font size/weight/line-height, colors (exact hex), alignment, border-radius, shadows, image sizing
+## Commands
+- **Dev server:** `npm run dev` → Vite on `http://localhost:5173` (start in background before screenshots; don't start a second instance if already running)
+- **Build:** `npm run build` (runs `prebuild` → `fetch:ig`, then `tsc -b && vite build`)
+- **Lint:** `npm run lint`
+- Always run `npm run lint` (and ideally `tsc -b`) after non-trivial changes; the build is type-checked.
 
-## Output Defaults
-- Single `index.html` file, all styles inline, unless user says otherwise
-- Tailwind CSS via CDN: `<script src="https://cdn.tailwindcss.com"></script>`
-- Placeholder images: `https://placehold.co/WIDTHxHEIGHT`
-- Mobile-first responsive
+## Brand
+Use the tokens already defined in `tailwind.config.ts` — do not invent brand colors or fonts.
+- **Colors:** `cream #f6eadf`, `yellow #f8b114`, `dark #320e10`, `orange #e8511b` (+ `*-hover` states, `surface-dark`, `whatsapp`, `error`)
+- **Fonts:** `font-display` (Folkies Vantage Script), `font-body` (Beatrice), `font-gulp` (Gulp) — all self-hosted from `public/fonts/`
+- **Radii / durations:** use the `borderRadius` and `transitionDuration` scales from the config, not arbitrary values
+- Use real assets from `public/assets/` — never `placehold.co` or stock placeholders.
 
-## Brand Assets
-- Always check the `brand_assets/` folder before designing. It may contain logos, color guides, style guides, or images.
-- If assets exist there, use them. Do not use placeholders where real assets are available.
-- If a logo is present, use it. If a color palette is defined, use those exact values — do not invent brand colors.
+## Design quality bar
+- **Animations:** animate `transform`/`opacity` only; reuse easing/variants from `src/lib/motion.ts`; never `transition-all`. Respect the global reduced-motion config.
+- **Interactive states:** every clickable element needs `hover`, `focus-visible`, and `active` states.
+- **Accessibility:** keep the skip link, semantic landmarks, `aria` labels, and bilingual strings intact. Both ES and CA must stay in sync when copy changes.
+- **Responsive:** mobile-first; `BottomNav` shows on mobile (hidden on `/catering`, which has its own sticky CTA).
+- **Depth & shadows:** layered, color-tinted shadows over flat `shadow-md`; maintain a base → elevated → floating surface hierarchy.
 
-## Anti-Generic Guardrails
-- **Colors:** Never use default Tailwind palette (indigo-500, blue-600, etc.). Pick a custom brand color and derive from it.
-- **Shadows:** Never use flat `shadow-md`. Use layered, color-tinted shadows with low opacity.
-- **Typography:** Never use the same font for headings and body. Pair a display/serif with a clean sans. Apply tight tracking (`-0.03em`) on large headings, generous line-height (`1.7`) on body.
-- **Gradients:** Layer multiple radial gradients. Add grain/texture via SVG noise filter for depth.
-- **Animations:** Only animate `transform` and `opacity`. Never `transition-all`. Use spring-style easing.
-- **Interactive states:** Every clickable element needs hover, focus-visible, and active states. No exceptions.
-- **Images:** Add a gradient overlay (`bg-gradient-to-t from-black/60`) and a color treatment layer with `mix-blend-multiply`.
-- **Spacing:** Use intentional, consistent spacing tokens — not random Tailwind steps.
-- **Depth:** Surfaces should have a layering system (base → elevated → floating), not all sit at the same z-plane.
+## Screenshot / verify workflow
+- Puppeteer is a devDependency (no global install path needed).
+- Section screenshots: `node section-shot.mjs http://localhost:5173 <selector> <name>` → saves to `./temporary screenshots/<name>.png`. Helper scripts live in `scripts/` (`shot-menu.mjs`, etc.).
+- Read the saved PNG back with the Read tool to inspect it. When comparing, be specific about px / hex / spacing differences and do more than one pass.
 
-## Hard Rules
-- Do not add sections, features, or content not in the reference
-- Do not "improve" a reference design — match it
-- Do not stop after one screenshot pass
-- Do not use `transition-all`
-- Do not use default Tailwind blue/indigo as primary color
+## Notes
+- Routes use lazy loading + a `ScrollManager` (hash-aware). Vendor chunks are split manually in `vite.config.ts`.
+- `fetch-instagram.mjs` runs at build time to refresh IG/social data; don't remove it from `prebuild` without reason.
+- Before adding a new color/font/utility, check whether a token already exists.
