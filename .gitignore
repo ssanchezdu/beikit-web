@@ -33,6 +33,11 @@ footer-shot.mjs
 # Claude Code local settings (personal, not for repo)
 .claude/settings.local.json
 
+# Agent / Claude Code skills — local environment tooling, not part of the product
+.agents/
+.claude/skills/
+skills-lock.json
+
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json
