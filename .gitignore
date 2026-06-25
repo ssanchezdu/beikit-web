@@ -36,6 +36,7 @@ footer-shot.mjs
 # Agent / Claude Code skills — local environment tooling, not part of the product
 .agents/
 .claude/skills/
+.claude/commands/web-design-guidelines.md
 skills-lock.json
 
 # Editor directories and files
