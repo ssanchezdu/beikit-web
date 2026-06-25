@@ -79,6 +79,15 @@ body {
   scroll-margin-top: 96px;
 }
 
+/* The header auto-hides when scrolling down, so anchors reached by scrolling
+   down (e.g. "Ver carta" → #menu) land with no header on screen — the 96px
+   reserve above just leaves an empty dark void. #menu carries its own generous
+   top padding (the "Nuestra carta" eyebrow block), so a tighter offset gives a
+   correct top gap and lets the product cards sit higher in the viewport. */
+#menu {
+  scroll-margin-top: 32px;
+}
+
 /* Skip-to-content link — visible only on focus */
 .skip-link {
   position: absolute;

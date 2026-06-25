@@ -180,15 +180,15 @@ export function RRSSSection() {
             >
               {r.eyebrow}
             </motion.span>
-            <motion.p
-              className="font-display text-[18px] sm:text-[22px] md:text-[32px] lg:text-[40px] leading-[1.1] text-dark/80"
+            <motion.h2
+              className="font-display font-normal text-[18px] sm:text-[22px] md:text-[32px] lg:text-[40px] leading-[1.1] text-dark/80"
               initial={{ opacity: 0, y: 12 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: 0.1, ease: EASE }}
             >
               {r.headline}
-            </motion.p>
+            </motion.h2>
           </div>
 
           {/* ── Two platform columns ─────────────────────────── */}

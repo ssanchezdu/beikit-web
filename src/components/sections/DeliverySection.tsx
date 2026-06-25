@@ -136,7 +136,7 @@ export function DeliverySection() {
                     <OptionIcon name={opt.icon} />
                   </div>
                 </div>
-                <span className="font-body font-bold text-[10px] tracking-[0.24em] uppercase text-orange" aria-hidden="true">
+                <span className="font-body font-bold text-[10px] tracking-[0.24em] uppercase text-orange">
                   {opt.label}
                 </span>
               </div>

@@ -186,7 +186,7 @@ export function HeroSection() {
 
           {/* Google rating — social proof. Hardcoded test value (no live sync). */}
           <GoogleRating
-            rating={4.9}
+            rating={5.0}
             score={h.rating.score}
             reviews={h.rating.reviews}
             ariaLabel={h.rating.aria}

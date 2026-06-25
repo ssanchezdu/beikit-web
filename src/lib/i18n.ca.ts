@@ -10,9 +10,9 @@ const ca = {
     cta: 'DEMANA ARA',
     ctaSecondary: 'VEURE CARTA',
     rating: {
-      score: '4,9',
+      score: '5,0',
       reviews: '60 ressenyes a Google',
-      aria: 'Valoració de 4,9 sobre 5 estrelles a Google · 60 ressenyes. Obrir a Google Maps',
+      aria: 'sobre 5 estrelles. Obrir a Google Maps',
     },
   },
   menu: {

@@ -22,7 +22,10 @@ interface GoogleRatingProps {
   score: string
   /** Localized review-count label, e.g. "46 reseñas en Google". */
   reviews: string
-  /** Accessible name for the whole link. */
+  /** Screen-reader-only suffix appended after the visible score/reviews text,
+      e.g. "sobre 5 estrellas. Abrir en Google Maps". Kept as a suffix (not an
+      aria-label override) so the visible text stays part of the accessible
+      name — satisfies WCAG 2.5.3 Label in Name. */
   ariaLabel: string
   /** Link to the Google Maps listing. */
   href: string
@@ -54,12 +57,12 @@ export function GoogleRating({ rating, score, reviews, ariaLabel, href }: Google
       href={href}
       target="_blank"
       rel="noreferrer"
-      aria-label={ariaLabel}
       /* min-h keeps a 44px tap target — invisible, no surface, so it still
          reads as a plain line of text rather than a control. */
       className="focus-ring group inline-flex items-center gap-2 min-h-[44px] rounded-[3px]"
     >
-      {/* Stars — proportional fill over a muted track */}
+      {/* Stars — proportional fill over a muted track (decorative; the rating
+          is also in the text, so the stars carry no unique info) */}
       <span className="relative inline-flex shrink-0" aria-hidden="true">
         <StarRow color={STAR_TRACK} />
         <span className="absolute inset-0 overflow-hidden" style={{ width: `${fillPct}%` }}>
@@ -67,13 +70,15 @@ export function GoogleRating({ rating, score, reviews, ariaLabel, href }: Google
         </span>
       </span>
 
-      {/* Score · review count — quiet brand-dark microcopy */}
-      <span className="font-body text-[13px] leading-none whitespace-nowrap" aria-hidden="true">
+      {/* Score · review count — visible text forms the link's accessible name;
+          the sr-only suffix adds context without overriding it. */}
+      <span className="font-body text-[13px] leading-none whitespace-nowrap">
         <span className="font-semibold text-dark/80">{score}</span>
-        <span style={{ display: 'inline-block', width: 8 }} />
+        <span aria-hidden="true" style={{ display: 'inline-block', width: 8 }} />
         <span className="text-dark/75 underline-offset-2 group-hover:underline group-focus-visible:underline">
           {reviews}
         </span>
+        <span className="sr-only"> {ariaLabel}</span>
       </span>
     </a>
   )

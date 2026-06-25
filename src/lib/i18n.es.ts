@@ -8,9 +8,9 @@
     cta: 'PIDE AHORA',
     ctaSecondary: 'VER CARTA',
     rating: {
-      score: '4,9',
+      score: '5,0',
       reviews: '60 reseñas en Google',
-      aria: 'Valoración de 4,9 sobre 5 estrellas en Google · 60 reseñas. Abrir en Google Maps',
+      aria: 'sobre 5 estrellas. Abrir en Google Maps',
     },
   },
   menu: {

@@ -20,6 +20,14 @@ const COOKIE_UBER_EATS_URLS: Record<string, string> = {
 }
 const FEATURED_COUNT = 3
 
+/* Intrinsic dimensions of the SVG category titles (from their viewBox) so the
+   browser can reserve aspect-ratio before the asset loads — kills CLS.
+   CSS (h-[…] w-auto) still drives the rendered size. */
+const TITLE_SVG_DIMS: Record<string, { w: number; h: number }> = {
+  cookies: { w: 700, h: 195 },
+  cheesecakes: { w: 1060, h: 189 },
+}
+
 /* Brand-consistent accent palette per category — warm, edible, non-generic. */
 const ACCENTS = {
   // Kinder, Dinosaurus, NY Classic, Oreo, Red Velvet, Pistacchio, Triple Choc, Lotus
@@ -300,11 +308,15 @@ function CategoryBlock({ cat, verTodos, verMenos, masPedidoLabel, pideYaLabel, a
         transition={{ duration: 0.55, ease: EASE_ENTRANCE }}
       >
         {cat.titleType === 'svg' ? (
-          <img
-            src={`/assets/svg/${cat.key}_title.svg`}
-            alt={`${cat.eyebrow} ${cat.title}`}
-            className="w-auto h-[48px] sm:h-[64px] md:h-[96px] lg:h-[120px] self-start mb-3 sm:mb-4 md:mb-6"
-          />
+          <h3 className="self-start mb-3 sm:mb-4 md:mb-6">
+            <img
+              src={`/assets/svg/${cat.key}_title.svg`}
+              alt={`${cat.eyebrow} ${cat.title}`}
+              width={TITLE_SVG_DIMS[cat.key]?.w}
+              height={TITLE_SVG_DIMS[cat.key]?.h}
+              className="w-auto h-[48px] sm:h-[64px] md:h-[96px] lg:h-[120px] block"
+            />
+          </h3>
         ) : (
           <>
             <span className="font-display text-[18px] md:text-[22px] leading-none text-orange -rotate-3 -mb-3 md:-mb-4 self-start pl-2 md:pl-4">
@@ -364,7 +376,9 @@ function CategoryBlock({ cat, verTodos, verMenos, masPedidoLabel, pideYaLabel, a
             gridTemplateRows: expanded ? '1fr' : '0fr',
             transition: expanded ? 'grid-template-rows 450ms var(--ease-out)' : 'none',
           }}
-          aria-hidden={!expanded}
+          /* `inert` (not just aria-hidden) so the collapsed order links can't be
+             tab-focused while visually hidden — fixes axe aria-hidden-focus. */
+          inert={!expanded}
         >
           <div className="overflow-hidden">
             <motion.div

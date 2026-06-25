@@ -182,7 +182,11 @@ export function BottomNav() {
                 >
                   {it.icon}
                 </span>
-                <span className="font-body font-bold text-[10px] tracking-[0.06em] uppercase leading-none">
+                {/* Active label uses brand-dark (not orange): orange #e8511b on
+                    cream is only 3.15:1 — fails AA for 10px text. The active
+                    state is still carried by the orange pill, orange icon and
+                    aria-current, so colour isn't the sole indicator. */}
+                <span className={`font-body font-bold text-[10px] tracking-[0.06em] uppercase leading-none ${it.active ? 'text-dark' : ''}`}>
                   {it.label}
                 </span>
               </a>
