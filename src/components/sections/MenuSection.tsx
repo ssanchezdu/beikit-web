@@ -208,7 +208,7 @@ export function MenuSection() {
     >
       <h2 id="menu-heading" className="sr-only">Menú</h2>
       {/* Section eyebrow */}
-      <div className="relative z-10 max-w-6xl mx-auto px-6 md:px-12 pt-12 md:pt-16 pb-10 md:pb-14">
+      <div className="relative z-10 max-w-6xl mx-auto px-6 md:px-12 pt-8 sm:pt-12 md:pt-16 pb-10 md:pb-14">
         <motion.div
           className="flex items-center gap-4"
           initial={{ opacity: 0, x: -20 }}

@@ -79,13 +79,23 @@ body {
   scroll-margin-top: 96px;
 }
 
-/* The header auto-hides when scrolling down, so anchors reached by scrolling
-   down (e.g. "Ver carta" → #menu) land with no header on screen — the 96px
-   reserve above just leaves an empty dark void. #menu carries its own generous
-   top padding (the "Nuestra carta" eyebrow block), so a tighter offset gives a
-   correct top gap and lets the product cards sit higher in the viewport. */
+/* #menu is reached on every viewport (the Hero "Ver carta" CTA links to it),
+   so on desktop it keeps the header-aware 32px offset. #delivery is only
+   reached from the mobile BottomNav, so on desktop it just inherits the global
+   96px (nothing scrolls to it there anyway). */
 #menu {
   scroll-margin-top: 32px;
+}
+
+/* Mobile only: the "Carta"/"Pedir" BottomNav taps scroll DOWN, so the header
+   auto-hides and the 96/32px reserve above becomes dead space. Both sections
+   carry their own top padding, so a near-zero offset lets the content sit at
+   the top of the viewport instead of below a tall empty band. */
+@media (max-width: 639.98px) {
+  #menu,
+  #delivery {
+    scroll-margin-top: 4px;
+  }
 }
 
 /* Skip-to-content link — visible only on focus */

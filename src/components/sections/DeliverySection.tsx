@@ -59,7 +59,7 @@ export function DeliverySection() {
         aria-hidden="true"
       />
 
-      <div className="relative z-10 max-w-5xl mx-auto px-6 md:px-12 py-12 sm:py-16 md:py-20 flex flex-col gap-10 sm:gap-14">
+      <div className="relative z-10 max-w-5xl mx-auto px-6 md:px-12 pt-8 pb-12 sm:py-16 md:py-20 flex flex-col gap-10 sm:gap-14">
 
         {/* Title block */}
         <motion.div
