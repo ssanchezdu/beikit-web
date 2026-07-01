@@ -1,0 +1,65 @@
+# Beikit Bakery — Apache config for Hostalia (shared hosting).
+# Vite copies this file from public/ into dist/ on every build; upload the
+# CONTENTS of dist/ to the domain root (public_html / httpdocs) on Hostalia.
+# Mirrors the rules in netlify.toml, which Apache/Hostalia does NOT read.
+
+# ---------------------------------------------------------------------------
+# HTTPS + SPA client-side routing
+# ---------------------------------------------------------------------------
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+
+  # Force HTTPS (Hostalia must have the SSL cert active for the domain).
+  RewriteCond %{HTTPS} off
+  RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+  # SPA fallback: serve index.html for any path that is NOT a real file or
+  # directory, so /privacidad, /aviso-legal, /cookies, /gracias, /catering and
+  # the 404 route are handled by React Router instead of Apache's own 404.
+  RewriteCond %{REQUEST_FILENAME} !-f
+  RewriteCond %{REQUEST_FILENAME} !-d
+  RewriteRule ^ /index.html [L]
+</IfModule>
+
+# ---------------------------------------------------------------------------
+# Security headers (mirror of netlify.toml [[headers]] for /*)
+# ---------------------------------------------------------------------------
+<IfModule mod_headers.c>
+  Header always set X-Frame-Options "DENY"
+  Header always set X-Content-Type-Options "nosniff"
+  Header always set Referrer-Policy "strict-origin-when-cross-origin"
+  Header always set Permissions-Policy "camera=(), microphone=(), geolocation=()"
+  Header always set Content-Security-Policy "default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; font-src 'self'; connect-src 'self' https://formspree.io https://www.google-analytics.com https://analytics.google.com https://www.googletagmanager.com; frame-src 'none'; object-src 'none'"
+
+  # Long-lived immutable cache for hashed build assets and self-hosted fonts.
+  <FilesMatch "\.(woff2?|ttf|otf|eot)$">
+    Header set Cache-Control "public, max-age=31536000, immutable"
+  </FilesMatch>
+</IfModule>
+
+# Hashed asset files (Vite fingerprints them) — cache for a year.
+<IfModule mod_expires.c>
+  ExpiresActive On
+  ExpiresByType text/css "access plus 1 year"
+  ExpiresByType application/javascript "access plus 1 year"
+  ExpiresByType font/woff2 "access plus 1 year"
+  ExpiresByType image/webp "access plus 1 year"
+  ExpiresByType image/png "access plus 1 year"
+  ExpiresByType image/svg+xml "access plus 1 year"
+  # HTML must always revalidate so new deploys are picked up immediately.
+  ExpiresByType text/html "access plus 0 seconds"
+</IfModule>
+
+# ---------------------------------------------------------------------------
+# Compression (Netlify did this automatically; Apache needs it explicit)
+# ---------------------------------------------------------------------------
+<IfModule mod_deflate.c>
+  AddOutputFilterByType DEFLATE text/html text/css text/plain text/xml
+  AddOutputFilterByType DEFLATE application/javascript application/json
+  AddOutputFilterByType DEFLATE image/svg+xml
+</IfModule>
+
+# Ensure correct MIME type for modern fonts on older Apache configs.
+<IfModule mod_mime.c>
+  AddType font/woff2 .woff2
+</IfModule>
