@@ -1,0 +1,69 @@
+# Builds the site and uploads dist/ to Hostalia over FTP on every push to main.
+# Hostalia has no Git integration, so this workflow IS the deploy pipeline.
+#
+# ── One-time setup (GitHub → repo → Settings → Secrets and variables → Actions) ──
+# Required secrets:
+#   FTP_SERVER    → Hostalia FTP host (e.g. ftp.beikitbakery.com or the IP/host
+#                   shown in your Hostalia panel)
+#   FTP_USERNAME  → FTP user
+#   FTP_PASSWORD  → FTP password
+# Optional secrets (build-time; safe to leave unset — the code soft-fails):
+#   VITE_GA_MEASUREMENT_ID     → Google Analytics 4 id (G-XXXX)
+#   VITE_FORMSPREE_ENDPOINT    → catering form endpoint (only when catering launches)
+#   IG_ACCESS_TOKEN / IG_USER_ID → Instagram feed (else fallback cards)
+#
+# ⚠️ server-dir below MUST point at Hostalia's web root. Verify it in your FTP
+#    client: connect and see whether you land directly in the web folder (then
+#    "./") or in a parent that contains it (then e.g. "./httpdocs/" or the path
+#    your panel shows). Wrong value = files upload to the wrong place.
+
+name: Deploy to Hostalia
+
+on:
+  push:
+    branches: [ "main" ]
+  workflow_dispatch:   # lets you trigger the first deploy manually from the Actions tab
+
+# Never run two deploys at once; a newer push supersedes an in-flight one.
+concurrency:
+  group: deploy-hostalia
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Use Node.js 22
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22.x
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+        env:
+          # The production build never uses Puppeteer's Chromium (only local dev
+          # screenshot scripts do), so skip the heavy download to speed up deploys.
+          PUPPETEER_SKIP_DOWNLOAD: 'true'
+
+      - name: Build
+        run: npm run build
+        env:
+          VITE_GA_MEASUREMENT_ID: ${{ secrets.VITE_GA_MEASUREMENT_ID }}
+          VITE_FORMSPREE_ENDPOINT: ${{ secrets.VITE_FORMSPREE_ENDPOINT }}
+          IG_ACCESS_TOKEN: ${{ secrets.IG_ACCESS_TOKEN }}
+          IG_USER_ID: ${{ secrets.IG_USER_ID }}
+
+      - name: Deploy dist/ to Hostalia via FTP
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+        with:
+          server: ${{ secrets.FTP_SERVER }}
+          username: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          # protocol: ftps        # uncomment if Hostalia requires/allows explicit FTPS (more secure)
+          local-dir: ./dist/      # trailing slash required
+          server-dir: ./          # ⚠️ change to your Hostalia web root if you don't land in it
+          # Uploads all files incl. .htaccess. The action keeps a
+          # .ftp-deploy-sync-state.json on the server for incremental syncs.
